@@ -61,3 +61,10 @@ T8: View Detailed Feedback
 3. Assert that team member list only includes Test Student 
 4. Select ‘Back’  
 5. Select ‘Logout’ 
+
+T9: Make clear to students how to get urgent attention  
+1. Enter Email: yeyeye3@gmail.com; Password: ,,,,,, (Teamcode: 9J2WOX)
+2. Click on ‘Login’
+3. Click on ‘Submit for: yeyeye3'
+4. Select 'Priority' dropdown and view the added instructions after each priority level.
+
