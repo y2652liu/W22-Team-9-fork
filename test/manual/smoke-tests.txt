@@ -61,3 +61,15 @@ T8: View Detailed Feedback
 3. Assert that team member list only includes Test Student 
 4. Select ‘Back’  
 5. Select ‘Logout’ 
+
+T9: Make clear to students how to get urgent attention  
+1. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor
+2. Move mouth to 'Manage Teams', and click on 'New Team'
+3. Create a team and copy the Team Code
+4. Click on ‘Logout/Account’
+5. Click on 'Sign up'
+6. Create a student account with the copied Team Code
+7. Click on 'Submit for XXX'
+8. Click on 'Priority' dropdown to view instructions added after each priority level
