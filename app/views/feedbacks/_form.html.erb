@@ -35,7 +35,7 @@
   </div>
 
   <div class="field">  
-    <% choices = [["Urgent", 0],["Medium", 1],["Low", 2]] %>
+    <% choices = [["Urgent - I believe my team has serious issues and needs immediate intervention.", 0],["Medium - I think my team is facing some challenges, we may need intervention in the future.", 1],["Low - I think my team is all good. No special attention is needed. ", 2]] %>
     <%= form.label :priority%>
     <%= form.select :priority, choices%>
   </div>
