@@ -73,3 +73,11 @@ T9: Make clear to students how to get urgent attention
 6. Create a student account with the copied Team Code
 7. Click on 'Submit for XXX'
 8. Click on 'Priority' dropdown to view instructions added after each priority level
+
+T10: Switch Name and Email Columns
+1. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor
+2. Navigate to instructor dashboard
+3. Navigate to "Manage Users" Tab
+4. Name should be the first column and Email should be the second column. No other columns should be changed.
