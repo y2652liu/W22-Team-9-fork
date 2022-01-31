@@ -1,5 +1,5 @@
-<%= form_with(model: feedback, local: true) do |form| %>
-  <% if feedback.errors.any? %>
+Please select a rating on how well you believe your team performed this period and the priority of your feedback from the dropdowns below. These fields are mandatory<%= form_with(model: feedback, local: true) do |form| %>
+  <% if feedback.errors.any? %>Please select a rating on how well you believe your team performed this period and the priority of your feedback from the dropdowns below. These fields are mandatory
     <div id="error_explanation">
       <h2><%= pluralize(feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
 
