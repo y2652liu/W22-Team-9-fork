@@ -17,6 +17,7 @@
         <% else %>
           <li><%= link_to 'Home', root_path %></li>
         <% end %>
+        
         <li class="navlast dropdown">
           <%= link_to 'Logout/Account', logout_path %>
           <div class="dropdown-content">
@@ -80,9 +81,14 @@
               <li><%= link_to 'View Reports', reports_path %></li>
             <% end %>
           <% end %>
-          <% if request.path =~ /teams\/\d+/ %>
+          
+          
+          <% if current_page?('/team_view/help')%>
+            <li class="navlast"><%= link_to 'Help', '/team_view/help', class: "active" %></li>
+          <% else %>
             <li class="navlast"><%= link_to 'Help', '/team_view/help' %></li>
-          <% end %>
+          <% end %>  
+          
         <% end %>
       </ul>
     </nav>
