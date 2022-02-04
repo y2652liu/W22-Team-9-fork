@@ -195,6 +195,52 @@ class TeamTest < ActiveSupport::TestCase
     assert_equal(avg, 7)
   end
   
+  #unit test to ensure that median function is working for odd number of feedbacks, modeled from above tests
+  def test_median_odd
+    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
+    user1.save!
+    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
+    user2.save!
+    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', is_admin: false)
+    user3.save!
+    team = Team.new(team_code: 'Code2', team_name: 'Team 2')
+    team.user = @prof 
+    team.save!     
+  
+    feedback = save_feedback(10, "This team is disorganized", user1, DateTime.civil_from_format(:local, 2021, 3, 1), team, 2)
+    feedback2 = save_feedback(4, "This team is disorganized", user2, DateTime.civil_from_format(:local, 2021, 3, 2), team, 2)
+    feedback3 = save_feedback(7, "This team is disorganized", user3, DateTime.civil_from_format(:local, 2021, 3, 3), team, 2)
+    
+  
+  median = team.median
+  assert_equal(median, 7.0)
+  end
+  
+    #unit test to ensure that median function is working for even number of feedbacks, modeled from above tests
+    def test_median_even
+     user1 = User.create(email: 'charles1@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
+    user1.save!
+    user2 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
+    user2.save!
+    user3 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', is_admin: false)
+    user3.save!
+    user4 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles4', is_admin: false)
+    user4.save!
+    team = Team.new(team_code: 'Code2', team_name: 'Team 2')
+    team.user = @prof 
+    team.save!     
+
+    feedback = save_feedback(10, "This team is disorganized", user1, DateTime.civil_from_format(:local, 2021, 3, 1), team, 2)
+    feedback2 = save_feedback(2, "This team is disorganized", user2, DateTime.civil_from_format(:local, 2021, 3, 2), team, 2)
+    feedback3 = save_feedback(2, "This team is disorganized", user3, DateTime.civil_from_format(:local, 2021, 3, 3), team, 2)
+    feedback4 = save_feedback(8, "This team is disorganized", user3, DateTime.civil_from_format(:local, 2021, 3, 1), team, 2)
+  
+
+median = team.median
+assert_equal(median, 5.0)
+end
+
+
   def test_find_priority_weighted_team_summary_high_status
     week_range = week_range(2021, 7)
     

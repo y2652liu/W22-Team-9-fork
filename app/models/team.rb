@@ -62,11 +62,11 @@ class Team < ApplicationRecord
   #method to determine total average rating
   def avg
     feedbacks = self.feedbacks
-    count = 0
-    sum = 0
+    count = 0.0
+    sum = 0.0
     feedbacks.each do |feedback|
       sum = sum +feedback.rating
-      count = count + 1
+      count = count + 1.0
     end
     if count >0
       return sum/count
@@ -75,11 +75,10 @@ class Team < ApplicationRecord
     end
   end
 
-  #method to calculate median
+  #method to calculate median (References elements from m02ph3u5 on Stack Overflow: https://stackoverflow.com/questions/14859120/calculating-median-in-ruby)
   def median
     feedbacks = self.feedbacks
     number_of_results = 0
-    medians=0
     ratings=[]
     feedbacks.each do |feedback|
       number_of_results = number_of_results +1
@@ -88,13 +87,13 @@ class Team < ApplicationRecord
     if number_of_results >0
       length = ratings.length   
       sorted = ratings.sort
-      length1 = (length -1) / 2   
+    
         if length % 2 == 0  #checks to see if even
-          return (sorted[(length-1)/2]+sorted[(length)/2])/2
+          
+          return (sorted[(length-1)/2.0]+sorted[(length)/2.0])/2.0
         else
-          return sorted[(length-1)/2]
+          return sorted[(length-1)/2.0]
         end 
-      return 69
     else 
       return "No feedbacks yet!"
     end
