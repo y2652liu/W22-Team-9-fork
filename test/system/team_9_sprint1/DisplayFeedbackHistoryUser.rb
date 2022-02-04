@@ -32,6 +32,7 @@ class DisplayUserHistoryTest < ApplicationSystemTestCase
 
       assert_text "Urgent"
       assert_text datetime.strftime("%Y-%m-%d %H:%M")
+      assert_text "This team is disorganized"
       end
       
   end
