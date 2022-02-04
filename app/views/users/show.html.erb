@@ -35,6 +35,7 @@
                 
                 
                 <th>Priority</th>
+                <th>Time Submitted</th>
                 
                 <th colspan="6"></th>
               </tr>
@@ -51,7 +52,7 @@
                   <%else%>
                     <td><%='Urgent'%></td>
                   <%end%>
-                  
+                  <td><%= fb.timestamp.strftime('%Y-%m-%d %H:%M EST') %></td>
                 </tr>
               <% end %>
             </tbody>
