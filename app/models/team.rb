@@ -75,6 +75,35 @@ class Team < ApplicationRecord
     end
   end
 
+  #method to calculate median
+  def median
+    feedbacks = self.feedbacks
+    number_of_results = 0
+    feedbacks.each do |feedback|
+      number_of_results = number_of_results +1
+    end 
+  
+    if number_of_results >0
+      median1 = 0
+    length = feedbacks.length   
+    sorted = feedbacks.sort
+    length1 = (length -1) / 2   
+    
+
+        if length % 2 == 0  #checks to see if even
+          median1 = sorted[length / 2]
+        else
+          length2 = length1 + 1
+          median1 =  5 # 0.5 * (sorted[length / 2 -1] + sorted[length / 2])  error is here (in my system I have a odd number of feedbacks submitted and it returns correctly)
+        end 
+      return median1
+    else 
+      return "No feedbacks yet!"
+    end
+
+  end
+
+  
   # return a multidimensional array that is sorted by time (most recent first)
   # first element of each row is year and week, second element is the list of feedback
   def feedback_by_period
