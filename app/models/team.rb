@@ -79,24 +79,22 @@ class Team < ApplicationRecord
   def median
     feedbacks = self.feedbacks
     number_of_results = 0
+    medians=0
+    ratings=[]
     feedbacks.each do |feedback|
       number_of_results = number_of_results +1
+      ratings.append(feedback.rating)
     end 
-  
     if number_of_results >0
-      median1 = 0
-    length = feedbacks.length   
-    sorted = feedbacks.sort
-    length1 = (length -1) / 2   
-    
-
+      length = ratings.length   
+      sorted = ratings.sort
+      length1 = (length -1) / 2   
         if length % 2 == 0  #checks to see if even
-          median1 = sorted[length / 2]
+          return (sorted[(length-1)/2]+sorted[(length)/2])/2
         else
-          length2 = length1 + 1
-          median1 =  5 # 0.5 * (sorted[length / 2 -1] + sorted[length / 2])  error is here (in my system I have a odd number of feedbacks submitted and it returns correctly)
+          return sorted[(length-1)/2]
         end 
-      return median1
+      return 69
     else 
       return "No feedbacks yet!"
     end
