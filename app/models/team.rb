@@ -17,7 +17,7 @@ class Team < ApplicationRecord
       errors.add(:team_code, 'not unique')
     end
   end
-  
+
   def student_names 
     students = Array.new
     for student in self.users.to_ary
@@ -59,6 +59,22 @@ class Team < ApplicationRecord
     end
   end
   
+  #method to determine total average rating
+  def avg
+    feedbacks = self.feedbacks
+    count = 0
+    sum = 0
+    feedbacks.each do |feedback|
+      sum = sum +feedback.rating
+      count = count + 1
+    end
+    if count >0
+      return sum/count
+    else
+      return "No feedbacks yet!"
+    end
+  end
+
   # return a multidimensional array that is sorted by time (most recent first)
   # first element of each row is year and week, second element is the list of feedback
   def feedback_by_period
