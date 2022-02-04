@@ -175,6 +175,25 @@ class TeamTest < ActiveSupport::TestCase
     assert_equal( 2, periods[0][1].length )
     assert_equal( 2, periods[1][1].length )
   end
+
+  #unit test to ensure that avg function is working, modeled from above tests
+  def test_avg
+    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
+    user1.save!
+    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
+    user2.save!
+    team = Team.new(team_code: 'Code2', team_name: 'Team 2')
+    team.user = @prof 
+    team.save!     
+    
+    feedback = save_feedback(10, "This team is disorganized", user1, DateTime.civil_from_format(:local, 2021, 3, 1), team, 2)
+    feedback2 = save_feedback(5, "This team is disorganized", user2, DateTime.civil_from_format(:local, 2021, 3, 3), team, 2)
+    feedback3 = save_feedback(8, "This team is disorganized", user1, DateTime.civil_from_format(:local, 2021, 2, 15), team, 2)
+    feedback4 = save_feedback(5, "This team is disorganized", user2, DateTime.civil_from_format(:local, 2021, 2, 16), team, 2)
+    
+    avg = team.avg
+    assert_equal(avg, 7)
+  end
   
   def test_find_priority_weighted_team_summary_high_status
     week_range = week_range(2021, 7)
