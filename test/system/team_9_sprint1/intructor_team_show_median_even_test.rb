@@ -32,7 +32,7 @@ class InstructorTeamShowMedianEvenTest < ApplicationSystemTestCase
 
   def test_median_is_shown
     visit 'teams/1'
-    assert_text "Median: 5.0" 
+    assert_text "Median: 5" 
   end
 
 end

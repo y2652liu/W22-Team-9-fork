@@ -28,7 +28,7 @@ class InstructorTeamShowMedianOddTest < ApplicationSystemTestCase
 
   def test_median_is_shown
     visit 'teams/1'
-    assert_text "Median: 7.0" 
+    assert_text "Median: 7" 
   end
 
 end
