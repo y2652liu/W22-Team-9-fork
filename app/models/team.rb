@@ -100,6 +100,32 @@ class Team < ApplicationRecord
 
   end
 
+  #method to calculate mode (References elements from https://medium.com/@baweaver/ruby-2-7-enumerable-tally-a706a5fb11ea on Instructions for Ruby Enumerable)
+  def mode
+    feedbacks = self.feedbacks
+    number_of_results = 0
+    ratings=[]
+    feedbacks.each do |feedback|
+      number_of_results = number_of_results +1
+      ratings.append(feedback.rating)
+    end 
+    if number_of_results >0
+      tallied = ratings.tally
+      highest_occuring_value = tallied.sort_by { |_,v| v}.last(1)
+      if highest_occuring_value.size == 1
+        highest_occuring_value [0] [0]
+      elsif highest_occuring_value [0] [1] == highest_occuring_value [1] [1]
+        nil
+      else 
+        highest_occuring_value [1] [0]
+      end 
+      # for the future, to add the number of occurrances, uncomment the following line
+      # return highest_occuring_value.join(' , ') 
+    else 
+      return "No feedbacks yet!"
+    end 
+
+end 
   
   # return a multidimensional array that is sorted by time (most recent first)
   # first element of each row is year and week, second element is the list of feedback
