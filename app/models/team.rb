@@ -111,16 +111,17 @@ class Team < ApplicationRecord
     end 
     if number_of_results >0
       tallied = ratings.tally
-      highest_occuring_value = tallied.sort_by { |_,v| v}.last(1)
+      highest_occuring_value = tallied.sort_by { |_,v| v}.last(2)
       if highest_occuring_value.size == 1
         highest_occuring_value [0] [0]
       elsif highest_occuring_value [0] [1] == highest_occuring_value [1] [1]
-        nil
+       return "No Mode (multiple values selected the same amount of times)"
       else 
         highest_occuring_value [1] [0]
       end 
+      
       # for the future, to add the number of occurrances, uncomment the following line
-      # return highest_occuring_value.join(' , ') 
+     # return highest_occuring_value.join(' , ') 
     else 
       return "No feedbacks yet!"
     end 
