@@ -40,6 +40,10 @@
   <p>There are no members in this team!</p>
 <% end %>
 <div class="line"></div>
+<div>
+  <p> <b>Average Rating:</b> <%= number_with_precision(@team.avg, precision: 2) %> &nbsp &nbsp <b>Median:</b> <%= @team.median %> &nbsp &nbsp <b>Mode:</b> <%= @team.mode %> <p> 
+<div>
+<div class="line"></div>
 <% if is_admin? %>
   <h2>Team's Individual Feedback</h2>
 

@@ -17,7 +17,7 @@ class Team < ApplicationRecord
       errors.add(:team_code, 'not unique')
     end
   end
-  
+
   def student_names 
     students = Array.new
     for student in self.users.to_ary
@@ -58,6 +58,75 @@ class Team < ApplicationRecord
       return nil
     end
   end
+  
+  #method to determine total average rating
+  def avg
+    feedbacks = self.feedbacks
+    count = 0.0
+    sum = 0.0
+    feedbacks.each do |feedback|
+      sum = sum +feedback.rating
+      count = count + 1.0
+    end
+    if count >0
+      return sum/count
+    else
+      return "No feedbacks yet!"
+    end
+  end
+
+  #method to calculate median (References elements from m02ph3u5 on Stack Overflow: https://stackoverflow.com/questions/14859120/calculating-median-in-ruby)
+  def median
+    feedbacks = self.feedbacks
+    number_of_results = 0
+    ratings=[]
+    feedbacks.each do |feedback|
+      number_of_results = number_of_results +1
+      ratings.append(feedback.rating)
+    end 
+    if number_of_results >0
+      length = ratings.length   
+      sorted = ratings.sort
+    
+        if length % 2 == 0  #checks to see if even
+          
+          return (sorted[(length-1)/2.0]+sorted[(length)/2.0])/2.0
+        else
+          return sorted[(length-1)/2.0]
+        end 
+    else 
+      return "No feedbacks yet!"
+    end
+
+  end
+
+  #method to calculate mode (References elements from https://medium.com/@baweaver/ruby-2-7-enumerable-tally-a706a5fb11ea on Instructions for Ruby Enumerable)
+  def mode
+    feedbacks = self.feedbacks
+    number_of_results = 0
+    ratings=[]
+    feedbacks.each do |feedback|
+      number_of_results = number_of_results +1
+      ratings.append(feedback.rating)
+    end 
+    if number_of_results >0
+      tallied = ratings.tally
+      highest_occuring_value = tallied.sort_by { |_,v| v}.last(2)
+      if highest_occuring_value.size == 1
+        highest_occuring_value [0] [0]
+      elsif highest_occuring_value [0] [1] == highest_occuring_value [1] [1]
+       return "No Mode (multiple values selected the same amount of times)"
+      else 
+        highest_occuring_value [1] [0]
+      end 
+      
+      # for the future, to add the number of occurrances, uncomment the following line
+     # return highest_occuring_value.join(' , ') 
+    else 
+      return "No feedbacks yet!"
+    end 
+
+end 
   
   # return a multidimensional array that is sorted by time (most recent first)
   # first element of each row is year and week, second element is the list of feedback
