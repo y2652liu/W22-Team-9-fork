@@ -16,17 +16,17 @@ ActiveRecord::Schema.define(version: 2021_04_04_164701) do
   enable_extension "plpgsql"
 
   create_table "feedbacks", force: :cascade do |t|
-    t.integer "goal_rating", null: false
-    t.integer "communication_rating", null: false
-    t.integer "positive_rating", null: false
-    t.integer "reach_rating", null: false
-    t.integer "bounce_rating", null: false
-    t.integer "account_rating", null: false
-    t.integer "decision_rating", null: false
-    t.integer "respect_rating", null: false
-    t.integer "rating", null: false
+    t.integer "goal_rating"
+    t.integer "communication_rating"
+    t.integer "positive_rating"
+    t.integer "reach_rating"
+    t.integer "bounce_rating"
+    t.integer "account_rating"
+    t.integer "decision_rating"
+    t.integer "respect_rating"
+    t.integer "rating"
     t.string "comments", limit: 2048
-    t.string "progress_comments", limit: 255
+    t.string "progress_comments"
     t.datetime "timestamp", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
