@@ -25,4 +25,12 @@ class InstructorTeamShowAverageTest < ApplicationSystemTestCase
     assert_text "Average Rating: 7" 
   end
 
+  def test_avg_is_decimal
+    @user3 = User.create(email: 'test2@gsmail.com', name: 'Test User', is_admin: false, password: 'Security!', password_confirmation: 'Security!', teams: [@team])
+    @user3.save
+    @feedback = save_feedback(3, "This team is disorganized", @user3, Time.zone.now.to_datetime - 30, @team, 2) 
+    visit 'teams/1'
+    assert_text "Average Rating: 5.67" 
+  end
+
 end
