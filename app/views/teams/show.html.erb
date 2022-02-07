@@ -58,14 +58,14 @@
                 <%= range[:start_date].strftime('%b %e, %Y') %> to <%= range[:end_date].strftime('%b %e, %Y') %>
               </h3>
             </div>
-            <p>Average Rating of Period (Out of 10): <%= rating %></p>
+            <p>Average Rating of Period (Out of 5): <%= rating %></p>
             <p>Weighted Priority: <%= priority %></p>
             <p>Missing Feedback: <%= missing.join(", ") %></p>
             <table>
               <thead>
                 <tr>
                   <th>Student's Name</th>
-                  <th>Rating (Out of 10)</th>
+                  <th>Rating (Out of 5)</th>
                   <th>Priority</th>
                   <th>Comments</th>
                   <th>Time Submitted</th>
@@ -115,7 +115,7 @@
             <%= range[:start_date].strftime('%b %e, %Y') %> to <%= range[:end_date].strftime('%b %e, %Y') %>
           </h3>
         </div>
-        <p>Average Rating of Period (Out of 10): <%= rating %></p>
+        <p>Average Rating of Period (Out of 5): <%= rating %></p>
         <p>Weighted Priority: <%= priority %></p>
       </div>
       <br/>

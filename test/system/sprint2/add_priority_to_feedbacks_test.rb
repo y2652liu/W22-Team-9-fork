@@ -33,8 +33,8 @@ class AddPriorityToFeedbacksTest < ApplicationSystemTestCase
     
     click_on "Submit for"
     
-    select 5, :from => "Rating"
-    fill_in "Comments", with: "I did not select a priority, default of low set"
+    choose('feedback[rating]', option: 1)
+    fill_in 'feedback[comments]', with: "I did not select a priority, default of low set"
     click_on "Create Feedback"
     assert_current_path root_url
     assert_text "Feedback was successfully created."
@@ -48,9 +48,9 @@ class AddPriorityToFeedbacksTest < ApplicationSystemTestCase
     
     click_on "Submit for"
     
-    select 5, :from => "Rating"
-    select "Urgent", :from => "Priority"
-    fill_in "Comments", with: "I selected a priority, it's URGENT"
+    choose('feedback[rating]', option: 1)
+    select "Urgent - I believe my team has serious issues and needs immediate intervention.", :from => 'feedback[priority]'
+    fill_in "feedback[comments]", with: "I selected a priority, it's URGENT"
     click_on "Create Feedback"
     assert_current_path root_url
     assert_text "Feedback was successfully created."

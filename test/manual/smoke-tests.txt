@@ -100,3 +100,22 @@ T12: Switch Team Column for Instructor Dashboard
     professor
 2. Navigate to instructor dashboard
 3. Team Name should be displayed first under both current week and previous week sections
+
+T13: 
+1. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor
+2. Move mouse to 'Manage Teams', and click on 'New Team'
+3. Create a team and copy the Team Code
+4. Click on ‘Logout/Account’
+5. Click on 'Sign up'
+6. Create a student account with the copied Team Code
+7. Click on 'Submit for XXX Team'
+8. View newly updated Feedback questions
+9. Fill and submit feedback form
+10. Click on ‘Logout/Account’
+11. Enter the following in each field: 
+     msmucker@gmail.com 
+     professor
+12. Navigate to "Feedback & Ratings" Tab
+13. View and confirm submitted feedback is present

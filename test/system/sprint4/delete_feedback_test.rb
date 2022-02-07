@@ -39,8 +39,8 @@ class DeleteFeedbackTest < ApplicationSystemTestCase
     assert_current_path root_url
     click_on "Feedback & Ratings"
     click_on "Edit"
-    select 5, :from => "Rating"
-    fill_in "Comments", with: "New Comment"
+    choose('feedback[rating]', option: 1)
+    fill_in 'feedback[comments]', with: "New Comment"
     click_on "Update Feedback"
     assert_text "New Comment"
   end

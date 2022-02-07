@@ -75,7 +75,7 @@ class DisplayErrorsValidationsTest < ApplicationSystemTestCase
     assert_current_path root_url
       
     click_on "Submit for"
-    select "Urgent", :from => "Priority"
+    select "Urgent - I believe my team has serious issues and needs immediate intervention.", :from => "feedback[priority]"
     click_on "Create Feedback"
       
     assert_text "1 error prohibited this feedback from being saved:"
