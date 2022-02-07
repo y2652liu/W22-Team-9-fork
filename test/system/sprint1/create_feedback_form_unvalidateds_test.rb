@@ -26,9 +26,9 @@ class CreateFeedbackFormUnvalidatedsTest < ApplicationSystemTestCase
     assert_current_path new_feedback_url
     assert_text "Your Current Team: Test Team"
     
-    select "5", from: "Rating"
-    select "Urgent", from: "Priority"
-    fill_in "Comments", with: "This week has gone okay."
+    choose('feedback[rating]', option: 5)
+    select "Urgent - I believe my team has serious issues and needs immediate intervention.", :from => "feedback[priority]"
+    fill_in "feedback[comments]", with: "This week has gone okay."
     click_on "Create Feedback"
     
     assert_current_path root_url
