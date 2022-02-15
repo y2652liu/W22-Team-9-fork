@@ -78,7 +78,7 @@
             <td><%= team.team_code %></td>
             <td><%= team.student_names.size == 0 ? 'No members' : team.student_names.join(", ") %></td>
             <td><%= @unsubmitted[:previous_week][team.id].size == 0 ? 'All submitted!' : @unsubmitted[:previous_week][team.id].join(", ") %></td>
-            
+  
           </tr>
         <% end %>
       </tbody>
