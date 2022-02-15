@@ -34,7 +34,7 @@ class HelpPageTest < ApplicationSystemTestCase
 
     visit root_url
     login 'msmucker@gmail.com', 'professor' 
-    click_on 'Details'
+    click_on 'Team 1'
     click_on 'Help'
     assert_text "Team's Individual Feedback"
   end

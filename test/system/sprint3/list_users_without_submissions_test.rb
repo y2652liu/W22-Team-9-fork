@@ -38,7 +38,7 @@ class ListUsersWithoutSubmissionsTest < ApplicationSystemTestCase
     visit root_url 
     login 'msmucker@gmail.com', 'professor'
     assert_current_path root_url 
-    click_on "Details"
+    click_on "Team 1"
     
     assert_text "Missing Feedback: Charles3"
   end 

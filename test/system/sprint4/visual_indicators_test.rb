@@ -49,7 +49,7 @@ class VisualIndicatorsTest < ApplicationSystemTestCase
     
     assert find('.dot-yellow')
     
-    click_on 'Details'
+    click_on 'Team 1'
     
     assert find('.dot-red')
     assert find('.dot-yellow')
