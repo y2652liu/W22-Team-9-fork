@@ -56,7 +56,7 @@ class CreateFeedbackFormUnvalidatedsTest < ApplicationSystemTestCase
     visit root_url 
     login 'msmucker@gmail.com', 'professor'
     
-    click_on "Details"
+    click_on "Test Team"
     assert_current_path team_url(@team)
     assert_text "This team is disorganized"
     assert_text "9"

@@ -27,7 +27,7 @@ class DisplayUserHistoryTest < ApplicationSystemTestCase
         assert_current_path users_url
  
       within('#user' + @cici.id.to_s) do
-        click_on 'Show'
+        click_on 'Cici'
       end
 
       assert_text "9"
