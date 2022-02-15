@@ -22,7 +22,7 @@ class SubmitAfterWednesdayTest < ApplicationSystemTestCase
       visit root_url 
       login 'cici@gmail.com', 'testpassword'
 
-      assert_text "Submit for:"
+      page.has_button? 'Submit for:'
     end
     
     
@@ -35,7 +35,7 @@ class SubmitAfterWednesdayTest < ApplicationSystemTestCase
         visit root_url 
         login 'cici@gmail.com', 'testpassword'
   
-        assert_text "Submit for:"
+        page.has_button? 'Submit for:'
     end
 
 
@@ -48,7 +48,7 @@ class SubmitAfterWednesdayTest < ApplicationSystemTestCase
         visit root_url 
         login 'cici@gmail.com', 'testpassword'
       
-        assert_text "Submit for:"
+        page.has_button? 'Submit for:'
     end
 
 
@@ -60,7 +60,7 @@ class SubmitAfterWednesdayTest < ApplicationSystemTestCase
       
       visit root_url 
       login 'cici@gmail.com', 'testpassword'
-      
+      refute page.has_button? 'Submit for:'
 
       #expect(page.has_content? "Submit for:").to be false
       #page.has_no_button?
@@ -69,6 +69,43 @@ class SubmitAfterWednesdayTest < ApplicationSystemTestCase
       #page.should have_submit_button("Submit for:")
     end
 
+    # check Monday
+    def test_submit_after_Wednesday_Mon
+       
+      new_timemon = Time.local(2022, 2, 21, 3, 0, 0)
+      Timecop.freeze(new_timemon)
+      
+      visit root_url 
+      login 'cici@gmail.com', 'testpassword'
+      refute page.has_button? 'Submit for:'
+
+    end
+
+    # check Tuesday
+    def test_submit_after_Wednesday_Tue
+       
+      new_timetue = Time.local(2022, 2, 21, 3, 0, 0)
+      Timecop.freeze(new_timetue)
+      
+      visit root_url 
+      login 'cici@gmail.com', 'testpassword'
+      refute page.has_button? 'Submit for:'
+
+     
+    end
+
+    # check Wednesday
+    def test_submit_after_Wednesday_Wed
+       
+      new_timewed = Time.local(2022, 2, 21, 3, 0, 0)
+      Timecop.freeze(new_timewed)
+      
+      visit root_url 
+      login 'cici@gmail.com', 'testpassword'
+      refute page.has_button? 'Submit for:'
+
+     
+    end
   end
 
 
