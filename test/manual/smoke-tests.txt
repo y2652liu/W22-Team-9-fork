@@ -119,3 +119,19 @@ T13:
      professor
 12. Navigate to "Feedback & Ratings" Tab
 13. View and confirm submitted feedback is present
+
+
+T14:
+1. Click on signup 
+2. Create a student account using team code TEAM01
+3. Click on Submit For Test Team
+4. Fill in and submit feedback form with a priority of medium
+5. Click on logout/account
+6. Repeat steps 1-5, but change priority in step 4 to low
+7. Repeat steps 1-5, but change priority in step 4 to urgent
+8. Sign in by entering the following in each field: 
+    msmucker@gmail.com 
+    professor
+9. Click on Feedback & Ratings
+10. Note order of feedbacks
+11. Click on priority and ensure that feedbacks have been sorted
