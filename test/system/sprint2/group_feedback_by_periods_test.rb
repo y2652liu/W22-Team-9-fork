@@ -70,7 +70,7 @@ class GroupFeedbackByPeriodsTest < ApplicationSystemTestCase
     login 'msmucker@gmail.com', 'banana'
     assert_current_path root_url 
     
-    click_on 'Details'
+    click_on 'Team 1'
     assert_current_path team_path(team)
     within('#2021-7') do
       assert_text 'Feb 15, 2021 to Feb 21, 2021'

@@ -14,3 +14,8 @@ name = 'Mark Smucker'
 password = 'professor'
 
 prof = User.create(email: email, name: name, is_admin: true, password: password, password_confirmation: password)
+
+
+team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: prof)
+
+# feedback = Feedback.create(rating: 10, comments: "This team is disorganized", user_id: user.id, timestamp: Time.zone.now.to_datetime - 30, team_id: team.id) 

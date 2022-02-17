@@ -81,7 +81,7 @@ class CreateSummaryPageViewOfTeamsTest < ApplicationSystemTestCase
     #checks all aggregated feedback of a team
     
     within('#' + @team.id.to_s) do 
-      click_on 'Details'
+      click_on 'Test Team'
     end
     assert_current_path team_url(@team)
     

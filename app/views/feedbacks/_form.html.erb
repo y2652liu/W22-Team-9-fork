@@ -71,6 +71,16 @@ Please select a rating on how well you believe your team performed this period a
   </div>
 
   <div class="field">
+    <b>I feel motivated to participate in my team:</b> 
+    <br></br>Strongly Disagree &emsp; Disagree &emsp;&emsp;&emsp;&nbsp; Neutral &emsp;&emsp;&emsp;&emsp; Agree &emsp;&emsp; Strongly Agree<br></br>
+    &emsp;&emsp;&emsp;&emsp;<%= form.radio_button :motivated_rating, 1 %>          
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :motivated_rating, 2 %>
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :motivated_rating, 3 %>
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :motivated_rating, 4 %>
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :motivated_rating, 5 %>
+  </div>
+
+  <div class="field">
     <b>I feel like I can reach out at any moment for help:</b> 
     <br></br>Strongly Disagree &emsp; Disagree &emsp;&emsp;&emsp;&nbsp; Neutral &emsp;&emsp;&emsp;&emsp; Agree &emsp;&emsp; Strongly Agree<br></br>
     &emsp;&emsp;&emsp;&emsp;<%= form.radio_button :reach_rating, 1 %>          
