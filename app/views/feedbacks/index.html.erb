@@ -6,7 +6,7 @@
       <th>Student Name</th>
       <th>Team</th>
       <th>Rating</th>
-      <th>Priority</th>
+      <th><%= link_to 'Priority', feedbacks_path(order_by: 'priority') %></th>
       <th>Comments</th>
       <th>Timestamp</th>
       <th colspan="7"></th>

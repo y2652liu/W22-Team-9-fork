@@ -87,4 +87,28 @@ class FeedbackTest < ActiveSupport::TestCase
     average_rating = Feedback::average_rating(feedbacks)
     assert_in_delta((ratings.sum.to_f/ratings.count.to_f).round(2), average_rating)
   end
+
+  def test_sort_urgency
+    feedback = Feedback.new(rating: 9, comments: "BB EOY 30", priority: 2)
+    feedback.timestamp = feedback.format_time(DateTime.now)
+    feedback.user = @user
+    feedback.team = @user.teams.first
+    feedback.save
+    
+    #feedback with no optional comment
+    feedback2 = Feedback.new(rating: 7, priority: 1)
+    feedback2.timestamp = feedback2.format_time(DateTime.now)
+    feedback2.user = @user
+    feedback2.team = @user.teams.first
+    feedback2.save
+
+    unsorted = Feedback.all
+    sorted = Feedback.order_by 'urgency'
+
+    assert_equal(unsorted[1],sorted[0])
+    assert_equal(feedback2,sorted[0])
+
+
+
+  end
 end

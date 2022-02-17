@@ -29,4 +29,9 @@ class Feedback < ApplicationRecord
   def self.average_rating(feedbacks)
     (feedbacks.sum{|feedback| feedback.rating}.to_f/feedbacks.count.to_f).round(2)
   end
+
+  def self.order_by field
+    return Feedback.order('feedbacks.priority asc')
+  end 
+
 end
