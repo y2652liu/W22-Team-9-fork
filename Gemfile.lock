@@ -180,6 +180,7 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.1.0)
     tilt (2.0.10)
+    timecop (0.9.4)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     web-console (4.2.0)
@@ -214,6 +215,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver
   simplecov
+  timecop
   web-console (>= 3.3.0)
   webdrivers
 
