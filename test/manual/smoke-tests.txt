@@ -74,7 +74,7 @@ T9: Make clear to students how to get urgent attention
 7. Click on 'Submit for XXX'
 8. Click on 'Priority' dropdown to view instructions added after each priority level
 
-T10: Add Instructions to Feedback form
+T10: View Instructions to Feedback form
 1. Enter the following in each field: 
     msmucker@gmail.com 
     professor
