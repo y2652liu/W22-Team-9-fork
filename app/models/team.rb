@@ -51,9 +51,9 @@ class Team < ApplicationRecord
   end 
   
   #gets the average team rating for the professor's team summary view
-  def self.feedback_average_rating(feedbacks)
+  def self.feedback_average_rating(feedbacks,users)
     if feedbacks.count > 0
-      (feedbacks.sum{|feedback| feedback.rating}.to_f/feedbacks.count.to_f).round(2)
+      (feedbacks.sum{|feedback| feedback.rating}.to_f/users.size.to_f).round(2)
     else
       return nil
     end
@@ -66,10 +66,11 @@ class Team < ApplicationRecord
     sum = 0.0
     feedbacks.each do |feedback|
       sum = sum +feedback.rating
-      count = count + 1.0
+      count += 1.0
     end
     if count >0
-      return sum/count
+      #return sum/count
+      return sum/self.users.size
     else
       return "No feedbacks yet!"
     end
@@ -172,7 +173,7 @@ class Team < ApplicationRecord
   def status(start_date, end_date)
     priority = self.find_priority_weighted(start_date, end_date)
     feedbacks = self.feedbacks.where(:timestamp => start_date..end_date)
-    rating = Team::feedback_average_rating(feedbacks)
+    rating = Team::feedback_average_rating(feedbacks,users)
     rating = rating.nil? ? 10 : rating
     users_not_submitted = self.users_not_submitted(feedbacks)
     users_not_submitted = self.users.to_ary.size == 0 ? 0 : users_not_submitted.size.to_f / self.users.to_ary.size
