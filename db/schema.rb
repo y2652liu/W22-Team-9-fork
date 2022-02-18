@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_07_121200) do
+ActiveRecord::Schema.define(version: 2022_02_16_185500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,15 +24,16 @@ ActiveRecord::Schema.define(version: 2022_02_07_121200) do
     t.bigint "team_id"
     t.bigint "user_id"
     t.integer "priority", default: 2, null: false
-    t.integer "goal_rating"
-    t.integer "communication_rating"
-    t.integer "positive_rating"
-    t.integer "reach_rating"
-    t.integer "bounce_rating"
-    t.integer "account_rating"
-    t.integer "decision_rating"
-    t.integer "respect_rating"
-    t.string "progress_comments"
+    t.integer "goal_rating", null: false
+    t.integer "communication_rating", null: false
+    t.integer "positive_rating", null: false
+    t.integer "reach_rating", null: false
+    t.integer "bounce_rating", null: false
+    t.integer "account_rating", null: false
+    t.integer "decision_rating", null: false
+    t.integer "respect_rating", null: false
+    t.string "progress_comments", null: false
+    t.integer "motivation_rating", null: false
     t.index ["team_id"], name: "index_feedbacks_on_team_id"
     t.index ["user_id"], name: "index_feedbacks_on_user_id"
   end
