@@ -31,105 +31,105 @@ Please select a rating on how well you believe your team performed this period a
   <br>
 
   <div class="field">
-    <b>I would say that my team health is exceptional:</b> 
-    <br></br>Strongly Disagree &emsp; Disagree &emsp;&emsp;&emsp;&nbsp; Neutral &emsp;&emsp;&emsp;&emsp; Agree &emsp;&emsp; Strongly Agree<br></br>
-    &emsp;&emsp;&emsp;&emsp;<%= form.radio_button :rating, 1 %>          
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :rating, 2 %>
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :rating, 3 %>
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :rating, 4 %>
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :rating, 5 %>
-  </div>
-
-  <div class="field">
     <b>We are accomplishing goals we set for ourselves:</b> 
     <br></br>Strongly Disagree &emsp; Disagree &emsp;&emsp;&emsp;&nbsp; Neutral &emsp;&emsp;&emsp;&emsp; Agree &emsp;&emsp; Strongly Agree<br></br>
-    &emsp;&emsp;&emsp;&emsp;<%= form.radio_button :goal_rating, 1 %>          
+    &emsp;&emsp;&emsp;&emsp;<%= form.radio_button :goal_rating, 0 %>          
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :goal_rating, 1 %>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :goal_rating, 2 %>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :goal_rating, 3 %>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :goal_rating, 4 %>
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :goal_rating, 5 %>
   </div>
 
   <div class="field">
     <b>Communication has been clear and consistent:</b> 
     <br></br>Strongly Disagree &emsp; Disagree &emsp;&emsp;&emsp;&nbsp; Neutral &emsp;&emsp;&emsp;&emsp; Agree &emsp;&emsp; Strongly Agree<br></br>
-    &emsp;&emsp;&emsp;&emsp;<%= form.radio_button :communication_rating, 1 %>          
+    &emsp;&emsp;&emsp;&emsp;<%= form.radio_button :communication_rating, 0 %>          
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :communication_rating, 1 %>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :communication_rating, 2 %>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :communication_rating, 3 %>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :communication_rating, 4 %>
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :communication_rating, 5 %>
   </div>
 
   <div class="field">
     <b>Our team keeps a positive attitude regardless of the situation:</b> 
     <br></br>Strongly Disagree &emsp; Disagree &emsp;&emsp;&emsp;&nbsp; Neutral &emsp;&emsp;&emsp;&emsp; Agree &emsp;&emsp; Strongly Agree<br></br>
-    &emsp;&emsp;&emsp;&emsp;<%= form.radio_button :positive_rating, 1 %>          
+    &emsp;&emsp;&emsp;&emsp;<%= form.radio_button :positive_rating, 0 %>          
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :positive_rating, 1 %>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :positive_rating, 2 %>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :positive_rating, 3 %>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :positive_rating, 4 %>
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :positive_rating, 5 %>
   </div>
 
   <div class="field">
     <b>I feel motivated to participate in my team:</b> 
     <br></br>Strongly Disagree &emsp; Disagree &emsp;&emsp;&emsp;&nbsp; Neutral &emsp;&emsp;&emsp;&emsp; Agree &emsp;&emsp; Strongly Agree<br></br>
-    &emsp;&emsp;&emsp;&emsp;<%= form.radio_button :motivated_rating, 1 %>          
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :motivated_rating, 2 %>
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :motivated_rating, 3 %>
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :motivated_rating, 4 %>
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :motivated_rating, 5 %>
+    &emsp;&emsp;&emsp;&emsp;<%= form.radio_button :motivation_rating, 0 %>          
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :motivation_rating, 1 %>
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :motivation_rating, 2 %>
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :motivation_rating, 3 %>
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :motivation_rating, 4 %>
   </div>
 
   <div class="field">
     <b>I feel like I can reach out at any moment for help:</b> 
     <br></br>Strongly Disagree &emsp; Disagree &emsp;&emsp;&emsp;&nbsp; Neutral &emsp;&emsp;&emsp;&emsp; Agree &emsp;&emsp; Strongly Agree<br></br>
-    &emsp;&emsp;&emsp;&emsp;<%= form.radio_button :reach_rating, 1 %>          
+    &emsp;&emsp;&emsp;&emsp;<%= form.radio_button :reach_rating, 0 %>          
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :reach_rating, 1 %>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :reach_rating, 2 %>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :reach_rating, 3 %>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :reach_rating, 4 %>
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :reach_rating, 5 %>
   </div>
 
   <div class="field">
     <b>My team is able to bounce back when facing a problem:</b> 
     <br></br>Strongly Disagree &emsp; Disagree &emsp;&emsp;&emsp;&nbsp; Neutral &emsp;&emsp;&emsp;&emsp; Agree &emsp;&emsp; Strongly Agree<br></br>
-    &emsp;&emsp;&emsp;&emsp;<%= form.radio_button :bounce_rating, 1 %>          
+    &emsp;&emsp;&emsp;&emsp;<%= form.radio_button :bounce_rating, 0 %>          
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :bounce_rating, 1 %>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :bounce_rating, 2 %>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :bounce_rating, 3 %>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :bounce_rating, 4 %>
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :bounce_rating, 5 %>
   </div>
 
   <div class="field">
     <b>My team members take accountability for their roles:</b> 
     <br></br>Strongly Disagree &emsp; Disagree &emsp;&emsp;&emsp;&nbsp; Neutral &emsp;&emsp;&emsp;&emsp; Agree &emsp;&emsp; Strongly Agree<br></br>
-    &emsp;&emsp;&emsp;&emsp;<%= form.radio_button :account_rating, 1 %>          
+    &emsp;&emsp;&emsp;&emsp;<%= form.radio_button :account_rating, 0 %>          
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :account_rating, 1 %>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :account_rating, 2 %>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :account_rating, 3 %>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :account_rating, 4 %>
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :account_rating, 5 %>
   </div>
 
   <div class="field">
     <b>My team is able to effectively make decisions:</b> 
     <br></br>Strongly Disagree &emsp; Disagree &emsp;&emsp;&emsp;&nbsp; Neutral &emsp;&emsp;&emsp;&emsp; Agree &emsp;&emsp; Strongly Agree<br></br>
-    &emsp;&emsp;&emsp;&emsp;<%= form.radio_button :decision_rating, 1 %>          
+    &emsp;&emsp;&emsp;&emsp;<%= form.radio_button :decision_rating, 0 %>          
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :decision_rating, 1 %>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :decision_rating, 2 %>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :decision_rating, 3 %>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :decision_rating, 4 %>
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :decision_rating, 5 %>
   </div>
 
   <div class="field">
     <b>I feel respected in my role as a part of the team:</b> 
     <br></br>Strongly Disagree &emsp; Disagree &emsp;&emsp;&emsp;&nbsp; Neutral &emsp;&emsp;&emsp;&emsp; Agree &emsp;&emsp; Strongly Agree<br></br>
-    &emsp;&emsp;&emsp;&emsp;<%= form.radio_button :respect_rating, 1 %>          
+    &emsp;&emsp;&emsp;&emsp;<%= form.radio_button :respect_rating, 0 %>          
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :respect_rating, 1 %>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :respect_rating, 2 %>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :respect_rating, 3 %>
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :respect_rating, 4 %>
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :respect_rating, 5 %>
   </div>
   
+  <div class="field">
+    <b>I would say that my team health is exceptional:</b> 
+    <br></br>Strongly Disagree &emsp; Disagree &emsp;&emsp;&emsp;&nbsp; Neutral &emsp;&emsp;&emsp;&emsp; Agree &emsp;&emsp; Strongly Agree<br></br>
+    &emsp;&emsp;&emsp;&emsp;<%= form.radio_button :rating, 0 %>          
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :rating, 1 %>
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :rating, 2 %>
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :rating, 3 %>
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= form.radio_button :rating, 4 %>
+  </div>
+
   <div class="field">  
     <% choices = [["Urgent - I believe my team has serious issues and needs immediate intervention.", 0],["Medium - I think my team is facing some challenges, we may need intervention in the future.", 1],["Low - I think my team is all good. No special attention is needed. ", 2]] %>
     <b>Priority</b><br></br>
@@ -137,15 +137,14 @@ Please select a rating on how well you believe your team performed this period a
   </div>
 
   <div class="field">
-    <b>Comments</b><br></br>
-    <%= form.text_area :comments %>
-  </div>
-
-  <div class="field">
     <b>How do you feel the team health has been progressing?</b><br></br>
     <%= form.text_area :progress_comments %>
   </div>
 
+  <div class="field">
+    <b>Comments</b><br></br>
+    <%= form.text_area :comments %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>

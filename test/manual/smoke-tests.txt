@@ -120,7 +120,6 @@ T13:
 12. Navigate to "Feedback & Ratings" Tab
 13. View and confirm submitted feedback is present
 
-
 T14: 
 1. Enter the following in each field: 
     msmucker@gmail.com 
@@ -148,3 +147,15 @@ T15:
 9. Click on Feedback & Ratings
 10. Note order of feedbacks
 11. Click on priority and ensure that feedbacks have been sorted
+
+T16: 
+1. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor
+2. Move mouse to 'Manage Teams', and click on 'New Team'
+3. Create a team and copy the Team Code
+4. Click on ‘Logout/Account’
+5. Click on 'Sign up'
+6. Create a student account with the copied Team Code
+7. Click on 'Submit for XXX Team'
+8. View newly updated Feedback questions layout
