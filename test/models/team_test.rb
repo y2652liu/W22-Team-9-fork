@@ -198,25 +198,26 @@ class TeamTest < ActiveSupport::TestCase
   end
   
   #unit test to ensure that median function is working for odd number of feedbacks, modeled from above tests
-  def test_median_odd
-    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
-    user1.save!
-    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
-    user2.save!
-    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', is_admin: false)
-    user3.save!
-    team = Team.new(team_code: 'Code2', team_name: 'Team 2')
-    team.user = @prof 
-    team.save!     
+  #def test_median_odd
+    #user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
+    #user1.save!
+    #user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
+    #user2.save!
+    #user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', is_admin: false)
+    #user3.save!
+    #team = Team.new(team_code: 'Code2', team_name: 'Team 2')
+    #team.user = @prof 
+    #team.save!     
   
     feedback = save_feedback(10, "This team is disorganized", user1, DateTime.civil_from_format(:local, 2021, 3, 1), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
     feedback2 = save_feedback(4, "This team is disorganized", user2, DateTime.civil_from_format(:local, 2021, 3, 2), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
     feedback3 = save_feedback(7, "This team is disorganized", user3, DateTime.civil_from_format(:local, 2021, 3, 3), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
+
     
   
-  median = team.median
-  assert_equal(median, 7.0)
-  end
+  #median = team.median
+  #assert_equal(median, 7.0)
+  #end
   
     #unit test to ensure that median function is working for even number of feedbacks, modeled from above tests
     def test_median_even
@@ -286,7 +287,7 @@ end
     feedback3 = save_feedback(1, "This team is disorganized", user3, DateTime.civil_from_format(:local, 2021, 2, 17), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
     
     team_weighted_priority = team.find_priority_weighted(week_range[:start_date], week_range[:end_date])
-    assert_equal "High", team_weighted_priority
+    assert_equal "Urgent - I believe my team has serious issues and needs immediate intervention.", team_weighted_priority
   end
   
   def test_find_priority_weighted_team_summary_medium_status
@@ -328,7 +329,7 @@ end
     feedback3 = save_feedback(1, "This team is disorganized", user3, DateTime.civil_from_format(:local, 2021, 2, 17), team, 2)
     
     team_weighted_priority = team.find_priority_weighted(week_range[:start_date], week_range[:end_date])
-    assert_equal "Low", team_weighted_priority
+    assert_equal "Low - I think my team is all good. No special attention is needed.", team_weighted_priority
   end
   
   def test_multi_feedback_average_rating_team_summary
@@ -353,6 +354,33 @@ end
     assert_equal 3.0, current_week_average
   end
   
+  #rails test test/models/team_test.rb --verbose
+  def test_missed_feedback_average_rating_team_summary
+    week_range = week_range(2021, 7)
+    
+    user1 = User.create(email: 'adam1@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam1', is_admin: false)
+    user1.save!
+    user2 = User.create(email: 'adam2@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam2', is_admin: false)
+    user2.save!
+    user3 = User.create(email: 'adam3@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam3', is_admin: false)
+    user3.save!
+    team = Team.new(team_code: 'Code', team_name: 'Team 1')
+    team.user = @prof 
+    team.save!
+    
+<<<<<<< HEAD
+    feedback1 = save_feedback(10, "This team is disorganized", user1, DateTime.civil_from_format(:local, 2021, 2, 15), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
+=======
+    feedback1 = save_feedback(4, "This team is disorganized", user1, DateTime.civil_from_format(:local, 2021, 2, 15), team, 2)
+    feedback2 = save_feedback(2, "This team is disorganized", user2, DateTime.civil_from_format(:local, 2021, 2, 16), team, 2)
+    #feedback3 = save_feedback(3, "This team is disorganized", user3, DateTime.civil_from_format(:local, 2021, 2, 17), team, 2)
+    
+>>>>>>> Average works on Team's Individual
+    
+    current_week_average = Team.feedback_average_rating(team.feedback_by_period.first[1])
+    assert_equal 2.0, current_week_average
+  end
+
   def test_single_feedback_average_rating_team_summary
     week_range = week_range(2021, 7)
     
@@ -362,10 +390,14 @@ end
     team.user = @prof 
     team.save!
     
-    feedback1 = save_feedback(10, "This team is disorganized", user1, DateTime.civil_from_format(:local, 2021, 2, 15), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
-    
+    feedback1 = save_feedback(4, "This team is disorganized", user1, DateTime.civil_from_format(:local, 2021, 2, 15), team, 2)
+    #assert_equal feedback1.team, team
+
+    assert_equal 1, user1.feedbacks.count
     current_week_average = Team.feedback_average_rating(team.feedback_by_period.first[1])
-    assert_equal 10.0, current_week_average
+    
+    assert_equal 4.0, current_week_average
+    
   end
   
   def test_find_priority_weighted_no_feedbacks 
@@ -627,10 +659,18 @@ end
     team.user = @prof 
     team.save!     
 
+<<<<<<< HEAD
     feedback = save_feedback(2, "This team is disorganized", user1, DateTime.civil_from_format(:local, 2021, 3, 1), team, 0, "progress_comments", 2,2,2,2,2,2,2,2,2)
     feedback2 = save_feedback(2, "This team is disorganized", user2, DateTime.civil_from_format(:local, 2021, 3, 27), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
     feedback3 = save_feedback(5, "This team is disorganized", user1, DateTime.civil_from_format(:local, 2021, 4, 2), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
+=======
+    feedback = save_feedback(1, "This team is disorganized", user1, DateTime.civil_from_format(:local, 2021, 3, 1), team, 0)
+    feedback2 = save_feedback(1, "This team is disorganized", user2, DateTime.civil_from_format(:local, 2021, 3, 27), team, 2)
+    feedback3 = save_feedback(4, "This team is disorganized", user1, DateTime.civil_from_format(:local, 2021, 4, 2), team, 2)
+>>>>>>> Average works on Team's Individual
     
     assert_equal('red', team.status(DateTime.civil_from_format(:local, 2021, 3, 25), DateTime.civil_from_format(:local, 2021, 4, 3)))
   end
+
+
 end
