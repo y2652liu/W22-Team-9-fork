@@ -159,3 +159,25 @@ T16:
 6. Create a student account with the copied Team Code
 7. Click on 'Submit for XXX Team'
 8. View newly updated Feedback questions layout
+
+T17:
+1. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor
+2. Move mouse to 'Manage Teams', and click on 'New Team'
+3. Create a team called "A" and copy the Team Code
+4. Click on logout/account
+5. Create a student account using the code copied from team "A" 
+6. Click on Submit For "A"
+7. Fill in and submit feedback form 
+6. Click on logout/account
+7. Create a student account using the team code TEAM01 
+8. Click on Submit For "Test Team"
+9. Fill in and submit feedback form 
+10. Click on logout/account
+11. Sign in by entering the following in each field: 
+    msmucker@gmail.com 
+    professor
+12. Click on Feedback & Ratings
+13. Note order of feedbacks
+11. Click on "Team" header link and ensure that feedbacks have been sorted in ascending order
