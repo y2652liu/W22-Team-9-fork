@@ -38,6 +38,8 @@ class Feedback < ApplicationRecord
         FROM teams as t, feedbacks as f, users as u
         WHERE f.team_id = t.id AND u.id = f.user_id  
         ORDER BY t.team_name asc")
+    elsif field == 'date'
+      return Feedback.order('feedbacks.timestamp desc')
     end
   end
 end

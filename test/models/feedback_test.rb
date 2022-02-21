@@ -162,4 +162,39 @@ class FeedbackTest < ActiveSupport::TestCase
   end
 
 
+  #Tests the correct order of feedbacks when sorted
+  def test_sort_date 
+    #Feedback saved for user2 in Team: "A"
+    feedback3 = Feedback.new(rating: 8, progress_comments: "good", comments: "A", priority: 3, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    feedback3.timestamp = feedback3.format_time(DateTime.now.prev_day.prev_day)
+    feedback3.user = @user2
+    feedback3.team = @user2.teams.first
+    feedback3.save
+    
+    #Feedback saved for user in Team: "Test Team 1"
+    feedback = Feedback.new(rating: 9, progress_comments: "good", comments: "Test Team 1", priority: 2, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    feedback.timestamp = feedback.format_time(DateTime.now)
+    feedback.user = @user
+    feedback.team = @user.teams.first
+    feedback.save
+
+    #Feedback saved for user1 in Team: "Test Team 2"
+    feedback2 = Feedback.new(rating: 7, progress_comments: "good", comments: "Test Team 2", priority: 1, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    feedback2.timestamp = feedback2.format_time(DateTime.now.prev_day)
+    feedback2.user = @user1
+    feedback2.team = @user1.teams.first
+    feedback2.save
+
+
+    
+    unsorted = Feedback.all
+    sorted = Feedback.order_by 'date'
+
+    assert_equal(unsorted[1],sorted[0])
+    assert_equal(feedback3,sorted[2])
+
+    assert_equal(feedback,sorted[0])
+
+  end
+
 end

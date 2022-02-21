@@ -182,3 +182,18 @@ T17:
 15. Click on Feedback & Ratings
 16. Note order of feedbacks
 17. Click on "Team" header link and ensure that feedbacks have been sorted in ascending order according to Team Name
+
+
+T18:
+1. Click on signup 
+2. Create a student account using team code TEAM01
+3. Click on Submit For "Test Team"
+4. Fill in and submit feedback form 
+5. Click on logout/account
+6. Repeat steps 1-5 twice
+7. Sign in by entering the following in each field: 
+    msmucker@gmail.com 
+    professor
+8. Click on Feedback & Ratings
+9. Note order of feedbacks
+10. Click on "Timestamp" header link and ensure that feedbacks have been sorted by timestamp, with the most recent at the top
