@@ -120,6 +120,7 @@ T13:
 12. Navigate to "Feedback & Ratings" Tab
 13. View and confirm submitted feedback is present
 
+<<<<<<< HEAD
 T14: 
 1. Enter the following in each field: 
     msmucker@gmail.com 
@@ -182,3 +183,12 @@ T17:
 15. Click on Feedback & Ratings
 16. Note order of feedbacks
 17. Click on "Team" header link and ensure that feedbacks have been sorted in ascending order according to Team Name
+
+T18:
+1. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor
+2. Under main dashboard
+3. Under team summary view for both current week and previous week
+4. The first column from right missing feedback column should only see the number of missing feedback
+
