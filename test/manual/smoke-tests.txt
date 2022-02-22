@@ -120,6 +120,7 @@ T13:
 12. Navigate to "Feedback & Ratings" Tab
 13. View and confirm submitted feedback is present
 
+<<<<<<< HEAD
 T14: 
 1. Enter the following in each field: 
     msmucker@gmail.com 
@@ -183,8 +184,32 @@ T17:
 16. Note order of feedbacks
 17. Click on "Team" header link and ensure that feedbacks have been sorted in ascending order according to Team Name
 
-
 T18:
+1. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor
+2. Navigate to Manage Team and copy code under Team code column
+3. Log out of instructor side and navigate to sign up page and enter the following in each field:
+    Name: TestUser
+    Team/admin code: TEAM01
+    Email: testuser@test.com
+    Password: testuser
+    Confrim Password: testuser
+4. Log out and navigate to sign up page and enter the following in each field:
+    Name: TestUserTwo
+    Team/admin code: TEAM01
+    Email: testusertwo@test.com
+    Password: testusertwo
+    Confrim Password: testusertwo
+5. Login as instructor
+6. Under team summary view for both current week and previous week
+7. The first column from right missing feedback column should only 2 number of missing feedback under current week
+8. Logout of instructor and login as one of the test user and under the main dashboard submit a feedback
+9. Logout again and login as instructor
+10. Under team summary view for both current and previous week
+11. The first column from right missing feedback column should only 1 number of missing feedback under current week
+
+T19:
 1. Click on signup 
 2. Create a student account using team code TEAM01
 3. Click on Submit For "Test Team"
