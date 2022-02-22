@@ -2,9 +2,9 @@ require 'test_helper'
 require 'date'
 class FeedbackTest < ActiveSupport::TestCase
   setup do
-    @user = User.new(email: 'xyz@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Adam', is_admin: false)
-    @user1 = User.new(email: 'abc@gmail.com', password: '123456', password_confirmation: '123456', name: 'Jenny', is_admin: false)
-    @user2 = User.new(email: 'def@gmail.com', password: '678912', password_confirmation: '678912', name: 'Sarah', is_admin: false)
+    @user = User.new(email: 'xyz@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Gary', is_admin: false)
+    @user1 = User.new(email: 'abc@gmail.com', password: '123456', password_confirmation: '123456', name: 'Zain', is_admin: false)
+    @user2 = User.new(email: 'def@gmail.com', password: '678912', password_confirmation: '678912', name: 'Andrew', is_admin: false)
     
     @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     
@@ -122,7 +122,7 @@ class FeedbackTest < ActiveSupport::TestCase
     assert_equal(feedback2,sorted[0])
   end
 
-  #Tests the correct order of the teams
+  #User Acceptance Criteria: Tests that the Team Name is correctly sorted in ascending order
   def test_sort_team 
     #Feedback saved for user in Team: "Test Team 1"
     feedback = Feedback.new(rating: 9, progress_comments: "good", comments: "Test Team 1", priority: 2, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
@@ -151,12 +151,17 @@ class FeedbackTest < ActiveSupport::TestCase
     #Sorted order: "A", "Test Team 1", "Test Team 2" 
     sorted = Feedback.order_by 'team'
 
+    #USER ACCEPTANCE CRITERIA VERIFICATION:
+
+    #The user acceptance criteria is verified when the first Team is "A"
     assert_equal(unsorted[2],sorted[0])
     assert_equal(feedback3,sorted[0])
 
+    #The user acceptance criteria is verified when the second Team is "Test Team 1"
     assert_equal(unsorted[0],sorted[1])
     assert_equal(feedback,sorted[1])
 
+    #The user acceptance criteria is verified when the third Team is "Test Team 2" 
     assert_equal(unsorted[1],sorted[2])
     assert_equal(feedback2,sorted[2])
   end
@@ -197,4 +202,49 @@ class FeedbackTest < ActiveSupport::TestCase
 
   end
 
+  #User Acceptance Criteria: Tests that the Student Name is correctly sorted in ascending order
+  def test_sort_student_name 
+    #Feedback saved for Gary in Team: "Test Team 1"
+    feedback = Feedback.new(rating: 9, progress_comments: "good", comments: "Test Team 1", priority: 2, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    feedback.timestamp = feedback.format_time(DateTime.now)
+    feedback.user = @user
+    feedback.team = @user.teams.first
+    feedback.save
+
+    #Feedback saved for Zane in Team: "Test Team 2"
+    feedback2 = Feedback.new(rating: 7, progress_comments: "good", comments: "Test Team 2", priority: 1, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    feedback2.timestamp = feedback2.format_time(DateTime.now)
+    feedback2.user = @user1
+    feedback2.team = @user1.teams.first
+    feedback2.save
+
+    #Feedback saved for  in Team: "A"
+    feedback3 = Feedback.new(rating: 8, progress_comments: "good", comments: "A", priority: 3, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    feedback3.timestamp = feedback3.format_time(DateTime.now)
+    feedback3.user = @user2
+    feedback3.team = @user2.teams.first
+    feedback3.save
+
+    #Array [0, 1, 2]
+    #Unsorted order: "Test Team 1", "Test Team 2", "A"
+    unsorted = Feedback.all
+    #Sorted order: "A", "Test Team 1", "Test Team 2" 
+    sorted = Feedback.order_by 'team'
+
+    #USER ACCEPTANCE CRITERIA VERIFICATION:
+
+    #The user acceptance criteria is verified when the first Team is "A"
+    assert_equal(unsorted[2],sorted[0])
+    assert_equal(feedback3,sorted[0])
+
+    #The user acceptance criteria is verified when the second Team is "Test Team 1"
+    assert_equal(unsorted[0],sorted[1])
+    assert_equal(feedback,sorted[1])
+
+    #The user acceptance criteria is verified when the third Team is "Test Team 2" 
+    assert_equal(unsorted[1],sorted[2])
+    assert_equal(feedback2,sorted[2])
+  end
+
 end
+
