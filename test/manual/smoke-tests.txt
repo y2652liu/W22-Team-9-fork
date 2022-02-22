@@ -209,3 +209,16 @@ T18:
 10. Under team summary view for both current and previous week
 11. The first column from right missing feedback column should only 1 number of missing feedback under current week
 
+T19:
+1. Click on signup 
+2. Create a student account using team code TEAM01
+3. Click on Submit For "Test Team"
+4. Fill in and submit feedback form 
+5. Click on logout/account
+6. Repeat steps 1-5 twice
+7. Sign in by entering the following in each field: 
+    msmucker@gmail.com 
+    professor
+8. Click on Feedback & Ratings
+9. Note order of feedbacks
+10. Click on "Timestamp" header link and ensure that feedbacks have been sorted by timestamp, with the most recent at the top
