@@ -67,7 +67,6 @@ class AddPriorityToFeedbacksTest < ApplicationSystemTestCase
     visit root_url 
     login 'msmucker@gmail.com', 'professor'
     assert_current_path root_url 
-    click_on 'Test Team'
     assert_current_path team_path(@team)
     
     within('#2021-7') do
