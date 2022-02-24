@@ -218,7 +218,7 @@ class FeedbackTest < ActiveSupport::TestCase
     feedback2.team = @user1.teams.first
     feedback2.save
 
-    #Feedback saved for  in Team: "A"
+    #Feedback saved for Andrew in Team: "A"
     feedback3 = Feedback.new(rating: 8, progress_comments: "good", comments: "A", priority: 3, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
     feedback3.timestamp = feedback3.format_time(DateTime.now)
     feedback3.user = @user2
@@ -242,6 +242,50 @@ class FeedbackTest < ActiveSupport::TestCase
     assert_equal(feedback,sorted[1])
 
     #The user acceptance criteria is verified when the third Team is "Test Team 2" 
+    assert_equal(unsorted[1],sorted[2])
+    assert_equal(feedback2,sorted[2])
+  end
+
+  #User Acceptance Criteria: Tests that the Rating is correctly sorted in ascending order
+  def test_sort_rating
+    #Rating of 4 saved for Gary in Team: "Test Team 1"
+    feedback = Feedback.new(rating: 4, progress_comments: "good", comments: "Test Team 1", priority: 2, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    feedback.timestamp = feedback.format_time(DateTime.now)
+    feedback.user = @user
+    feedback.team = @user.teams.first
+    feedback.save
+
+    #Rating of 0 saved for Zane in Team: "Test Team 2"
+    feedback2 = Feedback.new(rating: 0, progress_comments: "good", comments: "Test Team 2", priority: 1, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    feedback2.timestamp = feedback2.format_time(DateTime.now)
+    feedback2.user = @user1
+    feedback2.team = @user1.teams.first
+    feedback2.save
+
+    #Rating of 2 saved for Andrew in Team: "A"
+    feedback3 = Feedback.new(rating: 2, progress_comments: "good", comments: "A", priority: 3, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    feedback3.timestamp = feedback3.format_time(DateTime.now)
+    feedback3.user = @user2
+    feedback3.team = @user2.teams.first
+    feedback3.save
+
+    #Array [0, 1, 2]
+    #Unsorted order: "4", "0", "2"
+    unsorted = Feedback.all
+    #Sorted order: "0", "2", "4" 
+    sorted = Feedback.order_by 'team'
+
+    #USER ACCEPTANCE CRITERIA VERIFICATION:
+
+    #The user acceptance criteria is verified when the first Team is "0"
+    assert_equal(unsorted[2],sorted[0])
+    assert_equal(feedback3,sorted[0])
+
+    #The user acceptance criteria is verified when the second Team is "2"
+    assert_equal(unsorted[0],sorted[1])
+    assert_equal(feedback,sorted[1])
+
+    #The user acceptance criteria is verified when the third Team is "4" 
     assert_equal(unsorted[1],sorted[2])
     assert_equal(feedback2,sorted[2])
   end
