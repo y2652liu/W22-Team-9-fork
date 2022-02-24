@@ -161,7 +161,7 @@ T16:
 7. Click on 'Submit for XXX Team'
 8. View newly updated Feedback questions layout
 
-T17:
+T17: This tests for if the feedback can be sorted by Team Name in ascending order
 1. Click on signup 
 2. Create a student account using team code TEAM01
 3. Click on Submit For "Test Team"
@@ -222,3 +222,27 @@ T19:
 8. Click on Feedback & Ratings
 9. Note order of feedbacks
 10. Click on "Timestamp" header link and ensure that feedbacks have been sorted by timestamp, with the most recent at the top
+
+
+T20: This tests for if the feedback can be sorted by Name in ascending order
+1. Click on signup 
+2. Create a student account with Name: "Zane" using team code TEAM01
+3. Click on Submit For "Test Team"
+4. Fill in and submit feedback form 
+5. Click on logout/account
+6. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor
+7. Move mouse to 'Manage Teams', and click on 'New Team'
+8. Create a team called "A" and copy the Team Code
+9. Click on logout/account
+10. Click on signup and create a student account with Name: "Andrew" using the code copied from team "A" 
+11. Click on Submit For "A"
+12. Fill in and submit feedback form 
+13. Click on logout/account
+14. Sign in by entering the following in each field: 
+    msmucker@gmail.com 
+    professor
+15. Click on Feedback & Ratings
+16. Note order of feedbacks
+17. Click on "Name" header link and ensure that feedbacks have been sorted in ascending order according to Student Name (Andrew -> Zain)
