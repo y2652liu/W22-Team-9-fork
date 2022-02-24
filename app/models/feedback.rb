@@ -40,6 +40,11 @@ class Feedback < ApplicationRecord
         ORDER BY t.team_name asc")
     elsif field == 'date'
       return Feedback.order('feedbacks.timestamp desc')
+    elsif field == 'name'
+      return Feedback.find_by_sql("SELECT u.name, f.id, f.user_id, f.team_id, t.team_name, f.rating, f.priority, f.comments, f.timestamp
+      FROM teams as t, feedbacks as f, users as u
+      WHERE f.team_id = t.id AND u.id = f.user_id  
+      ORDER BY u.name asc")
     end
   end
 end
