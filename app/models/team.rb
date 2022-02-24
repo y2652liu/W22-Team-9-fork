@@ -156,7 +156,6 @@ end
     feedbacks.each do |feedback|
       submitted << feedback.user
     end
-    
     self.users.to_ary - submitted
   end
   
