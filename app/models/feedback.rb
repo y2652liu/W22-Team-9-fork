@@ -45,6 +45,8 @@ class Feedback < ApplicationRecord
       FROM teams as t, feedbacks as f, users as u
       WHERE f.team_id = t.id AND u.id = f.user_id  
       ORDER BY u.name asc")
+    elsif field == 'rating'
+      return Feedback.order('feedbacks.rating asc')
     end
   end
 end
