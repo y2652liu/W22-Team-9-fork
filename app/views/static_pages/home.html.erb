@@ -17,7 +17,6 @@
         <tr>
           <th></th>
           <th>Team Name</th>
-          <th>Team Code</th>
           <th>Urgency/Intervention Level</th>
           <th>Average Rating (Out of 4)</th>
           <th>Team Members</th>
@@ -32,7 +31,6 @@
             <td><span class=<%= 'dot-' + team.status(@week_range[:start_date], @week_range[:end_date]) %>></span></td>
             <% priority = team.find_priority_weighted(@week_range[:start_date], @week_range[:end_date]) %>
             <td><%= link_to team.team_name, team %></td>
-            <td><%= team.team_code %></td>
             <td><%= priority ? priority : "No feedback" %></td>
             <% average_rating = Team.feedback_average_rating(team.feedbacks.where(timestamp: @week_range[:start_date]..@week_range[:end_date])) %>
             <td><%= average_rating ? average_rating : "No feedback" %></td>
@@ -57,7 +55,6 @@
         <tr>
           <th></th>
           <th>Team Name</th>
-          <th>Team Code</th>
           <th>Urgency/Intervention Level</th>
           <th>Average Rating (Out of 4)</th>
           <th>Team Members</th>
@@ -72,7 +69,6 @@
             <td><span class=<%= 'dot-' + team.status(@week_range[:start_date] - 7, @week_range[:end_date] - 7) %>></span></td>
             <% priority = team.find_priority_weighted((@week_range[:start_date] - 7.days), (@week_range[:end_date] - 7.days)) %>
             <td><%= team.team_name %></td>
-            <td><%= team.team_code %></td>
             <td><%= priority ? priority : "No feedback" %></td>
             <% average_rating = Team.feedback_average_rating(team.feedbacks.where(timestamp: (@week_range[:start_date] - 7.days)..(@week_range[:end_date] - 7.days))) %>
             <td><%= average_rating ? average_rating : "No feedback" %></td>
