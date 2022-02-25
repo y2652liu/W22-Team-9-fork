@@ -90,19 +90,13 @@ USER ACCEPTANCE CRITERIA: Rating is correctly sorted with lowest rating at the t
 3. Click on Submit For "Test Team"
 4. Fill in and submit feedback form with all answers "Strongly Agree"
 5. Click on logout/account
-6. Enter the following in each field: 
-    msmucker@gmail.com 
-    professor
-7. Move mouse to 'Manage Teams', and click on 'New Team'
-8. Create a team called "Test Team 2" and copy the Team Code
+6. Click on signup and create a student account with Name: "Belle" using team code TEAM01 
+7. Click on Submit For "Test Team"
+8. Fill in and submit feedback form with all answers "Strongly Disagree"
 9. Click on logout/account
-10. Click on signup and create a student account with Name: "Belle" using the code copied from team "Test Team 2" 
-11. Click on Submit For "Test Team 2"
-12. Fill in and submit feedback form with all answers "Strongly Disagree"
-13. Click on logout/account
-14. Sign in by entering the following in each field: 
+10. Sign in by entering the following in each field: 
     msmucker@gmail.com 
     professor
-15. Click on Feedback & Ratings
-16. Note order of feedbacks
-17. Click on "Rating" header link and ensure that feedbacks have been sorted in ascending order according to Rating (0 -> 4)
+11. Click on Feedback & Ratings
+12. Note order of feedbacks
+13. Click on "Rating" header link and ensure that feedbacks have been sorted in ascending order according to Rating (0 -> 4)
