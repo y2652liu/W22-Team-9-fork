@@ -126,6 +126,9 @@ tr:nth-child(even) {
   background-color: hsl(0, 0%, 95%);
 }
 
+/* taken from: https://stackoverflow.com/questions/5267998/rails-3-field-with-errors-wrapper-changes-the-page-appearance-how-to-avoid-t*/ 
+.field_with_errors { display: inline; }
+
 /* Makes a nice line to separate page elems */
 .line {
   border: solid;

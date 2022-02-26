@@ -1,0 +1,8 @@
+**Task: The vertical checklist for error submission on feedback form **
+
+T1 
+1. Click on signup 
+2. Create a student account using team code TEAM01
+3. Click on Submit For Test Team
+4. Click submit feedback without filling in any radio buttons
+5. Check that radio buttons are still correctly ordered (horizontal and not vertical)
