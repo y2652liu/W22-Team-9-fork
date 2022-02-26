@@ -1,0 +1,27 @@
+*STORY*: Make clear to students how to get urgent attention
+
+T1: Ensure that the feedback form contains instructions that provide clear examples for urgent attention
+USER ACCEPTANCE CRITERIA: Universally understood examples (very clear)
+1. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor
+2. Move mouse to 'Manage Teams', and click on 'New Team'
+3. Create a team and copy the Team Code
+4. Click on ‘Logout/Account’
+5. Click on 'Sign up'
+6. Create a student account with the copied Team Code
+7. Click on 'Submit for XXX Team'
+8. View newly updated instructions on the feedback form 
+
+T2: Make clear to students how to get urgent attention
+USER ACCEPTANCE CRITERIA: Clear navigation for getting urgent attention
+1. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor
+2. Move mouse to 'Manage Teams', and click on 'New Team'
+3. Create a team and copy the Team Code
+4. Click on ‘Logout/Account’
+5. Click on 'Sign up'
+6. Create a student account with the copied Team Code
+7. Click on 'Submit for XXX'
+8. Click on 'Priority' dropdown to view instructions added after each priority level
