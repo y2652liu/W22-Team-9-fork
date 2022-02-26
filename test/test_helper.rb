@@ -23,6 +23,10 @@ class ActiveSupport::TestCase
   def save_feedback(rating, comments, user, timestamp, team, priority, progress_comments, goal_rating, communication_rating, positive_rating, reach_rating, bounce_rating, account_rating, decision_rating, respect_rating, motivation_rating)
     feedback = Feedback.new(rating: rating, comments: comments, priority: priority, progress_comments: progress_comments, goal_rating: goal_rating, communication_rating: communication_rating, positive_rating: positive_rating, reach_rating: reach_rating, bounce_rating: bounce_rating, account_rating: account_rating, decision_rating: decision_rating, respect_rating: respect_rating, motivation_rating: motivation_rating)
     feedback.user = user
+    #new
+    user.feedbacks.append(feedback)
+    team.feedbacks.append(feedback)
+    
     feedback.timestamp = feedback.format_time(timestamp)
     feedback.team = team
     feedback.save
