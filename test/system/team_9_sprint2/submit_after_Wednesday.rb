@@ -1,3 +1,6 @@
+# *STORY* : Ensure feedback can not be submitted too early in the week
+# *acceptance criteria* : Button is shown Thur.-Sun.
+
 require "application_system_test_case"
 
 
