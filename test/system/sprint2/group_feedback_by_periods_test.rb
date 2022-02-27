@@ -14,8 +14,8 @@ class GroupFeedbackByPeriodsTest < ApplicationSystemTestCase
     travel_to Time.new(2021, 02, 15, 06, 04, 44)
   end 
   
-  def save_feedback(rating, comments, user, timestamp, team)
-    feedback = Feedback.new(rating: rating, comments: comments)
+  def save_feedback(rating, comments, user, timestamp, team, priority, progress_comments, goal_rating, communication_rating, positive_rating, reach_rating, bounce_rating, account_rating, decision_rating, respect_rating, motivation_rating)
+    feedback = Feedback.new(rating: rating, comments: comments, priority: priority, progress_comments: progress_comments, goal_rating: goal_rating, communication_rating: communication_rating, positive_rating: positive_rating, reach_rating: reach_rating, bounce_rating: bounce_rating, account_rating: account_rating, decision_rating: decision_rating, respect_rating: respect_rating, motivation_rating: motivation_rating)
     feedback.user = user
     feedback.timestamp = feedback.format_time(timestamp)
     feedback.team = team

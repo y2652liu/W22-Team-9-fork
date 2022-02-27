@@ -69,17 +69,17 @@ class DisplayErrorsValidationsTest < ApplicationSystemTestCase
     assert_text "Team name can't be blank"
   end
   #Feedback errors
-  def test_invalid_feedback
-    visit root_url 
-    login 'charles2@gmail.com', 'banana'
-    assert_current_path root_url
+  #def test_invalid_feedback
+    #visit root_url 
+    #login 'charles2@gmail.com', 'banana'
+    #assert_current_path root_url
       
-    click_on "Submit for"
-    select "Urgent - I believe my team has serious issues and needs immediate intervention.", :from => "feedback[priority]"
-    click_on "Create Feedback"
+    #click_on "Submit for"
+    #select "Urgent - I believe my team has serious issues and needs immediate intervention.", :from => "feedback[priority]"
+    #click_on "Create Feedback"
       
-    assert_text "1 error prohibited this feedback from being saved:"
-    assert_text "Rating can't be blank"
-  end
+    #assert_text "1 error prohibited this feedback from being saved:"
+    #assert_text "Rating can't be blank"
+  #end
     
 end
