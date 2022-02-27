@@ -59,10 +59,10 @@ class AddPriorityToFeedbacksTest < ApplicationSystemTestCase
   def test_professor_individual_team_priority_view_timeperiod
     #Passes acceptance criteria 2: As a professor, I am able to view an individual team's priority for a time period
 
-    feedback = save_feedback(10, "Week 9 data 1", @user, DateTime.civil_from_format(:local, 2021, 3, 1), @team, 0)
-    feedback2 = save_feedback(9, "Week 9 data 2", @user2, DateTime.civil_from_format(:local, 2021, 3, 3), @team, 2)
-    feedback3 = save_feedback(8, "Week 7 data 1", @user, DateTime.civil_from_format(:local, 2021, 2, 15), @team, 1)
-    feedback4 = save_feedback(7, "Week 7 data 2", @user2, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2)
+    feedback = save_feedback(10, "Week 9 data 1", @user, DateTime.civil_from_format(:local, 2021, 3, 1), @team, 0, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback2 = save_feedback(9, "Week 9 data 2", @user2, DateTime.civil_from_format(:local, 2021, 3, 3), @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback3 = save_feedback(8, "Week 7 data 1", @user, DateTime.civil_from_format(:local, 2021, 2, 15), @team, 1, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback4 = save_feedback(7, "Week 7 data 2", @user2, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
     
     visit root_url 
     login 'msmucker@gmail.com', 'professor'
@@ -93,9 +93,9 @@ class AddPriorityToFeedbacksTest < ApplicationSystemTestCase
     #Passes acceptance criteria 3: As a professor, I am able to view overall priority for all team's summary view
     #Case 1, professor should see a team's overall priority as "High" under team Urgency/Intervention column if at least one student gave a priority of "urgent" for feedback
     
-    feedback1 = save_feedback(8, "Data1", @user, DateTime.civil_from_format(:local, 2021, 2, 15), @team, 0)
-    feedback2 = save_feedback(7, "Data2", @user2, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 1)
-    feedback3 = save_feedback(7, "Data2", @user10, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2)
+    feedback1 = save_feedback(8, "Data1", @user, DateTime.civil_from_format(:local, 2021, 2, 15), @team, 0, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback2 = save_feedback(7, "Data2", @user2, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 1, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback3 = save_feedback(7, "Data2", @user10, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
     
     visit root_url 
     login 'msmucker@gmail.com', 'professor'
@@ -109,9 +109,9 @@ class AddPriorityToFeedbacksTest < ApplicationSystemTestCase
     #Passes acceptance criteria 3: As a professor, I am able to view overall priority for all team's summary view
     #Case 2, professor should see a team's overall priority as "Medium" under team Urgency/Intervention column if at least 1/3 of student give a priority of "medium" for feedback
     
-    feedback4 = save_feedback(5, "Data1", @user, DateTime.civil_from_format(:local, 2021, 2, 15), @team, 1)
-    feedback5 = save_feedback(2, "Data2", @user2, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2)
-    feedback6 = save_feedback(1, "Data3", @user10, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2)
+    feedback4 = save_feedback(5, "Data1", @user, DateTime.civil_from_format(:local, 2021, 2, 15), @team, 1, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback5 = save_feedback(2, "Data2", @user2, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback6 = save_feedback(1, "Data3", @user10, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
     
     visit root_url 
     login 'msmucker@gmail.com', 'professor'
@@ -125,9 +125,9 @@ class AddPriorityToFeedbacksTest < ApplicationSystemTestCase
     #Passes acceptance criteria 3: As a professor, I am able to view overall priority for all team's summary view
     #Case 3, professor should see a team's overall priority as "Low" under team Urgency/Intervention column if no student has selected "Urgent" AND if 1/3 of feedbacks are not "Medium" priority
     
-    feedback4 = save_feedback(5, "Data1", @user, DateTime.civil_from_format(:local, 2021, 2, 15), @team, 2)
-    feedback5 = save_feedback(2, "Data2", @user2, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2)
-    feedback6 = save_feedback(1, "Data3", @user10, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2)
+    feedback4 = save_feedback(5, "Data1", @user, DateTime.civil_from_format(:local, 2021, 2, 15), @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback5 = save_feedback(2, "Data2", @user2, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback6 = save_feedback(1, "Data3", @user10, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
     
     visit root_url 
     login 'msmucker@gmail.com', 'professor'

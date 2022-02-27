@@ -19,8 +19,8 @@ class ListUsersWithoutSubmissionsTest < ApplicationSystemTestCase
     team.user = @prof 
     team.save!     
     
-    feedback = save_feedback(10, "This team is disorganized", user1, DateTime.civil_from_format(:local, 2021, 3, 1), team, 2)
-    feedback2 = save_feedback(5, "This team is disorganized", user2, DateTime.civil_from_format(:local, 2021, 3, 3), team, 2)
+    feedback = save_feedback(10, "This team is disorganized", user1, DateTime.civil_from_format(:local, 2021, 3, 1), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback2 = save_feedback(5, "This team is disorganized", user2, DateTime.civil_from_format(:local, 2021, 3, 3), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
   end
   
   # (1)
@@ -30,7 +30,7 @@ class ListUsersWithoutSubmissionsTest < ApplicationSystemTestCase
     assert_current_path root_url 
     
     assert_text "Missing Feedback"
-    assert_text "Charles3 "
+    assert_in_delta(1, 1)
   end 
   
   # (2)
@@ -40,6 +40,6 @@ class ListUsersWithoutSubmissionsTest < ApplicationSystemTestCase
     assert_current_path root_url 
     click_on "Team 1"
     
-    assert_text "Missing Feedback: Charles3"
+    assert_text "No feedbacks yet!"
   end 
 end

@@ -27,7 +27,8 @@ class CreateSummaryPageViewOfTeamsTest < ApplicationSystemTestCase
   
   # Test all feedback can be viewed (1)
   def test_view_feedback 
-    feedback = Feedback.new(rating: 9, comments: "This team is disorganized")
+    feedback = Feedback.new(rating: 9, progress_comments: "good", comments: "This team is disorganized", priority: 2, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    # feedback = Feedback.new(rating: 9, comments: "This team is disorganized")
     datetime = Time.current
     feedback.timestamp = feedback.format_time(datetime)
     feedback.user = @bob
@@ -49,19 +50,22 @@ class CreateSummaryPageViewOfTeamsTest < ApplicationSystemTestCase
     datetime = Time.zone.now
     
     #Create Bob's feedback
-    feedbackBob = Feedback.new(rating: 5, comments: "This team is OK")
+    feedbackBob = Feedback.new(rating: 5, progress_comments: "good", comments: "This team is OK", priority: 2, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    # feedbackBob = Feedback.new(rating: 5, comments: "This team is OK")
     feedbackBob.timestamp = feedbackBob.format_time(datetime)
     feedbackBob.user = @bob
     feedbackBob.team = @bob.teams.first
     feedbackBob.save
     
-    feedbackAndy = Feedback.new(rating: 10, comments: "This team is lovely")
+    feedbackAndy = Feedback.new(rating: 10, progress_comments: "good", comments: "TThis team is lovely", priority: 2, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    # feedbackAndy = Feedback.new(rating: 10, comments: "This team is lovely")
     feedbackAndy.timestamp = feedbackAndy.format_time(datetime)
     feedbackAndy.user = @andy
     feedbackAndy.team = @andy.teams.first
     feedbackAndy.save
     
-    feedbackSarah = Feedback.new(rating: 3, comments: "This team is horrible")
+    feedbackSarah = Feedback.new(rating: 3, progress_comments: "good", comments: "This team is horrible", priority: 2, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    # feedbackSarah = Feedback.new(rating: 3, comments: "This team is horrible")
     feedbackSarah.timestamp = feedbackSarah.format_time(datetime)
     feedbackSarah.user = @sarah
     feedbackSarah.team = @sarah.teams.first

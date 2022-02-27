@@ -1,0 +1,54 @@
+*STORY*: Feedback form validation and scaling & Alter feedback form questions
+
+T1: Ensure Feedback Questions are written and Co-ordinated Correctly
+USER ACCEPTANCE CRITERIA: "I would say my team's health is exception" is the final radio button question
+1. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor
+2. Move mouse to 'Manage Teams', and click on 'New Team'
+3. Create a team and copy the Team Code
+4. Click on ‘Logout/Account’
+5. Click on 'Sign up'
+6. Create a student account with the copied Team Code
+7. Click on 'Submit for XXX Team'
+8. View newly updated Feedback questions
+9. Locate 10th radio button question
+
+T2: Ensure the radio button layout for feedback questions is correct
+USER ACCEPTANCE CRITERIA: There are 10 radio button questions
+1. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor
+2. Move mouse to 'Manage Teams', and click on 'New Team'
+3. Create a team and copy the Team Code
+4. Click on ‘Logout/Account’
+5. Click on 'Sign up'
+6. Create a student account with the copied Team Code
+7. Click on 'Submit for XXX Team'
+8. View newly updated Feedback questions layout
+
+T3: Reformatting of the feedback form 
+USER ACCEPTANCE CRITERIA: Ensure re-weighed questions to a 0-4 scale as opposed to a 1-5 scale
+1. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor
+2. Navigate to Manage Team and copy code under Team code column
+3. Log out of instructor side and navigate to sign up page and enter the following in each field:
+    Name: TestUser
+    Team/admin code: TEAM01
+    Email: testuser@test.com
+    Password: testuser
+    Confrim Password: testuser
+4. Log out and navigate to sign up page and enter the following in each field:
+    Name: TestUserTwo
+    Team/admin code: TEAM01
+    Email: testusertwo@test.com
+    Password: testusertwo
+    Confrim Password: testusertwo
+5. Login as instructor
+6. Under team summary view for both current week and previous week
+7. The first column from right missing feedback column should only 2 number of missing feedback under current week
+8. Logout of instructor and login as one of the test user and under the main dashboard submit a feedback
+9. Logout again and login as instructor
+10. Under team summary view for both current and previous week
+11. The first column from right missing feedback column should only 1 number of missing feedback under current week

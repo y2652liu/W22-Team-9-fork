@@ -21,7 +21,8 @@ class TeamsController < ApplicationController
     if !@periods.nil?
       @periods.each do |period| 
         period << week_range(period[0][:year], period[0][:week])
-        period << Feedback::average_rating(period[1])
+        period << Team::feedback_average_rating(period[1],@team.users)
+        #<% average_rating = Team.feedback_average_rating(team.feedbacks.where(timestamp: @week_range[:start_date]..@week_range[:end_date]),team.users) %>
         period << @team.users_not_submitted(period[1]).map{|user| user.name}
 
         wk_range = week_range(period[0][:year], period[0][:week])

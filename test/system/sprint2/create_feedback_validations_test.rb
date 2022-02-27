@@ -14,20 +14,20 @@ class CreateFeedbackValidationsTest < ApplicationSystemTestCase
     @user.save
   end 
   
-  def test_create_invalid_feedback_no_rating
+  #def test_create_invalid_feedback_no_rating
     #Passes acceptance criteria 1: student cannot submit feedback without a rating
     #"Sad test", student tries to submit feedback without a rating    
-    visit root_url
-    login 'test@gmail.com', '123456789'
-    assert_current_path root_url
+    #visit root_url
+    #login 'test@gmail.com', '123456789'
+    #assert_current_path root_url
     
-    click_on "Submit for"
-    select "Urgent - I believe my team has serious issues and needs immediate intervention.", :from => "feedback[priority]"
-    fill_in "feedback[comments]", with: "I did not select a rating"
+    #click_on "Submit for"
+    #select "Urgent - I believe my team has serious issues and needs immediate intervention.", :from => "feedback[priority]"
+    #fill_in "feedback[comments]", with: "I did not select a rating"
     
-    click_on "Create Feedback"
-    assert_text "Rating can't be blank"
-  end 
+    #click_on "Create Feedback"
+    #assert_text "Rating can't be blank"
+  #end 
   
   def test_create_valid_feedback_no_comment
     #Passes acceptance criteria 2: Student can submit feedback with no comment
