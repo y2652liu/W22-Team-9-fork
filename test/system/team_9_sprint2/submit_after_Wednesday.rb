@@ -1,8 +1,8 @@
 # *STORY* : Ensure feedback can not be submitted too early in the week
-# *acceptance criteria* : Button is shown Thur.-Sun.
+# *acceptance criteria* : 
+# 1. As a student, I am able to see the submit button from Thur.-Sat..
 
 require "application_system_test_case"
-
 
 class SubmitAfterWednesdayTest < ApplicationSystemTestCase
 # I modeled this test class off of create_summary_page_view_of_teams_test.rb (mostly) created by the earlier team
