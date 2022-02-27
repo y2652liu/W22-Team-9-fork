@@ -14,8 +14,8 @@ class InstructorTeamShowAverageTest < ApplicationSystemTestCase
 
     @user2 = User.create(email: 'test@gsmail.com', name: 'Test User', is_admin: false, password: 'Security!', password_confirmation: 'Security!', teams: [@team])
     @user2.save
-    @feedback = save_feedback(10, "This team is disorganized", @user1, Time.zone.now.to_datetime - 30, @team, 2) 
-    @feedback = save_feedback(4, "This team is disorganized", @user2, Time.zone.now.to_datetime - 30, @team, 2) 
+    @feedback = save_feedback(10, "This team is disorganized", @user1, Time.zone.now.to_datetime - 30, @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2) 
+    @feedback = save_feedback(4, "This team is disorganized", @user2, Time.zone.now.to_datetime - 30, @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2) 
     visit root_url
     login 'msmucker@gmail.com', 'professor'
   end
@@ -28,7 +28,7 @@ class InstructorTeamShowAverageTest < ApplicationSystemTestCase
   def test_avg_is_decimal
     @user3 = User.create(email: 'test2@gsmail.com', name: 'Test User', is_admin: false, password: 'Security!', password_confirmation: 'Security!', teams: [@team])
     @user3.save
-    @feedback = save_feedback(3, "This team is disorganized", @user3, Time.zone.now.to_datetime - 30, @team, 2) 
+    @feedback = save_feedback(3, "This team is disorganized", @user3, Time.zone.now.to_datetime - 30, @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2) 
     visit 'teams/1'
     assert_text "Average Rating: 5.67" 
   end

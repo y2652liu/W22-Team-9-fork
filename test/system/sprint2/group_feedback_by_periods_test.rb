@@ -34,8 +34,11 @@ class GroupFeedbackByPeriodsTest < ApplicationSystemTestCase
     team.user = prof 
     team.save!
     
-    feedback1 = save_feedback(8, "Data1", user1, DateTime.civil_from_format(:local, 2021, 02, 15), team)
-    feedback2 = save_feedback(7, "Data2", user2, DateTime.civil_from_format(:local, 2021, 02, 16), team)
+    # feedback1 = Feedback.new(rating: 8, progress_comments: "good", comments: "This team is disorganized", priority: 2, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    # feedback2 = Feedback.new(rating: 7, progress_comments: "good", comments: "This team is disorganized", priority: 2, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    
+    feedback1 = save_feedback(8, "Data1", user1, DateTime.civil_from_format(:local, 2021, 02, 15), team, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback2 = save_feedback(7, "Data2", user2, DateTime.civil_from_format(:local, 2021, 02, 16), team, "progress_comments", 2,2,2,2,2,2,2,2,2)
     
     average_rating = ((8+7).to_f/2).round(2)
     
@@ -58,10 +61,14 @@ class GroupFeedbackByPeriodsTest < ApplicationSystemTestCase
     team.user = prof 
     team.save!
 
-    feedback = save_feedback(10, "Week 9 data 1", user1, DateTime.civil_from_format(:local, 2021, 3, 1), team)
-    feedback2 = save_feedback(9, "Week 9 data 2", user2, DateTime.civil_from_format(:local, 2021, 3, 3), team)
-    feedback3 = save_feedback(8, "Week 7 data 1", user1, DateTime.civil_from_format(:local, 2021, 2, 15), team)
-    feedback4 = save_feedback(7, "Week 7 data 2", user2, DateTime.civil_from_format(:local, 2021, 2, 16), team)
+    # feedback = Feedback.new(rating: 10, progress_comments: "good", comments: "This team is disorganized", priority: 2, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    # feedback2 = Feedback.new(rating: 9, progress_comments: "good", comments: "This team is disorganized", priority: 2, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    # feedback3 = Feedback.new(rating: 8, progress_comments: "good", comments: "This team is disorganized", priority: 2, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    # feedback = Feedback.new(rating: 7, progress_comments: "good", comments: "This team is disorganized", priority: 2, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    feedback = save_feedback(10, "Week 9 data 1", user1, DateTime.civil_from_format(:local, 2021, 3, 1), team, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback2 = save_feedback(9, "Week 9 data 2", user2, DateTime.civil_from_format(:local, 2021, 3, 3), team, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback3 = save_feedback(8, "Week 7 data 1", user1, DateTime.civil_from_format(:local, 2021, 2, 15), team, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback4 = save_feedback(7, "Week 7 data 2", user2, DateTime.civil_from_format(:local, 2021, 2, 16), team, "progress_comments", 2,2,2,2,2,2,2,2,2)
     
     average_rating_1 = ((10+9).to_f/2).round(2)
     average_rating_2 = ((8+7).to_f/2).round(2)

@@ -21,9 +21,9 @@ class ViewPreviousWeekTeamSummariesTest < ApplicationSystemTestCase
     #sets the app's date to week of Feb 15 - 21, 2021 for testing
     travel_to Time.new(2021, 02, 15, 06, 04, 44)
   end 
-  
+
   def save_feedback(rating, comments, user, timestamp, team, priority)
-    feedback = Feedback.new(rating: rating, comments: comments, priority: priority)
+    feedback = Feedback.new(rating: rating, progress_comments: "good", comments: comments, priority: priority, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
     feedback.user = user
     feedback.timestamp = feedback.format_time(timestamp)
     feedback.team = team
