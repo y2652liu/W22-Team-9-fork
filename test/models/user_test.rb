@@ -98,7 +98,7 @@ class UserTest < ActiveSupport::TestCase
 
     # create feeedback for team
     datetime = Time.zone.now
-    feedback = Feedback.new(rating: 9, comments: "This team is disorganized")
+    feedback = Feedback.new(rating: 4, comments: "This team is disorganized",  goal_rating: 4, communication_rating: 4, positive_rating: 4, reach_rating: 4, bounce_rating: 4, account_rating: 4, decision_rating: 4, respect_rating: 4, progress_comments: "Test progress", motivation_rating: 4 )
     feedback.timestamp = feedback.format_time(datetime)
     feedback.user = user
     feedback.team = team
@@ -106,7 +106,7 @@ class UserTest < ActiveSupport::TestCase
 
     # ensure that feedback created in previous week does not stop warning from displaying 
     datetime2 = DateTime.new(1990,2,3)
-    feedback2 = Feedback.new(rating: 9, comments: "This team is disorganized")
+    feedback2 = Feedback.new(rating: 4, comments: "This team is disorganized",  goal_rating: 4, communication_rating: 4, positive_rating: 4, reach_rating: 4, bounce_rating: 4, account_rating: 4, decision_rating: 4, respect_rating: 4, progress_comments: "Test progress", motivation_rating: 4 )
     feedback2.timestamp = feedback2.format_time(datetime2)
     feedback2.user = user
     feedback2.team = team2

@@ -65,12 +65,12 @@ class Team < ApplicationRecord
     count = 0.0
     sum = 0.0
     feedbacks.each do |feedback|
-      sum = sum +feedback.rating
+      sum = sum + feedback.rating + feedback.goal_rating + feedback.communication_rating + feedback.positive_rating + feedback.reach_rating + feedback.bounce_rating + feedback.account_rating + feedback.decision_rating + feedback.decision_rating + feedback.respect_rating + feedback.motivation_rating
       count += 1.0
     end
     if count >0
       #return sum/count
-      return sum/self.users.size
+      return sum/(self.users.size * 4)
     else
       return "No feedbacks yet!"
     end

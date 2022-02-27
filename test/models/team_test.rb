@@ -141,10 +141,10 @@ class TeamTest < ActiveSupport::TestCase
     team.user = @prof 
     team.save!     
     
-    # rating: 9, progress_comments: "good", comments: "Test Team 1", priority: 2, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2
+    # rating: 4, progress_comments: "good", comments: "Test Team 1", priority: 2, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2
     # rating, comments, user, timestamp, team, priority, progress_comments, goal_rating, communication_rating, positive_rating, reach_rating, bounce_rating, account_rating, decision_rating, respect_rating, motivation_rating
-    feedback = save_feedback(10, "This team is disorganized", user1, DateTime.civil_from_format(:local, 2021, 3, 1), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
-    feedback2 = save_feedback(5, "This team is disorganized", user2, DateTime.civil_from_format(:local, 2021, 3, 3), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback = save_feedback(3, "This team is disorganized", user1, DateTime.civil_from_format(:local, 2021, 3, 1), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback2 = save_feedback(1, "This team is disorganized", user2, DateTime.civil_from_format(:local, 2021, 3, 3), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
     
     periods = team.feedback_by_period 
     assert_equal({year: 2021, week: 9}, periods[0][0])
@@ -184,17 +184,23 @@ class TeamTest < ActiveSupport::TestCase
     user1.save!
     user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
     user2.save!
+    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', is_admin: false)
+    user3.save!
+    user4 = User.create(email: 'charles5@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles4', is_admin: false)
+    user4.save!
     team = Team.new(team_code: 'Code2', team_name: 'Team 2')
     team.user = @prof 
-    team.save!     
+    team.save!
+    team.users = [user1, user2, user3, user4]
+    team.save!
     
-    feedback = save_feedback(10, "This team is disorganized", user1, DateTime.civil_from_format(:local, 2021, 3, 1), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
-    feedback2 = save_feedback(5, "This team is disorganized", user2, DateTime.civil_from_format(:local, 2021, 3, 3), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
-    feedback3 = save_feedback(8, "This team is disorganized", user1, DateTime.civil_from_format(:local, 2021, 2, 15), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
-    feedback4 = save_feedback(5, "This team is disorganized", user2, DateTime.civil_from_format(:local, 2021, 2, 16), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback = save_feedback(3, "This team is disorganized", user1, DateTime.civil_from_format(:local, 2021, 3, 1), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback2 = save_feedback(2, "This team is disorganized", user2, DateTime.civil_from_format(:local, 2021, 3, 3), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback3 = save_feedback(2, "This team is disorganized", user1, DateTime.civil_from_format(:local, 2021, 2, 15), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback4 = save_feedback(1, "This team is disorganized", user2, DateTime.civil_from_format(:local, 2021, 2, 16), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
     
     avg = team.avg
-    assert_equal(avg, 7)
+    assert_equal(avg, 5.5)
   end
   
   #unit test to ensure that median function is working for odd number of feedbacks, modeled from above tests

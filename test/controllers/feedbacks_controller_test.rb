@@ -54,7 +54,7 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
     
     assert_difference('Feedback.count') do
         #not passing in a priority value results in default value of 2, which represents low priority
-        post feedbacks_url, params: { feedback: { comments: "test comment", rating: 5 } }
+        post feedbacks_url, params: { feedback: { comments: "test comment", rating: 4, goal_rating: 4, communication_rating: 4, positive_rating: 4, reach_rating: 4, bounce_rating: 4, account_rating: 4, decision_rating: 4, respect_rating: 4, progress_comments: "Test progress", motivation_rating: 4  } }
     end
     assert_redirected_to root_url
   end
@@ -65,7 +65,7 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
     
     assert_difference('Feedback.count') do
         #student selects a priority of 0, meaning it's urgent
-        post feedbacks_url, params: { feedback: { comments: "test comment", rating: 5, priority: 0 } }
+        post feedbacks_url, params: { feedback: { comments: "test comment", rating: 4, priority: 0, goal_rating: 4, communication_rating: 4, positive_rating: 4, reach_rating: 4, bounce_rating: 4, account_rating: 4, decision_rating: 4, respect_rating: 4, progress_comments: "Test progress", motivation_rating: 4 } }
     end
     assert_redirected_to root_url
   end
@@ -87,7 +87,7 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
   test "should update feedback" do
     # login professor
     post('/login', params: { email: 'msmucker@gmail.com', password: 'professor'})
-    patch feedback_url(@feedback), params: { feedback: { comments: "test comment2", rating: 2, priority: 1} }
+    patch feedback_url(@feedback), params: { feedback: { comments: "test comment2", rating: 2, priority: 1, goal_rating: 4, communication_rating: 4, positive_rating: 4, reach_rating: 4, bounce_rating: 4, account_rating: 4, decision_rating: 4, respect_rating: 4, progress_comments: "Test progress", motivation_rating: 4 } }
     assert_redirected_to feedback_url(@feedback)
   end
 
