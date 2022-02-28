@@ -1,3 +1,6 @@
+# *acceptance criteria* : 
+# 1. As an instructor, I am able to see the history of feedback per user, including comment, rating, timestamp, and priority. 
+
 require "application_system_test_case"
 
 class DisplayUserHistoryTest < ApplicationSystemTestCase

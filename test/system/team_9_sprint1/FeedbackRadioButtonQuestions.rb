@@ -1,3 +1,6 @@
+# *acceptance criteria* : 
+# 1. As a student, I am able to submit radio buttons to rate each answer.
+
 require "application_system_test_case"
 
 class RadioButtonsTest < ApplicationSystemTestCase

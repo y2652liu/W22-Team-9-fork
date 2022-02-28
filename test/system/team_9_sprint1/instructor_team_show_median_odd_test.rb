@@ -1,3 +1,8 @@
+
+# Acceptance Criteria: 
+# 1. As an instructor, correctly display median as an insight
+
+
 require "application_system_test_case"
 
 #class InstructorTeamShowMedianOddTest < ApplicationSystemTestCase
