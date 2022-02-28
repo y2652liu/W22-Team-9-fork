@@ -58,7 +58,7 @@ class SubmitAfterWednesdayTest < ApplicationSystemTestCase
     # check Sunday
     def test_submit_after_Wednesday_Sun
        
-      new_timesun = Time.local(2022, 2, 21, 3, 0, 0)
+      new_timesun = Time.local(2022, 2, 20, 3, 0, 0)
       Timecop.freeze(new_timesun)
       
       visit root_url 
@@ -87,7 +87,7 @@ class SubmitAfterWednesdayTest < ApplicationSystemTestCase
     # check Tuesday
     def test_submit_after_Wednesday_Tue
        
-      new_timetue = Time.local(2022, 2, 21, 3, 0, 0)
+      new_timetue = Time.local(2022, 2, 22, 3, 0, 0)
       Timecop.freeze(new_timetue)
       
       visit root_url 
@@ -100,7 +100,7 @@ class SubmitAfterWednesdayTest < ApplicationSystemTestCase
     # check Wednesday
     def test_submit_after_Wednesday_Wed
        
-      new_timewed = Time.local(2022, 2, 21, 3, 0, 0)
+      new_timewed = Time.local(2022, 2, 23, 3, 0, 0)
       Timecop.freeze(new_timewed)
       
       visit root_url 
