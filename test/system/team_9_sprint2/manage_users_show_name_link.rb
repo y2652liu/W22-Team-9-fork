@@ -1,4 +1,3 @@
-# *STORY* : Hyperlink show to name, removing direct show link
 # *acceptance criteria* : On manage users, show link is no longer there; name column links to user's /show
 
 require "application_system_test_case"

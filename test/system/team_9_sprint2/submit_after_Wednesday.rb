@@ -1,4 +1,3 @@
-# *STORY* : Ensure feedback can not be submitted too early in the week
 # *acceptance criteria* : 
 # 1. As a student, I am able to see the submit button from Thur.-Sat..
 
