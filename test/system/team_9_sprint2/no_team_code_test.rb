@@ -2,6 +2,7 @@
 # Acceptance Criteria: 
 # 1. As an instructor, team code is not visible on instructor dashboard
 
+
 require "application_system_test_case"
 
 # test class to ensure team code has been removed

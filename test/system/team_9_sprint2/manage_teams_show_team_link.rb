@@ -1,6 +1,7 @@
-
 # Acceptance Criteria: 
 # 1. As an instructor, on manage teams, show link is no longer there; team name column links to team's /show
+
+
 
 require "application_system_test_case"
 

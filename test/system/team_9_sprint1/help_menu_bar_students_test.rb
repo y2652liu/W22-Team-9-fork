@@ -1,3 +1,6 @@
+# *acceptance criteria* : 
+# 1. As a student, I am able to access the help tab from dashboard, feedback page, and change password page.
+
 require "application_system_test_case"
 
 class HelpMenuBarStudentsTest < ApplicationSystemTestCase

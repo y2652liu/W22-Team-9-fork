@@ -1,4 +1,3 @@
-
 # Acceptance Criteria: 
 # 1. As an instructor, correctly display mean as an insight
 
@@ -31,15 +30,6 @@ require "application_system_test_case"
     #assert_text "Average Rating: 7" 
   #end
 
-<<<<<<< HEAD
-  def test_avg_is_decimal
-    @user3 = User.create(email: 'test2@gsmail.com', name: 'Test User', is_admin: false, password: 'Security!', password_confirmation: 'Security!', teams: [@team])
-    @user3.save
-    @feedback = save_feedback(3, "This team is disorganized", @user3, Time.zone.now.to_datetime - 30, @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2) 
-    visit 'teams/1'
-    assert_text "Average Rating: 5.67" 
-  end
-=======
   #def test_avg_is_decimal
     #@user3 = User.create(email: 'test2@gsmail.com', name: 'Test User', is_admin: false, password: 'Security!', password_confirmation: 'Security!', teams: [@team])
     #@user3.save
@@ -47,6 +37,5 @@ require "application_system_test_case"
     #visit 'teams/1'
     #assert_text "Average Rating: 5.67" 
   #end
->>>>>>> fix broken capybara tests
 
 #end
