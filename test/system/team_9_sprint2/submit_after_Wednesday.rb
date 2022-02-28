@@ -1,6 +1,6 @@
 
 # Acceptance Criteria: 
-# 1. As a student, I am able to see the submit button from Thur.-Sat.
+# 1. As a student, I am able to see the submit button from Thur.-Sun.
 
 require "application_system_test_case"
 
@@ -63,7 +63,7 @@ class SubmitAfterWednesdayTest < ApplicationSystemTestCase
       
       visit root_url 
       login 'cici@gmail.com', 'testpassword'
-      refute page.has_button? 'Submit for:'
+      page.has_button? 'Submit for:'
 
       #expect(page.has_content? "Submit for:").to be false
       #page.has_no_button?
