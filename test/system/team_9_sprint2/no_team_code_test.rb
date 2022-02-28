@@ -1,5 +1,6 @@
-# *STORY* : Remove Team Code Column
-# *acceptance criteria* : Team code is not visible on instructor dashboard
+
+# Acceptance Criteria: 
+# 1. As an instructor, team code is not visible on instructor dashboard
 
 require "application_system_test_case"
 

@@ -1,6 +1,5 @@
-# *STORY* : Ensure feedback can not be submitted too early in the week
-# *acceptance criteria* : 
-# 1. As a student, I am able to see the submit button from Thur.-Sat..
+# Acceptance Criteria: 
+# 1. As a student, I am able to see the submit button from Thur.-Sat.
 
 require "application_system_test_case"
 

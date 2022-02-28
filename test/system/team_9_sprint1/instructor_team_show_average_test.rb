@@ -1,3 +1,7 @@
+
+# Acceptance Criteria: 
+# 1. As an instructor, correctly display mean as an insight
+
 require "application_system_test_case"
 
 #class InstructorTeamShowAverageTest < ApplicationSystemTestCase
