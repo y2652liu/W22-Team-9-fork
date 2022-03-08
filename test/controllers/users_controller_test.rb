@@ -223,4 +223,5 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     
     assert_not_nil(User.find_by(email: 'msmucker@gmail.com'))
   end
+
 end

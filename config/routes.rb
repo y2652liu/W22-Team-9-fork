@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   post   '/login',  to: 'sessions#create'    
   get    '/logout', to: 'sessions#destroy' 
   get '/signup', to: 'users#new'
+
+  get 'users/:id/generate_password', to:'users#generate_password', as: 'user_regenerate_password'
+  
   resources :users, except: [:new]
   resources :options do
     post :toggle_reports
