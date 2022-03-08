@@ -19,7 +19,7 @@
   <%= @user.team_names.join(", ") %>
 </p>
 
-<p><%= link_to 'Regenerate Password', user_regenerate_password_path(@user) %></p>
+<p><%= link_to 'Regenerate Password', user_regenerate_password_path(@user), class: "btn" %></p>
 
 <h2>User's Individual Feedback</h2>
 

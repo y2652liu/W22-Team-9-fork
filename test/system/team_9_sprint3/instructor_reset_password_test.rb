@@ -28,6 +28,7 @@ class InstructorResetPasswordTest < ApplicationSystemTestCase
 
         click_on 'Manage Users'
         click_on 'Cici'
+        assert_text 'Regenerate Password'
         click_on 'Regenerate Password'
         assert_current_path user_url(id:@cici.id)
         assert_text 'Password was reset to'
