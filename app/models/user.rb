@@ -74,4 +74,39 @@ class User < ApplicationRecord
     # teams
     return teams
   end
+
+
+  def reset_pass_with_generated (password=nil, length=8)
+    
+    if password != nil
+      new_pass = password
+    else
+      new_pass = gen_new_pass(length)
+    end
+    
+    return reset_pass new_pass
+  
+  end
+
+  def gen_new_pass(length=8)
+    #generating password taken from team generate_team_code  
+    new_pass = rand(36**length).to_s(36).upcase
+    
+    while (new_pass.length != length)
+      new_pass = rand(36**length).to_s(36).upcase
+    end
+    return new_pass
+  end
+  
+  private
+    def reset_pass(new_pass)
+      #password update taken from static reset password
+      if self.update(password: new_pass, password_confirmation: new_pass)
+        return true
+      else 
+        return false
+      end 
+    end
+  
+
 end
