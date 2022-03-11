@@ -116,4 +116,41 @@ class UserTest < ActiveSupport::TestCase
     assert_equal true, array.include?("Team Name")
     assert_equal 1, array.size
   end
+
+  #testing random password generation
+  def test_gen_new_pass
+    new_pass = @user.gen_new_pass
+    new_pass_with_len = @user.gen_new_pass 4
+    assert_equal(8, new_pass.length)
+    assert_equal(4, new_pass_with_len.length)
+  end
+
+  #testing password reset
+  #Note for all password reset tests @user.save is not called as passwords can then not be done
+  #This is tested instead in integration tests
+  def test_reset_pass_with_generated
+    @user.reset_pass_with_generated 'acccd1234'
+    assert_equal('acccd1234',@user.password)
+    assert_equal('acccd1234',@user.password_confirmation)
+  end
+
+  #testing value of password reset method
+  def test_reset_pass_with_generated_value
+    value = @user.reset_pass_with_generated 'acccd1234'
+    assert_equal(true,value)
+  end
+
+  #testing password that is empty string
+  def test_reset_pass_with_failure
+    @user.reset_pass_with_generated ''
+    assert_equal('password', @user.password)
+  end
+
+  #testing password that is too short
+  def test_reset_pass_with_failure_value
+    value = @user.reset_pass_with_generated ''
+    @user.save
+    assert_equal(false, value)
+  end
+
 end

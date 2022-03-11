@@ -84,16 +84,32 @@ class UsersController < ApplicationController
   end
   
   def confirm_delete
-    @user = User.find(params[:id])
-    
+    @user = User.find(params[:id]) 
   end 
+
+  #method to restet password for user
+  def generate_password(password = nil, length = 8)
+    set_user
+
+    new_pass = @user.gen_new_pass
+
+    if @user.reset_pass_with_generated new_pass
+      redirect_to user_url, notice: 'Password was reset to ' +new_pass+'. Please send this to the student'
+    else
+      flash[:error] = 'Password was not reset'
+      redirect_to user_url
+    end
+
+    #@user
+  end
+
   
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
     end
-    
+
 
     # Only allow a trusted parameter "white list" through.
     # Should use later (ignoring this for now)
