@@ -19,15 +19,23 @@ T2: Create New Team
 
 T3: Signup
 1. Navigate to https://msci342-w22-team-9.herokuapp.com/ 
-2. Select ‘Sign Up’ 
-3. Enter the following in each field: 
-    Test Student 
-    <MM>.<DD> 
-    <MM>.<DD>@smoke.test 
-    asdfasdf 
-    asdfasdf  
-4. Select ‘Create account’ 
-5. Assert you have created a student and logged in (should display ‘User was successfully created.’) 
+2. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor  
+3. Select ‘Login’ 
+4 Move mouse to 'Manage Teams', and click on 'New Team'
+5. Create a team with the code 'TEAM01'
+6. Click on ‘Logout/Account’
+7. Select ‘Sign Up’ 
+8. Enter the following in each field: 
+    First Name: Charles
+    Last Name: Manson 
+    Email: charlesmanson@gmail.com
+    Team Code: TEAM01
+    Password: student
+    Confirm Password: student
+9. Select ‘Create account’ 
+10. Assert you have created a student and logged in (should display ‘User was successfully created.’) 
 
 T4: Submit Feedback 
 1. Select ‘Submit Feedback & Rating’ 

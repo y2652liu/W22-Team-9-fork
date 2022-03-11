@@ -3,10 +3,10 @@ require 'date'
 
 class FeedbacksControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = User.new(email: 'test@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Adam', is_admin: false)
-    @user2 = User.new(email: 'test2@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Zac', is_admin: false)
-    @user3 = User.new(email: 'test3@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Charles', is_admin: false)
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    @user = User.new(email: 'test@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Adam', lastname: 'Bouvaird', is_admin: false)
+    @user2 = User.new(email: 'test2@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Zac', lastname: 'Bouvaird', is_admin: false)
+    @user3 = User.new(email: 'test3@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Charles', lastname: 'Bouvaird', is_admin: false)
+    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     @team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
     @user.teams << @team
     @user.save

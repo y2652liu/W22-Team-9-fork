@@ -4,7 +4,7 @@ class TeamTest < ActiveSupport::TestCase
     include FeedbacksHelper
     
     setup do
-        @prof = User.create(email: 'charles@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', is_admin: true)
+        @prof = User.create(email: 'charles@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Brown', is_admin: true)
     end
 
     def test_unique_team_code_admin
@@ -18,8 +18,8 @@ class TeamTest < ActiveSupport::TestCase
   
     def test_add_students
         # create test admin
-        user = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', is_admin: false)
-        user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', is_admin: false)
+        user = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Brown', is_admin: false)
+        user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Brown', is_admin: false)
        
 
         team = Team.new(team_code: 'Code', team_name: 'Team 1')
@@ -62,7 +62,7 @@ class TeamTest < ActiveSupport::TestCase
     end
     
     def test_add_students_to_team
-        user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', is_admin: false)
+        user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Brown', is_admin: false)
         user1.save!
         team = Team.new(team_code: 'Code', team_name: 'Team 1')
         team.user = @prof
@@ -98,7 +98,7 @@ class TeamTest < ActiveSupport::TestCase
   end
     
   def test_add_students_to_team
-    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', is_admin: false)
+    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Brown', is_admin: false)
     user1.save!
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.user = @prof
@@ -110,9 +110,9 @@ class TeamTest < ActiveSupport::TestCase
   end
 
   def test_get_student_names
-    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
+    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Brown1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
+    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Brown2', is_admin: false)
     user2.save!
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.user = @prof
@@ -133,9 +133,9 @@ class TeamTest < ActiveSupport::TestCase
   end
   
   def test_feedback_by_period_one_period
-    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
+    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Brown1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
+    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Brown2', is_admin: false)
     user2.save!
     team = Team.new(team_code: 'Code2', team_name: 'Team 2')
     team.user = @prof 
@@ -154,9 +154,9 @@ class TeamTest < ActiveSupport::TestCase
   end
   
   def test_feedback_by_period_multi_period
-    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
+    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Brown1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
+    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Brown2', is_admin: false)
     user2.save!
     team = Team.new(team_code: 'Code2', team_name: 'Team 2')
     team.user = @prof 
@@ -180,13 +180,13 @@ class TeamTest < ActiveSupport::TestCase
 
   #unit test to ensure that avg function is working, modeled from above tests
   def test_avg
-    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
+    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Brown1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
+    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Brown2', is_admin: false)
     user2.save!
-    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', is_admin: false)
+    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', lastname: 'Brown3', is_admin: false)
     user3.save!
-    user4 = User.create(email: 'charles5@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles4', is_admin: false)
+    user4 = User.create(email: 'charles5@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles4', lastname: 'Brown4', is_admin: false)
     user4.save!
     team = Team.new(team_code: 'Code2', team_name: 'Team 2')
     team.user = @prof 
@@ -205,11 +205,11 @@ class TeamTest < ActiveSupport::TestCase
   
   #unit test to ensure that median function is working for odd number of feedbacks, modeled from above tests
   #def test_median_odd
-    #user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
+    #user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Brown1', is_admin: false)
     #user1.save!
-    #user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
+    #user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Brown2', is_admin: false)
     #user2.save!
-    #user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', is_admin: false)
+    #user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', lastname: 'Brown3', is_admin: false)
     #user3.save!
     #team = Team.new(team_code: 'Code2', team_name: 'Team 2')
     #team.user = @prof 
@@ -226,13 +226,13 @@ class TeamTest < ActiveSupport::TestCase
   
     #unit test to ensure that median function is working for even number of feedbacks, modeled from above tests
     # def test_median_even
-    #  user1 = User.create(email: 'charles1@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
+    #  user1 = User.create(email: 'charles1@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Brown1', is_admin: false)
     # user1.save!
-    # user2 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
+    # user2 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Brown2',is_admin: false)
     # user2.save!
-    # user3 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', is_admin: false)
+    # user3 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', lastname: 'Brown3', is_admin: false)
     # user3.save!
-    # user4 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles4', is_admin: false)
+    # user4 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles4', lastname: 'Brown4', is_admin: false)
     # user4.save!
     # team = Team.new(team_code: 'Code2', team_name: 'Team 2')
     # team.user = @prof 
@@ -251,13 +251,13 @@ class TeamTest < ActiveSupport::TestCase
 
   #unit test to ensure that median function is working for even number of feedbacks, modeled from above tests
   # def test_mode
-  #  user1 = User.create(email: 'charles1@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
+  #  user1 = User.create(email: 'charles1@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Brown1', is_admin: false)
   #  user1.save!
-  #  user2 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
+  #  user2 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Brown2', is_admin: false)
   #  user2.save!
-  #  user3 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', is_admin: false)
+  #  user3 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', lastname: 'Brown3', is_admin: false)
   #  user3.save!
-  #  user4 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles4', is_admin: false)
+  #  user4 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles4', lastname: 'Brown4', is_admin: false)
   #  user4.save!
   #  team = Team.new(team_code: 'Code2', team_name: 'Team 2')
   #  team.user = @prof 
@@ -277,11 +277,11 @@ class TeamTest < ActiveSupport::TestCase
   def test_find_priority_weighted_team_summary_high_status
     week_range = week_range(2021, 7)
     
-    user1 = User.create(email: 'adam1@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam1', is_admin: false)
+    user1 = User.create(email: 'adam1@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam1', lastname: 'white1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'adam2@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam2', is_admin: false)
+    user2 = User.create(email: 'adam2@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam2', lastname: 'white2', is_admin: false)
     user2.save!
-    user3 = User.create(email: 'adam3@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam3', is_admin: false)
+    user3 = User.create(email: 'adam3@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam3', lastname: 'white3', is_admin: false)
     user3.save!
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.user = @prof 
@@ -298,11 +298,11 @@ class TeamTest < ActiveSupport::TestCase
   def test_find_priority_weighted_team_summary_medium_status
     week_range = week_range(2021, 7)
     
-    user1 = User.create(email: 'adam1@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam1', is_admin: false)
+    user1 = User.create(email: 'adam1@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam1', lastname: 'white1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'adam2@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam2', is_admin: false)
+    user2 = User.create(email: 'adam2@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam2', lastname: 'white2', is_admin: false)
     user2.save!
-    user3 = User.create(email: 'adam3@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam3', is_admin: false)
+    user3 = User.create(email: 'adam3@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam3', lastname: 'white3', is_admin: false)
     user3.save!
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.user = @prof 
@@ -319,11 +319,11 @@ class TeamTest < ActiveSupport::TestCase
   def test_find_priority_weighted_team_summary_low_status
     week_range = week_range(2021, 7)
     
-    user1 = User.create(email: 'adam1@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam1', is_admin: false)
+    user1 = User.create(email: 'adam1@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam1', lastname: 'white1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'adam2@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam2', is_admin: false)
+    user2 = User.create(email: 'adam2@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam2', lastname: 'white2', is_admin: false)
     user2.save!
-    user3 = User.create(email: 'adam3@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam3', is_admin: false)
+    user3 = User.create(email: 'adam3@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam3', lastname: 'white3', is_admin: false)
     user3.save!
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.user = @prof 
@@ -341,11 +341,11 @@ class TeamTest < ActiveSupport::TestCase
   def test_multi_feedback_average_rating_team_summary
     week_range = week_range(2021, 7)
     
-    user1 = User.create(email: 'adam1@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam1', is_admin: false)
+    user1 = User.create(email: 'adam1@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam1', lastname: 'white1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'adam2@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam2', is_admin: false)
+    user2 = User.create(email: 'adam2@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam2', lastname: 'white2', is_admin: false)
     user2.save!
-    user3 = User.create(email: 'adam3@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam3', is_admin: false)
+    user3 = User.create(email: 'adam3@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam3', lastname: 'white3', is_admin: false)
     user3.save!
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.user = @prof 
@@ -388,11 +388,11 @@ class TeamTest < ActiveSupport::TestCase
   def test_missed_feedback_average_rating_team_summary
     week_range = week_range(2021, 7)
     
-    user1 = User.create(email: 'adam1@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam1', is_admin: false)
+    user1 = User.create(email: 'adam1@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam1', lastname: 'white1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'adam2@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam2', is_admin: false)
+    user2 = User.create(email: 'adam2@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam2', lastname: 'white2', is_admin: false)
     user2.save!
-    user3 = User.create(email: 'adam3@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam3', is_admin: false)
+    user3 = User.create(email: 'adam3@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam3', lastname: 'white3', is_admin: false)
     user3.save!
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.user = @prof 
@@ -433,7 +433,7 @@ class TeamTest < ActiveSupport::TestCase
   def test_single_feedback_average_rating_team_summary
     week_range = week_range(2021, 7)
     
-    user1 = User.create(email: 'adam1@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam1', is_admin: false)
+    user1 = User.create(email: 'adam1@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam1', lastname: 'white1', is_admin: false)
     user1.save!
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.user = @prof 
@@ -466,11 +466,11 @@ class TeamTest < ActiveSupport::TestCase
   end
   
    def test_find_students_not_submitted_no_submissions
-    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
+    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Brown1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
+    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Brown2', is_admin: false)
     user2.save!
-    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', is_admin: false)
+    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', lastname: 'Brown3', is_admin: false)
 
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.users = [user1, user2]
@@ -486,11 +486,11 @@ class TeamTest < ActiveSupport::TestCase
   end 
 
   def test_find_students_not_submitted_partial_submissions
-    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
+    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Brown1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
+    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Brown2', is_admin: false)
     user2.save!
-    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', is_admin: false)
+    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', lastname: 'Brown3', is_admin: false)
 
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.users = [user1, user2]
@@ -514,11 +514,11 @@ class TeamTest < ActiveSupport::TestCase
   end
 
   def test_find_students_not_submitted_all_submitted
-    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
+    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Brown1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
+    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Brown2', is_admin: false)
     user2.save!
-    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', is_admin: false)
+    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', lastname: 'Brown3', is_admin: false)
 
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.users = [user1, user2]
@@ -535,11 +535,11 @@ class TeamTest < ActiveSupport::TestCase
   end
 
   def test_find_students_not_submitted_over_submitted 
-    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
+    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Brown1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
+    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Brown2', is_admin: false)
     user2.save!
-    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', is_admin: false)
+    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', lastname: 'Brown3', is_admin: false)
 
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.users = [user1, user2]
@@ -557,11 +557,11 @@ class TeamTest < ActiveSupport::TestCase
   end 
 
   def test_find_students_not_submitted_user_not_in_team
-    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
+    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Brown1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
+    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Brown2', is_admin: false)
     user2.save!
-    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', is_admin: false)
+    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', lastname: 'Brown3', is_admin: false)
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.users = [user1, user2]
     team.user = @prof 
@@ -578,11 +578,11 @@ class TeamTest < ActiveSupport::TestCase
   end
 
   def test_find_current_feedback 
-    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
+    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Brown1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
+    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Brown2', is_admin: false)
     user2.save!
-    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', is_admin: false)
+    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', lastname: 'Brown3', is_admin: false)
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.users = [user1, user2]
     team.user = @prof 
@@ -603,11 +603,11 @@ class TeamTest < ActiveSupport::TestCase
   end
   
   def test_status_no_users 
-    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
+    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Brown1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
+    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Brown2', is_admin: false)
     user2.save!
-    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', is_admin: false)
+    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', lastname: 'Brown3', is_admin: false)
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.user = @prof 
     team.save!     
@@ -616,11 +616,11 @@ class TeamTest < ActiveSupport::TestCase
   end
   
   def test_status_no_feedback 
-    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
+    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Brown1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
+    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Brown2', is_admin: false)
     user2.save!
-    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', is_admin: false)
+    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', lastname: 'Brown3', is_admin: false)
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.users = [user1, user2]
     team.user = @prof 
@@ -633,11 +633,11 @@ class TeamTest < ActiveSupport::TestCase
   end
   
   def test_green_status
-    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
+    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Brown1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
+    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Brown2', is_admin: false)
     user2.save!
-    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', is_admin: false)
+    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', lastname: 'Brown3', is_admin: false)
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.users = [user1, user2]
     team.user = @prof 
@@ -651,11 +651,11 @@ class TeamTest < ActiveSupport::TestCase
   end
   
   def test_yellow_status_rating
-    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
+    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Brown1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
+    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Brown2', is_admin: false)
     user2.save!
-    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', is_admin: false)
+    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', lastname: 'Brown3', is_admin: false)
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.users = [user1, user2]
     team.user = @prof 
@@ -669,11 +669,11 @@ class TeamTest < ActiveSupport::TestCase
   end
   
   def test_yellow_status_priority
-    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
+    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Brown1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
+    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Brown2', is_admin: false)
     user2.save!
-    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', is_admin: false)
+    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', lastname: 'Brown3', is_admin: false)
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.users = [user1, user2]
     team.user = @prof 
@@ -687,11 +687,11 @@ class TeamTest < ActiveSupport::TestCase
   end
   
   def test_red_status_priority
-    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
+    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Brown1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
+    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Brown2', is_admin: false)
     user2.save!
-    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', is_admin: false)
+    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', lastname: 'Brown3', is_admin: false)
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.users = [user1, user2]
     team.user = @prof 
@@ -705,11 +705,11 @@ class TeamTest < ActiveSupport::TestCase
   end
   
   def test_red_status_rating
-    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', is_admin: false)
+    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Brown1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', is_admin: false)
+    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Brown2', is_admin: false)
     user2.save!
-    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', is_admin: false)
+    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', lastname: 'Brown3', is_admin: false)
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.users = [user1, user2]
     team.user = @prof 
