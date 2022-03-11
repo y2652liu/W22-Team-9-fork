@@ -19,7 +19,7 @@ class FeebackTimeDisplayTest < ApplicationSystemTestCase
     travel_to datetime
   end 
     
-  #def test_time_displays
+  def test_time_displays
       
 
 
