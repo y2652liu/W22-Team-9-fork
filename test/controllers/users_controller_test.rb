@@ -24,7 +24,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   def test_create_prof 
     assert_difference('User.count', 1) do 
       post '/users',
-        params: {user: {email: 'prof@gmail.com', name: 'Professor', lastname: 'Louvre', team_code: 'ADMIN', password: 'professor', password_confirmation: 'professor'}}
+        params: {user: {email: 'prof@gmail.com', name: 'Professor', team_code: 'ADMIN', password: 'professor', password_confirmation: 'professor', lastname: 'Louvre'}}
       assert_redirected_to root_url 
     end 
     
