@@ -1,4 +1,3 @@
-
 # Acceptance Criteria: 
 # 1. As an instructor, on dashboard, details link is no longer there; team name links to team's /show
 

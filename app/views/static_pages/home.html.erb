@@ -69,7 +69,7 @@
           <tr>
             <td><span class=<%= 'dot-' + team.status(@week_range[:start_date] - 7, @week_range[:end_date] - 7) %>></span></td>
             <% priority = team.find_priority_weighted((@week_range[:start_date] - 7.days), (@week_range[:end_date] - 7.days)) %>
-            <td><%= team.team_name %></td>
+            <td><%= link_to team.team_name, team %></td>
             <td><%= priority ? priority : "No feedback" %></td>
             <% average_rating = Team.feedback_average_rating(team.feedbacks.where(timestamp: (@week_range[:start_date] - 7.days)..(@week_range[:end_date] - 7.days)),team.users) %>
             <td><%= average_rating ? average_rating : "No feedback" %></td>
@@ -170,7 +170,7 @@
               <td><%= priority ? priority : "No feedback" %></td>
               <% average_rating = Team.feedback_average_rating(team.feedbacks.where(timestamp: (@week_range[:start_date] - 7.days)..(@week_range[:end_date] - 7.days)),team.users) %>
               <td><%= average_rating ? average_rating : "No feedback" %></td>
-              <td><%= team.team_name %></td>
+              <td><%= link_to team.team_name, team %></td>
               <td><%= team.student_names.join(", ") %></td>
 
             </tr>

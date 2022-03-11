@@ -26,25 +26,25 @@ require "application_system_test_case"
     #@user4 = User.create(email: 'test4@gmail.com', name: 'Test User', is_admin: false, password: 'Security!', password_confirmation: 'Security!', teams: [@team])
     #@user3.save
 
-<<<<<<< HEAD
-    @feedback = save_feedback(10, "This team is disorganized", @user1, Time.zone.now.to_datetime - 30, @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2) 
-    @feedback = save_feedback(4, "This team is disorganized", @user2, Time.zone.now.to_datetime - 30, @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
-    @feedback = save_feedback(7, "This team is disorganized", @user3, Time.zone.now.to_datetime - 30, @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2) 
-    @feedback = save_feedback(4, "This team is disorganized", @user3, Time.zone.now.to_datetime - 30, @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2) 
-=======
-    #@feedback = save_feedback(10, "This team is disorganized", @user1, Time.zone.now.to_datetime - 30, @team, 2) 
-    #@feedback = save_feedback(4, "This team is disorganized", @user2, Time.zone.now.to_datetime - 30, @team, 2)
-    #@feedback = save_feedback(7, "This team is disorganized", @user3, Time.zone.now.to_datetime - 30, @team, 2) 
-    #@feedback = save_feedback(4, "This team is disorganized", @user3, Time.zone.now.to_datetime - 30, @team, 2) 
->>>>>>> fix broken capybara tests
+# <<<<<<< HEAD
+#     @feedback = save_feedback(10, "This team is disorganized", @user1, Time.zone.now.to_datetime - 30, @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2) 
+#     @feedback = save_feedback(4, "This team is disorganized", @user2, Time.zone.now.to_datetime - 30, @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
+#     @feedback = save_feedback(7, "This team is disorganized", @user3, Time.zone.now.to_datetime - 30, @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2) 
+#     @feedback = save_feedback(4, "This team is disorganized", @user3, Time.zone.now.to_datetime - 30, @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2) 
+# =======
+#     #@feedback = save_feedback(10, "This team is disorganized", @user1, Time.zone.now.to_datetime - 30, @team, 2) 
+#     #@feedback = save_feedback(4, "This team is disorganized", @user2, Time.zone.now.to_datetime - 30, @team, 2)
+#     #@feedback = save_feedback(7, "This team is disorganized", @user3, Time.zone.now.to_datetime - 30, @team, 2) 
+#     #@feedback = save_feedback(4, "This team is disorganized", @user3, Time.zone.now.to_datetime - 30, @team, 2) 
+# >>>>>>> fix broken capybara tests
      
-    #visit root_url
-    #login 'msmucker@gmail.com', 'professor'
-  #end
+#     #visit root_url
+#     #login 'msmucker@gmail.com', 'professor'
+#   #end
 
-  #def test_median_is_shown
-    #visit 'teams/1'
-    #assert_text "Mode: 4" 
-  #end
+#   #def test_median_is_shown
+#     #visit 'teams/1'
+#     #assert_text "Mode: 4" 
+#   #end
 
-#end
+# #end
