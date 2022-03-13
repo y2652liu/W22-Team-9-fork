@@ -123,7 +123,7 @@
 
 <br>
 <% if is_admin? %>
-  <%= link_to 'Back', :back %> | <%= link_to 'Edit', edit_team_path(@team) %>
+  <%= link_to 'Teams', :back %> | <%= link_to 'Edit', edit_team_path(@team) %> | <%= link_to 'Next Team', teams_path(@team.next_teams) %>
 <% else %>
   <%= link_to 'Back', :back %>
 <% end %>
