@@ -10,8 +10,8 @@ T2: Create New Team
 1. Select ‘Manage Teams’ 
 2. Select ‘New Team’ 
 3. Enter the following in each field: 
-    <Date> Test Team 
-    <MM>.<DD> 
+    Team Name: Test Team 
+    Team Code: ABCD
 4. Select ‘Create Team’ 
 5. Assert that you have created a team with no feedbacks entered (should display ‘Team has no feedbacks yet!’) 
 6. Select ‘Back’ 
@@ -28,9 +28,9 @@ T3: Signup
 6. Click on ‘Logout/Account’
 7. Select ‘Sign Up’ 
 8. Enter the following in each field: 
-    First Name: Charles
-    Last Name: Manson 
-    Email: charlesmanson@gmail.com
+    First Name: Bob
+    Last Name: Smith 
+    Email: bobsmith@gmail.com
     Team Code: TEAM01
     Password: student
     Confirm Password: student
@@ -39,19 +39,19 @@ T3: Signup
 
 T4: Submit Feedback 
 1. Select ‘Submit Feedback & Rating’ 
-2. Enter the following in each field: 
-    4 
-    Medium 
-    <MM>.<DD> Smoke Test  
+2. Enter the following:
+    Stongly Agree for all radio buttons
+    Medium Priority 
 3. Select ‘Create Feedback’ 
 4. Assert that you have submitted feedback (should display ‘Feedback was successfully created’) 
 
+
 T5: Student View Feedback Summary
-1. Assert that summary view is displayed for <Date> Test Team, with urgency level of medium, average rating of 4, and the Test Student team member
+1. Assert that in student team summary view Test Team is displayed, with urgency level of medium, average rating of 4 and the Test Student team member
 
 T6: Student View Historical Feedback 
-1. Select ‘View Historical Data’ 
-2. Assert Historical Feedback for current period exists, with average rating of 5 and priority of medium 
+1. Click on View Historical Data
+2. Assert Historical Feedback for current period exists, with average rating of 4 and priority of medium 
 3. Select ‘Back’  
 4. Select ‘Logout’ 
 
@@ -66,7 +66,7 @@ T7: View Team Summary
 T8: View Detailed Feedback 
 1. Login as instructor 
 2. Click on Test Team on dashboard 
-3. Assert that feedback from Test Student appears, and that rating is 4, with a comment of ‘<MM>.<DD> Smoke Test’ 
-3. Assert that team member list only includes Test Student 
+3. Assert that feedback from Bob Smith appears, and that rating is 4 
+3. Assert that team member list only includes Bob Smith 
 4. Select ‘Back’  
 5. Select ‘Logout’ 
