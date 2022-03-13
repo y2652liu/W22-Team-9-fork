@@ -28,7 +28,8 @@ class DisplaySecondNameColumnTest < ApplicationSystemTestCase
         login 'msmucker@gmail.com', 'professor'
         click_on "Manage Users"
         assert_current_path users_url
- 
+        assert_text "Last Name"
+        
       within('#user' + @cici.id.to_s) do
       assert_text "Awesome"
       end
