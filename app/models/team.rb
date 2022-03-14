@@ -53,7 +53,7 @@ class Team < ApplicationRecord
   #gets the average team rating for the professor's team summary view
   def self.feedback_average_rating(feedbacks,users)
     if feedbacks.count > 0
-      (feedbacks.sum{|feedback| feedback.overall_rating}.to_f/users.size.to_f).round(2)
+      (feedbacks.sum{|feedback| feedback.overall_rating}.to_f/users.size.to_f).round(2)*2.5
     else
       return nil
     end

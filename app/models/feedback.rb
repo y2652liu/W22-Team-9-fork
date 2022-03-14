@@ -31,11 +31,12 @@ class Feedback < ApplicationRecord
   end
 
   def overall_rating
-    all_rating=(rating+goal_rating
-    +communication_rating.to_f+positive_rating.to_f
-    +reach_rating.to_f+bounce_rating
-    +account_rating+decision_rating
-    +respect_rating+motivation_rating).to_f/10
+    #all_rating=(rating+goal_rating
+    #+communication_rating+positive_rating
+    #+reach_rating+bounce_rating
+    #+account_rating+decision_rating
+    #+respect_rating+motivation_rating).to_f
+    all_rating=(rating+goal_rating+communication_rating+positive_rating+reach_rating+bounce_rating+account_rating+decision_rating+respect_rating+motivation_rating).to_f/10
     return all_rating
   end
 
