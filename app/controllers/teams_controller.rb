@@ -4,8 +4,11 @@ class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
 
   # GET /teams
+  # def index
+  #   @teams = Team.all
+  # end
   def index
-    @teams = Team.all
+    @teams = Team.order_by params[:order_by]
   end
 
   # GET /teams/1
@@ -104,6 +107,11 @@ class TeamsController < ApplicationController
 
   # def prev
   #   Post.where(":id < ?", id).order(id: :desc).limit(1).first
+  # end
+
+  # def sort_team_alpha
+  #   @teams = Team.all
+  #   @teams = Team.order_by params[:order_by]
   # end
 
   private
