@@ -196,4 +196,37 @@ class Team < ApplicationRecord
     
     return team_code.upcase
   end
+
+  def next_teams
+    return Team.find_by_sql("SELECT tu.team_id
+    FROM teams as t, teams_users as tu
+    WHERE t.id = tu.team_id
+    ORDER BY tu.team_id asc
+    LIMIT 1
+    OFFSET 1")
+  end
+  #   # u.name, f.id, f.user_id, f.team_id, t.team_name, f.rating, f.priority, f.comments, f.timestamp
+  #   # FROM teams as t, feedbacks as f, users as u
+  #   # WHERE f.team_id = t.id AND u.id = f.user_id  
+  #   # ORDER BY u.name asc")
+  #   # ORDER BY f.team_id asc")
+    
+  #   #Team.where("team_id > ?", id).order(team_id: :asc).limit(1).first
+  # end
+
+#   def self.order_by field
+#   #     return Team.find_by_sql("SELECT u.name, f.id, f.user_id, f.team_id, t.team_name, f.rating, f.priority, f.comments, f.timestamp
+#   #       FROM teams as t, feedbacks as f, users as u
+#   #       WHERE f.team_id = t.id AND u.id = f.user_id  
+#   #       ORDER BY t.team_name asc")   
+#   #     # if field == 'team'
+#   #     #   return Team.team_name.sort asc
+#   #     # end
+# end
+
+  def self.order_by field
+      return Team.order(:team_name)
+  end
+  
+
 end

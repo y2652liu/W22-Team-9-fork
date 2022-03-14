@@ -721,4 +721,37 @@ class TeamTest < ActiveSupport::TestCase
     
     assert_equal('red', team.status(DateTime.civil_from_format(:local, 2021, 3, 25), DateTime.civil_from_format(:local, 2021, 4, 3)))
   end
+
+  #USER ACCEPTANCE CRITERIA VERIFICATION:
+  #Teams should be sorted alphabetically
+  def test_sort_teams_alphabetically
+    team1 = Team.new(team_code: 'Zebra', team_name: 'Zebra')
+    team2 = Team.new(team_code: 'Alpha', team_name: 'Alpha')
+    team3 = Team.new(team_code: 'Gamma', team_name: 'Gamma')
+    team1.user = @prof 
+    team1.save! 
+    team2.user = @prof 
+    team2.save! 
+    team3.user = @prof 
+    team3.save! 
+
+    #Array: [0,1,2]
+     #Unsorted order: "Zebra", "Alpha", "Gamma"
+     unsorted = Team.all
+     #Sorted order: "Alpha", "Gamma", "Zebra" 
+     sorted = Team.order_by "team_name"
+
+    #The user acceptance criteria is verified when the first Team is "Alpha"
+    assert_equal(unsorted[1],sorted[0])
+    assert_equal(team2,sorted[0])
+
+    #The user acceptance criteria is verified when the second Team is "Gamma"
+    assert_equal(unsorted[2],sorted[1])
+    assert_equal(team3,sorted[1])
+
+    #The user acceptance criteria is verified when the third Team is "Zebra" 
+    assert_equal(unsorted[0],sorted[2])
+    assert_equal(team1,sorted[2])
+    
+  end
 end
