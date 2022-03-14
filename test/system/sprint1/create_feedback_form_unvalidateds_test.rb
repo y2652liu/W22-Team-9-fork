@@ -34,7 +34,7 @@ class CreateFeedbackFormUnvalidatedsTest < ApplicationSystemTestCase
     assert_current_path root_url
     
     Feedback.all.each{ |feedback| 
-      assert_equal(4 , feedback.rating)
+      assert_equal(4 , feedback.overall_rating)
       assert_equal(0 , feedback.priority)
       assert_equal('This week has gone okay.', feedback.comments)
       assert_equal(@bob, feedback.user)

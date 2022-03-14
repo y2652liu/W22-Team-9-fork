@@ -53,7 +53,7 @@ class Team < ApplicationRecord
   #gets the average team rating for the professor's team summary view
   def self.feedback_average_rating(feedbacks,users)
     if feedbacks.count > 0
-      (feedbacks.sum{|feedback| feedback.rating}.to_f/users.size.to_f).round(2)
+      (feedbacks.sum{|feedback| feedback.overall_rating}.to_f/users.size.to_f).round(2)
     else
       return nil
     end
@@ -65,7 +65,7 @@ class Team < ApplicationRecord
     count = 0.0
     sum = 0.0
     feedbacks.each do |feedback|
-      sum = sum + feedback.rating + feedback.goal_rating + feedback.communication_rating + feedback.positive_rating + feedback.reach_rating + feedback.bounce_rating + feedback.account_rating + feedback.decision_rating + feedback.decision_rating + feedback.respect_rating + feedback.motivation_rating
+      sum = sum + feedback.overall_rating + feedback.goal_rating + feedback.communication_rating + feedback.positive_rating + feedback.reach_rating + feedback.bounce_rating + feedback.account_rating + feedback.decision_rating + feedback.decision_rating + feedback.respect_rating + feedback.motivation_rating
       count += 1.0
     end
     if count >0
@@ -83,7 +83,7 @@ class Team < ApplicationRecord
     #ratings=[]
     #feedbacks.each do |feedback|
       #number_of_results = number_of_results +1
-      #ratings.append(feedback.rating)
+      #ratings.append(feedback.overall_rating)
     #end 
     #if number_of_results >0
       #length = ratings.length   
@@ -108,7 +108,7 @@ class Team < ApplicationRecord
     #ratings=[]
     #feedbacks.each do |feedback|
       #number_of_results = number_of_results +1
-      #ratings.append(feedback.rating)
+      #ratings.append(feedback.overall_rating)
     #end 
     #if number_of_results >0
       #tallied = ratings.tally
