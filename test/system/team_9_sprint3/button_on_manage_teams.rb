@@ -4,7 +4,7 @@
 # 3. Next button on Team's page
 require "application_system_test_case"
 
-class InstructorResetPasswordTest < ApplicationSystemTestCase
+class NextButtonTest < ApplicationSystemTestCase
 
     #setup taken from submit_after_wednesday.rb
     setup do
@@ -16,15 +16,19 @@ class InstructorResetPasswordTest < ApplicationSystemTestCase
 
         @cici = User.create(email: 'cici@gmail.com', name: 'Cici', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
         @cici.teams << @team
-        
+
+        @mike = User.create(email: 'bob@gmail.com', name: 'Mike', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+        @mike.teams << @team2
+
     end
 
-    #check button function
-    def next_button_test
+    # check button function
+    def test_next_button
         visit root_url 
         login 'msmucker@gmail.com', 'professor'
+        assert_current_path root_url
 
-        click_on 'Manage Teams'
+        click_on "Manage Teams"
         click_on 'Test Team'
         # verify that the user is on the test team URL
         assert_current_path team_url(id:@team.id)
