@@ -18,6 +18,7 @@ class NextButtonTest < ApplicationSystemTestCase
         @cici.teams << @team
 
         @mike = User.create(email: 'bob@gmail.com', name: 'Mike', lastname: 'lin', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+
         @mike.teams << @team2
 
     end

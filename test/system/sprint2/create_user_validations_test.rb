@@ -9,9 +9,9 @@ require "application_system_test_case"
 class CreateUserValidationsTest < ApplicationSystemTestCase
     def setup
       Option.create(reports_toggled: true)
-      prof = User.create(email: 'msmucker@gmail.com', name: 'Mark Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+      prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
       team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: prof)
-      user = User.create(email: 'scottf@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Scott F', is_admin: false, teams: [team])
+      user = User.create(email: 'scottf@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Scott', lastname: 'F', is_admin: false, teams: [team])
     end
     #1) As a user, I cannot create an account with a duplicate email
     def test_create_duplicate_user_email
@@ -34,6 +34,7 @@ class CreateUserValidationsTest < ApplicationSystemTestCase
       click_on "Sign Up"
 
       fill_in "user[name]", with: "Scott"
+      fill_in "user[lastname]", with: "F"
       fill_in "user[team_code]", with: "TEAM01"
       fill_in "user[email]", with: "scott"
       fill_in "user[password]", with: "testpassword"
@@ -49,6 +50,7 @@ class CreateUserValidationsTest < ApplicationSystemTestCase
       click_on "Sign Up"
 
       fill_in "user[name]", with: "Scott"
+      fill_in "user[lastname]", with: "F"
       fill_in "user[team_code]", with: "qwertyu"
       fill_in "user[email]", with: "scottfraser@gmail.com"
       fill_in "user[password]", with: "testpassword"
@@ -66,6 +68,7 @@ class CreateUserValidationsTest < ApplicationSystemTestCase
       click_on "Sign Up"
 
       fill_in "user[name]", with: "Scott"
+      fill_in "user[lastname]", with: "F"
       fill_in "user[team_code]", with: "TEAM01"
       fill_in "user[email]", with: "scottfraser@gmail.com"
       fill_in "user[password]", with: "abcde"
@@ -81,6 +84,7 @@ class CreateUserValidationsTest < ApplicationSystemTestCase
       click_on "Sign Up"
         
       fill_in "user[name]", with: "Larry"
+      fill_in "user[lastname]", with: "Hoover"
       fill_in "user[team_code]", with: "TEAM01"
       fill_in "user[email]", with: "larry@gmail.com"
       fill_in "user[password]", with: "abcdef"

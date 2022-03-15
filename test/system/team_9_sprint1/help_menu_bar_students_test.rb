@@ -7,7 +7,7 @@ class HelpMenuBarStudentsTest < ApplicationSystemTestCase
   # I modeled this test class off of help_pages_test created
   # by the earlier team
   setup do
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     @team = Team.new(team_code: 'Code', team_name: 'Team 1')
     @team.user = @prof 
     @team.save!

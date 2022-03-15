@@ -7,11 +7,11 @@ class RadioButtonsTest < ApplicationSystemTestCase
 # This test class was modeled based on create_summary_page_view_of_teams_test.rb created by the earlier team
     setup do
         # create prof, team, and user
-        @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+        @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
         
         @team = Team.create(team_name: 'TestTeam2', team_code: 'TEAM02', user: @prof)
         
-        @michael = User.create(email: 'michael@gmail.com', name: 'Michael', is_admin: false, password: 'tester2', password_confirmation: 'tester2')
+        @michael = User.create(email: 'michael@gmail.com', name: 'Michael', lastname: 'Jackson', is_admin: false, password: 'tester2', password_confirmation: 'tester2')
         @michael.teams << @team 
     end
 

@@ -9,11 +9,11 @@ class ShowTeamNameLink < ApplicationSystemTestCase
 
     setup do
         # create prof, team, and user
-        @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+        @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
         
         @team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
         
-        @charles = User.create(email: 'bob@gmail.com', name: 'Charles', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+        @charles = User.create(email: 'bob@gmail.com', name: 'Charles', lastname: 'Chaplin', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
         @charles.teams << @team
         
     end
