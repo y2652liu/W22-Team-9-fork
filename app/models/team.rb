@@ -199,7 +199,7 @@ class Team < ApplicationRecord
 
   # for next button functionality
   def next_teams
-    temp = Team.where("id > ?", self.id).order(id: :asc).limit(1).first
+    temp = Team.where("team_name > ?", self.team_name).order(team_name: :asc).limit(1).first
     if temp == nil
       temp = Team.first
     end
@@ -207,7 +207,7 @@ class Team < ApplicationRecord
   end
   # for previous button functionality
   def previous_teams
-    temp = Team.where("id < ?", self.id).order(id: :desc).limit(1).first
+    temp = Team.where("team_name < ?", self.team_name).order(team_name: :desc).limit(1).first
     if temp == nil
       temp = Team.last
     end
