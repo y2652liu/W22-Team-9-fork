@@ -27,6 +27,8 @@ class FeebackTimeDisplayTest < ApplicationSystemTestCase
     #login 'test@gmail.com', 'asdasd'
     #assert_current_path root_url
     
+
+    
     click_on "Submit for"
     assert_text "Current System Time: 2021/03/21 23:30" #Acceptance criteria #1
     choose('feedback[rating]', option: 4)
