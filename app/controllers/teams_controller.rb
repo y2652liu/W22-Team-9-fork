@@ -96,24 +96,6 @@ class TeamsController < ApplicationController
     @team = @user.teams.find(params[:team_id])
   end
 
-  def next_teams
-    @team = Team.next_teams(params[:id])
-    render @team
-  end
-
-  # def next
-  #   Post.where(":id > ?", id).order(id: :asc).limit(1).first
-  # end
-
-  # def prev
-  #   Post.where(":id < ?", id).order(id: :desc).limit(1).first
-  # end
-
-  # def sort_team_alpha
-  #   @teams = Team.all
-  #   @teams = Team.order_by params[:order_by]
-  # end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_team
