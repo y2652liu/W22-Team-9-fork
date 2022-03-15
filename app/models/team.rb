@@ -205,6 +205,15 @@ class Team < ApplicationRecord
     end
     return temp
   end
+  # for previous button functionality
+  def previous_teams
+    temp = Team.where("id < ?", self.id).order(id: :desc).limit(1).first
+    if temp == nil
+      temp = Team.last
+    end
+    return temp
+  end
+
 
   def self.order_by field
       return Team.order(:team_name)

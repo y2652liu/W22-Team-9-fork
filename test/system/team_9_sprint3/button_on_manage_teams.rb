@@ -39,6 +39,23 @@ class NextButtonTest < ApplicationSystemTestCase
         assert_text 'Test Team 2'
     end
 
+    # check previous button function
+    def test_previous_button
+        visit root_url 
+        login 'msmucker@gmail.com', 'professor'
+        assert_current_path root_url
+
+        click_on "Manage Teams"
+        click_on 'Test Team 2'
+        # verify that the user is on the test team URL
+        assert_current_path team_url(id:@team2.id)
+        assert_text 'Test Team 2'
+        click_on 'Previous Team'
+        # verify that the URL has changed to team 2 once the next team button has been clicked
+        assert_current_path team_url(id:@team.id)
+        assert_text 'Test Team'
+    end
+
 
 
 end
