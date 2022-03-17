@@ -39,7 +39,7 @@ class ListUsersWithoutSubmissionsTest < ApplicationSystemTestCase
     login 'msmucker@gmail.com', 'professor'
     assert_current_path root_url 
     click_on "Manage Teams"
-    assert_current_path root_url 
+    assert_current_path teams_url 
     click_on "Team Cst"
     
     assert_text "No feedbacks yet!"

@@ -34,7 +34,7 @@ class HelpPageTest < ApplicationSystemTestCase
 
     visit root_url
     login 'msmucker@gmail.com', 'professor' 
-    click_on 'Team 1'
+    click_on 'Team 1', match: :first
     click_on 'Help'
     assert_text "Team's Individual Feedback"
   end

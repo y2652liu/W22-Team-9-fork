@@ -21,7 +21,7 @@ class CreateTeamValidationTest < ApplicationSystemTestCase
     fill_in "Team code", with: "Code 1"
     click_on "Create Team"
     assert_text "Team was successfully created."
-    click_on "Back"
+    click_on "Teams"
 
     click_on "Manage Teams"
     find('#new-team-link').click

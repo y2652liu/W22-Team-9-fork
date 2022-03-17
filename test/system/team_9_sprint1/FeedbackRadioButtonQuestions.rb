@@ -16,7 +16,7 @@ class RadioButtonsTest < ApplicationSystemTestCase
     end
 
     def test_view_user_priority
-        feedback = Feedback.new(rating: 5, priority: 1, comments: "This is a test comment", goal_rating: 3, communication_rating: 4, positive_rating: 2, reach_rating: 1, bounce_rating: 5, account_rating: 3, decision_rating: 2, respect_rating: 4, progress_comments: "This is test progress comments")
+        feedback = Feedback.new(rating: 5, priority: 1, comments: "This is a test comment", goal_rating: 3, motivation_rating: 4, communication_rating: 4, positive_rating: 2, reach_rating: 1, bounce_rating: 5, account_rating: 3, decision_rating: 2, respect_rating: 4, progress_comments: "This is test progress comments")
         datetime = Time.current
         feedback.timestamp = feedback.format_time(datetime)
         feedback.user = @michael

@@ -24,7 +24,7 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
     click_on "Manage Teams"
     assert_current_path teams_url
     
-    click_on "Team01"
+    click_on "Home"
     assert_current_path root_url
   end 
   
@@ -61,8 +61,8 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
     
     click_on 'Remove User From Team'
     
-    click_on "Team 1"
-    assert_current_path team_path(@team1)
+    click_on "Remove User"
+    assert_current_path root_url
   end 
   
   def test_team_edit_back_to_team_index

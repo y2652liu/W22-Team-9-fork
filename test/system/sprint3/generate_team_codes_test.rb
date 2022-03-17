@@ -24,8 +24,17 @@ class GenerateTeamCodesTest < ApplicationSystemTestCase
     login 'msmucker@gmail.com', 'professor'
     assert_current_path root_url
     # create new team
-    @team = Team.create(team_name: 'Test Team1', team_code: @generated_code.to_s, user: @prof)
+    # @team = Team.create(team_name: 'Test Team1', team_code: @generated_code.to_s, user: @prof)
+    # create new team
+    click_on "Manage Teams"
+    find('#new-team-link').click
+    
+    fill_in "Team name", with: "Test Team1"
+    fill_in "Team code", with: @generated_code
+    click_on "Create Team"
     assert_text "Team was successfully created."
+
+    # assert_text "Team was successfully created."
     click_on "Manage Teams"
     assert_text "Test Team1"
 
@@ -64,12 +73,12 @@ class GenerateTeamCodesTest < ApplicationSystemTestCase
     assert_current_path root_url
     
     click_on "Manage Teams"
-    assert_current_path root_url  
-    click_on "Test Team1"
-    assert_current_path root_url 
-    assert_text 'Bob'
-   
+    assert_current_path teams_url  
+    # click_on "Test Team1"
+    # assert_current_path root_url 
     
+
+    assert_text 'Bob'
     
   end
   

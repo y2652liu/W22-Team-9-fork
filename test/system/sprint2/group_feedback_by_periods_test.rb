@@ -12,12 +12,22 @@ class GroupFeedbackByPeriodsTest < ApplicationSystemTestCase
     @week_range = week_range(2021, 7)
     #sets the app's date to week of Feb 15 - 21, 2021 for testing
     travel_to Time.new(2021, 02, 15, 06, 04, 44)
+    # @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    
+    # @team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
+    # @team2 = Team.create(team_name: 'Test Team 2', team_code: 'TEAM02', user: @prof)
+    
+    # @bob = User.create(email: 'bob@gmail.com', name: 'Bob', lastname: 'Kosner', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+    # @bob.teams << @team
+    
   end 
   
   def save_feedback(rating, comments, user, timestamp, team, priority, progress_comments, goal_rating, communication_rating, positive_rating, reach_rating, bounce_rating, account_rating, decision_rating, respect_rating, motivation_rating)
     feedback = Feedback.new(rating: rating, comments: comments, priority: priority, progress_comments: progress_comments, goal_rating: goal_rating, communication_rating: communication_rating, positive_rating: positive_rating, reach_rating: reach_rating, bounce_rating: bounce_rating, account_rating: account_rating, decision_rating: decision_rating, respect_rating: respect_rating, motivation_rating: motivation_rating)
+    # feedback.user = @bob
     feedback.user = user
     feedback.timestamp = feedback.format_time(timestamp)
+    # feedback.team = @team
     feedback.team = team
     feedback.save
     feedback
@@ -77,7 +87,7 @@ class GroupFeedbackByPeriodsTest < ApplicationSystemTestCase
     login 'msmucker@gmail.com', 'banana'
     assert_current_path root_url 
     
-    click_on 'Team 1'
+    click_on 'Team 1', match: :first
     assert_current_path team_path(team)
     within('#2021-7') do
       assert_text 'Feb 15, 2021 to Feb 21, 2021'

@@ -34,8 +34,19 @@ class AddPriorityToFeedbacksTest < ApplicationSystemTestCase
     click_on "Submit for"
     
     choose('feedback[rating]', option: 1)
+    choose('feedback[rating]', option: 4)
+    choose('feedback[goal_rating:]', option: 4)
+    choose('feedback[communication_rating:]', option: 4)
+    choose('feedback[positive_rating:]', option: 4)
+    choose('feedback[reach_rating:]', option: 4)
+    choose('feedback[bounce_rating:]', option: 4)
+    choose('feedback[account_rating:]', option: 4)
+    choose('feedback[decision_rating:]', option: 4)
+    choose('feedback[respect_rating:]', option: 4)
+    choose('feedback[motivation_rating:]', option: 4)
     fill_in 'feedback[comments]', with: "I did not select a priority, default of low set"
     click_on "Create Feedback"
+    #I FEEL LIKE THAT THERES MORE TO THE RATINGS
     assert_current_path root_url
     assert_text "Feedback was successfully created."
   end 
@@ -67,6 +78,7 @@ class AddPriorityToFeedbacksTest < ApplicationSystemTestCase
     visit root_url 
     login 'msmucker@gmail.com', 'professor'
     assert_current_path root_url 
+    click_on "Test Team", match: :first
     assert_current_path team_path(@team)
     
     within('#2021-7') do
