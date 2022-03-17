@@ -23,18 +23,12 @@ class GenerateTeamCodesTest < ApplicationSystemTestCase
     visit root_url
     login 'msmucker@gmail.com', 'professor'
     assert_current_path root_url
-    
     # create new team
-    click_on "Manage Teams"
-    find('#new-team-link').click
-    
-    fill_in "Team name", with: "Test Team"
-    fill_in "Team code", with: @generated_code.to_s
-    click_on "Create Team"
+    @team = Team.create(team_name: 'Test Team1', team_code: @generated_code.to_s, user: @prof)
     assert_text "Team was successfully created."
-    click_on "Home"
-    assert_text "Test Team"
-    assert_text @generated_code.to_s
+    click_on "Manage Teams"
+    assert_text "Test Team1"
+
     
     # log professor out
     visit root_url
@@ -70,9 +64,11 @@ class GenerateTeamCodesTest < ApplicationSystemTestCase
     assert_current_path root_url
     
     click_on "Manage Teams"
+    assert_current_path root_url  
+    click_on "Test Team1"
+    assert_current_path root_url 
     assert_text 'Bob'
-    assert_text @generated_code.to_s
-    assert_text 'Test Team'
+   
     
     
   end

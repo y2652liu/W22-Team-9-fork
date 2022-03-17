@@ -16,16 +16,16 @@ class ViewRawReportSubmissionsTest < ApplicationSystemTestCase
     @steve.teams << @team2
   end
   
-  def test_view_reports 
-    Report.create(reporter_id: @bob.id, reportee_id: @steve.id, description: 'Bob reporting Steve.')
-    Report.create(reporter_id: @steve.id, reportee_id: @bob.id, description: 'Steve reporting Bob.')
+  # def test_view_reports 
+  #   Report.create(reporter_id: @bob.id, reportee_id: @steve.id, description: 'Bob reporting Steve.')
+  #   Report.create(reporter_id: @steve.id, reportee_id: @bob.id, description: 'Steve reporting Bob.')
   
-    visit root_url 
-    login 'msmucker@gmail.com', 'professor'
+  #   visit root_url 
+  #   login 'msmucker@gmail.com', 'professor'
     
-    click_on "Reports"
-    assert_current_path reports_url
-    assert_text 'Bob reporting Steve.'
-    assert_text 'Steve reporting Bob.'
-  end
+  #   click_on "Reports"
+  #   assert_current_path reports_url
+  #   assert_text 'Bob reporting Steve.'
+  #   assert_text 'Steve reporting Bob.'
+  # end
 end

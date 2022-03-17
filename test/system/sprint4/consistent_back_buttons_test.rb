@@ -24,7 +24,7 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
     click_on "Manage Teams"
     assert_current_path teams_url
     
-    click_on "Back"
+    click_on "Team01"
     assert_current_path root_url
   end 
   
@@ -42,7 +42,7 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
     end
     assert_current_path team_path(@team1)
     
-    click_on "Back"
+    click_on "Teams"
     assert_current_path teams_url
   end 
   
@@ -61,7 +61,7 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
     
     click_on 'Remove User From Team'
     
-    click_on "Back"
+    click_on "Team 1"
     assert_current_path team_path(@team1)
   end 
   
@@ -152,7 +152,7 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
     end
     
     assert_current_path team_path(@team1)
-    click_on "Back"
+    click_on "Teams"
     assert_current_path root_url
   end 
   

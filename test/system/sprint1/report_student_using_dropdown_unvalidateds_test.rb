@@ -19,26 +19,26 @@ class ReportStudentUsingDropdownUnvalidatedsTest < ApplicationSystemTestCase
   end
   
   # (1, 2, 3, 4) 
-  def test_add_report 
-    visit root_url 
-    login 'bob@gmail.com', 'testpassword'
+  # def test_add_report 
+  #   visit root_url 
+  #   login 'bob@gmail.com', 'testpassword'
     
-    click_on "Submit a Report"
+  #   click_on "Submit a Report"
     
-    # check that no admins are included in option field, and prof is not included
-    find_all("reporteeOption").each { |option| assert_equal('Steve', option.text) }
+  #   # check that no admins are included in option field, and prof is not included
+  #   find_all("reporteeOption").each { |option| assert_equal('Steve', option.text) }
     
-    # report steve (who is on another team)
-    select "Steve", from: "Reportee"
-    fill_in "Description", with: "Did not get along well."
-    click_on "Submit report"
+  #   # report steve (who is on another team)
+  #   select "Steve", from: "Reportee"
+  #   fill_in "Description", with: "Did not get along well."
+  #   click_on "Submit report"
     
-    assert_current_path root_url
+  #   assert_current_path root_url
     
-    Report.all.each{ |report| 
-      assert_equal(@bob.id, report.reporter_id)
-      assert_equal(@steve.id, report.reportee_id)
-      assert_equal('Did not get along well.', report.description)
-    }
-  end
+  #   Report.all.each{ |report| 
+  #     assert_equal(@bob.id, report.reporter_id)
+  #     assert_equal(@steve.id, report.reportee_id)
+  #     assert_equal('Did not get along well.', report.description)
+  #   }
+  # end
 end

@@ -14,86 +14,86 @@ class AddReportsTogglesTest < ApplicationSystemTestCase
     @steve.teams << @team
   end
   
-  def test_enable_reports
-    Report.destroy_all
-    Option.destroy_all
-    Option.create(reports_toggled: false)
+  # def test_enable_reports
+  #   Report.destroy_all
+  #   Option.destroy_all
+  #   Option.create(reports_toggled: false)
     
-    visit root_url 
+  #   visit root_url 
     
-    # Login as professor
-    login 'msmucker@gmail.com', 'professor'
+  #   # Login as professor
+  #   login 'msmucker@gmail.com', 'professor'
     
-    # Verify that reports_toggled is initially false
-    assert_equal(Option.first.reports_toggled, false)
+  #   # Verify that reports_toggled is initially false
+  #   assert_equal(Option.first.reports_toggled, false)
     
-    click_on "Reports"
+  #   click_on "Reports"
     
-    click_on "Toggle Reports"
+  #   click_on "Toggle Reports"
     
-    # Verify that after clicking the button, reports_toggled is now true
-    assert_equal(Option.first.reports_toggled, true)
+  #   # Verify that after clicking the button, reports_toggled is now true
+  #   assert_equal(Option.first.reports_toggled, true)
     
-    click_on "Logout"
+  #   click_on "Logout"
     
-    # Login as student
-    login 'bob@gmail.com', 'testpassword'
+  #   # Login as student
+  #   login 'bob@gmail.com', 'testpassword'
     
-    click_on "Submit a Report"
+  #   click_on "Submit a Report"
     
-    # Create report 
-    select "Steve", from: "Reportee"
-    select "Urgent", from: "Priority"
-    fill_in "Description", with: "Testing"
+  #   # Create report 
+  #   select "Steve", from: "Reportee"
+  #   select "Urgent", from: "Priority"
+  #   fill_in "Description", with: "Testing"
     
-    click_on "Submit report"
+  #   click_on "Submit report"
     
-    assert_current_path root_url
+  #   assert_current_path root_url
     
-    # Ensure report is submitted correctly
-    Report.all.each{ |report| 
-      assert_equal(@bob.id, report.reporter_id)
-      assert_equal(0, report.priority)
-      assert_equal('Testing', report.description)
-    }
+  #   # Ensure report is submitted correctly
+  #   Report.all.each{ |report| 
+  #     assert_equal(@bob.id, report.reporter_id)
+  #     assert_equal(0, report.priority)
+  #     assert_equal('Testing', report.description)
+  #   }
     
-    # Ensure reports can be viewed correctly
-    click_on "View Reports"
-    assert_text 'Testing'
+  #   # Ensure reports can be viewed correctly
+  #   click_on "View Reports"
+  #   assert_text 'Testing'
     
-  end
+  # end
   
-  def test_disable_reports
-    Option.destroy_all
-    Option.create(reports_toggled: true)
+  # def test_disable_reports
+  #   Option.destroy_all
+  #   Option.create(reports_toggled: true)
     
-    visit root_url 
-    login 'msmucker@gmail.com', 'professor'
+  #   visit root_url 
+  #   login 'msmucker@gmail.com', 'professor'
     
-    # Verify that reports_toggled is initially true
-    assert_equal(Option.first.reports_toggled, true)
+  #   # Verify that reports_toggled is initially true
+  #   assert_equal(Option.first.reports_toggled, true)
     
-    click_on "Reports"
+  #   click_on "Reports"
     
-    click_on "Toggle Reports"
+  #   click_on "Toggle Reports"
     
-    # Verify that after clicking the button, reports_toggled is now false
-    assert_equal(Option.first.reports_toggled, false)
+  #   # Verify that after clicking the button, reports_toggled is now false
+  #   assert_equal(Option.first.reports_toggled, false)
     
-    click_on "Reports"
-    assert_text "Reports are currently disabled."
+  #   click_on "Reports"
+  #   assert_text "Reports are currently disabled."
     
-    click_on "Back"
-    click_on "Logout"
+  #   click_on "Back"
+  #   click_on "Logout"
     
-    # Login as student
-    login 'bob@gmail.com', 'testpassword'
+  #   # Login as student
+  #   login 'bob@gmail.com', 'testpassword'
     
-    # Ensure students do not have the option to submit or view reports
-    assert_no_text "Submit Report"
-    assert_no_text "View Reports"
+  #   # Ensure students do not have the option to submit or view reports
+  #   assert_no_text "Submit Report"
+  #   assert_no_text "View Reports"
     
-  end
+  # end
   
 
   

@@ -6,7 +6,7 @@ class RedirectHelpPathStudentTest < ApplicationSystemTestCase
     @generated_code = Team.generate_team_code
     @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'password', password_confirmation: 'password')
     @team = Team.create(team_name: 'Test Team', team_code: @generated_code.to_s, user: @prof)
-    @bob = User.create(email: 'bob@gmail.com', name: 'Bob', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+    @bob = User.create(email: 'bob@gmail.com', name: 'Bob', lastname: 'Bold', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
     @bob.teams << @team
   end
   

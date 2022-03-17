@@ -14,7 +14,7 @@ class ListUsersWithoutSubmissionsTest < ApplicationSystemTestCase
     user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Chocolate2', is_admin: false)
     user2.save!
     user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', lastname: 'Chocolate3', is_admin: false)
-    team = Team.new(team_code: 'Code', team_name: 'Team 1')
+    team = Team.new(team_code: 'Code', team_name: 'Team Cst')
     team.users = [user1, user2, user3]
     team.user = @prof 
     team.save!     
@@ -38,7 +38,9 @@ class ListUsersWithoutSubmissionsTest < ApplicationSystemTestCase
     visit root_url 
     login 'msmucker@gmail.com', 'professor'
     assert_current_path root_url 
-    click_on "Team 1"
+    click_on "Manage Teams"
+    assert_current_path root_url 
+    click_on "Team Cst"
     
     assert_text "No feedbacks yet!"
   end 
