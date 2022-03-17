@@ -16,7 +16,7 @@ class HelpMenuBarStudentsTest < ApplicationSystemTestCase
     @user.teams << @team
     @user.save
     visit root_url
-    login 'test@gmail.com', 'Security!'
+    login 'bob@gmail.com', 'testpassword'
   end
 
   def test_home_to_help
@@ -35,4 +35,6 @@ class HelpMenuBarStudentsTest < ApplicationSystemTestCase
     click_on "Help"
     assert_current_path '/team_view/help'
   end
+
+
 end
