@@ -315,6 +315,27 @@ class TeamTest < ActiveSupport::TestCase
     team_weighted_priority = team.find_priority_weighted(week_range[:start_date], week_range[:end_date])
     assert_equal "Medium", team_weighted_priority
   end
+
+  def test_find_priority_weighted_team_summary_low
+    week_range = week_range(2021, 7)
+    
+    user1 = User.create(email: 'adam1@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam1', lastname: 'white1', is_admin: false)
+    user1.save!
+    user2 = User.create(email: 'adam2@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam2', lastname: 'white2', is_admin: false)
+    user2.save!
+    user3 = User.create(email: 'adam3@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'adam3', lastname: 'white3', is_admin: false)
+    user3.save!
+    team = Team.new(team_code: 'Code', team_name: 'Team 1')
+    team.user = @prof 
+    team.save!
+    
+    feedback1 = save_feedback(4, "This team is disorganized", user1, DateTime.civil_from_format(:local, 2021, 2, 15), team, 2, "progress_comments", 4,4,4,4,4,4,4,4,4)
+    feedback2 = save_feedback(4, "This team is disorganized", user2, DateTime.civil_from_format(:local, 2021, 2, 16), team, 2, "progress_comments", 4,4,4,4,4,4,4,4,4)
+    
+    
+    team_weighted_priority = team.find_priority_weighted(week_range[:start_date], week_range[:end_date])
+    assert_equal "Low", team_weighted_priority
+  end
   
   def test_find_priority_weighted_team_summary_low_status
     week_range = week_range(2021, 7)
