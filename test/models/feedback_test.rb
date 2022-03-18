@@ -90,7 +90,6 @@ class FeedbackTest < ActiveSupport::TestCase
     team.user = @prof 
     team.save!  
     
-    
     ratings = [4, 4, 3, 3, 2, 2, 1, 1, 0, 0]
     #ratings = [10, 5, 7, 2, 1, 6, 9]
     feedbacks = []
@@ -101,7 +100,7 @@ class FeedbackTest < ActiveSupport::TestCase
     end 
     
     average_rating = Feedback::average_rating(feedbacks)
-    assert_equal 0.20, average_rating
+    assert_equal 2.00, average_rating
     #assert_in_delta((ratings.sum.to_f/ratings.count.to_f).round(2), average_rating)
   end
 
