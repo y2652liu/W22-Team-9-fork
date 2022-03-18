@@ -90,15 +90,19 @@ class FeedbackTest < ActiveSupport::TestCase
     team.user = @prof 
     team.save!  
     
-    ratings = [10, 5, 7, 2, 1, 6, 9]
+    
+    ratings = [4, 4, 3, 3, 2, 2, 1, 1, 0, 0]
+    #ratings = [10, 5, 7, 2, 1, 6, 9]
     feedbacks = []
     
     ratings.each do |rating|
-      feedbacks << Feedback.new(rating: rating, comments: "None", user: user1, timestamp: DateTime.now, team: team)
+      #feedbacks << Feedback.new(rating: rating, comments: "None", user: user1, timestamp: DateTime.now, team: team)
+      feedbacks << Feedback.new(rating: rating, progress_comments: "empty", comments: "empty", priority: 0, goal_rating: 0, communication_rating: 0, positive_rating: 0, reach_rating:0, bounce_rating: 0, account_rating: 0, decision_rating: 0, respect_rating: 0, motivation_rating: 0, user: user1, timestamp: DateTime.now, team: team)
     end 
-
+    
     average_rating = Feedback::average_rating(feedbacks)
-    assert_in_delta((ratings.sum.to_f/ratings.count.to_f).round(2), average_rating)
+    assert_equal 0.20, average_rating
+    #assert_in_delta((ratings.sum.to_f/ratings.count.to_f).round(2), average_rating)
   end
 
   def test_sort_urgency

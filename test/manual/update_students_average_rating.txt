@@ -1,0 +1,33 @@
+*STORY*: Update Student's Average Rating
+T1: Ensure Feedback Questions are written and Co-ordinated Correctly
+USER ACCEPTANCE CRITERIA: Rating is out of 10, where all 10 questions are considered for the average, which is correctly shown on instrutor's dashboard, ManageTeam and Student Dashboard.
+
+T1
+1. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor
+2. Move mouse to 'Manage Teams', and click on 'New Team'
+3. Create a team and copy the Team Code
+4. Click on ‘Logout/Account’
+
+5. Click on 'Sign up'
+6. Create a student account with the copied Team Code
+7. Click on 'Submit for XXX Team'
+8. Locate 10th radio button question, have 9 questions have highest rating and 1 has lowest.
+9. Click on ‘Logout/Account’
+
+10. Click on 'Sign up'
+11. Create a student account with the copied Team Code
+12. Click on 'Submit for XXX Team'
+13. Locate 10th radio button question, have 8 questions have highest rating and 2 has lowest.
+14. Click on ‘Logout/Account’
+
+15. Click on 'Sign up'
+16. Create a student account with the copied Team Code
+
+17. View Average Displayed on Student Dashboard ("5.67")
+18. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor
+19. Move mouse to 'Manage Teams', view 'Average Rating of Period (Out of 10)' ("5.67")
+    view 'Rating (Out of 10)' has rating "9.0" and "8.0"
