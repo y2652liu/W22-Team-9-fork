@@ -18,7 +18,7 @@
           <th></th>
           <th>Team Name</th>
           <th>Urgency/Intervention Level</th>
-          <th>Average Rating (Out of 4)</th>
+          <th>Average Rating (Out of 10)</th>
           <th>Team Members</th>
           <th>Missing Feedback</th>
           <th colspan="5"></th>
@@ -33,8 +33,8 @@
             <td><%= link_to team.team_name, team %></td>
             <td><%= priority ? priority : "No feedback" %></td>
             
-            <% average_rating = Team.feedback_average_rating(team.feedbacks.where(timestamp: @week_range[:start_date]..@week_range[:end_date]),team.users) %>
-            <td><%= average_rating ? average_rating : "No feedback" %></td>
+            <% average_rating = Team.feedback_average_rating(team.feedbacks.where(timestamp: @week_range[:start_date]..@week_range[:end_date]),team.users)%>
+            <td><%= average_rating ? average_rating.round(2) : "No feedback" %></td>
             <td><%= team.student_names.size == 0 ? 'No members' : team.student_names.join(", ") %></td>
             <td><%= @unsubmitted[:current_week][team.id].size == 0 ? 'All submitted!' : @unsubmitted[:current_week][team.id].size %></td>
             
@@ -57,7 +57,7 @@
           <th></th>
           <th>Team Name</th>
           <th>Urgency/Intervention Level</th>
-          <th>Average Rating (Out of 4)</th>
+          <th>Average Rating (Out of 10)</th>
           <th>Team Members</th>
           <th>Missing Feedback</th>
           <th colspan="5"></th>
@@ -118,7 +118,7 @@
           <tr>
             <th></th>
             <th>Urgency/Intervention Level</th>
-            <th>Average Rating (Out of 4)</th>
+            <th>Average Rating (Out of 10)</th>
             <th>Team Name</th>
             <th>Team Members</th>
             <th colspan="4"></th>
@@ -134,7 +134,7 @@
               <% priority = team.find_priority_weighted(@week_range[:start_date], @week_range[:end_date]) %>
               <td><%= priority ? priority : "No feedback" %></td>
               <% average_rating = Team.feedback_average_rating(team.feedbacks.where(timestamp: @week_range[:start_date]..@week_range[:end_date]),team.users) %>
-              <td><%= average_rating ? average_rating : "No feedback" %></td>
+              <td><%= average_rating ? average_rating.round(2) : "No feedback" %></td>
               <td><%= team.team_name %></td>
               <td><%= team.student_names.join(", ") %></td>
               <%if team.feedbacks.size > 0%>
@@ -154,7 +154,7 @@
           <tr>
             <th></th>
             <th>Urgency/Intervention Level</th>
-            <th>Average Rating (Out of 4)</th>
+            <th>Average Rating (Out of 10)</th>
             <th>Team Name</th>
             <th>Team Members</th>
             <th colspan="4"></th>
