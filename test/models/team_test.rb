@@ -412,7 +412,8 @@ class TeamTest < ActiveSupport::TestCase
     feedback2.save
 
     #empty feedback for user3
-    feedback3 = Feedback.new(rating: 0, progress_comments: "empty", comments: "empty", priority: nil, goal_rating: nil, communication_rating: nil, positive_rating: nil, reach_rating:nil, bounce_rating: nil, account_rating: nil, decision_rating: nil, respect_rating: nil, motivation_rating: nil)
+    #feedback3 = Feedback.new(rating: 0, progress_comments: "empty", comments: "empty", priority: nil, goal_rating: nil, communication_rating: nil, positive_rating: nil, reach_rating:nil, bounce_rating: nil, account_rating: nil, decision_rating: nil, respect_rating: nil, motivation_rating: nil)
+    feedback3 = Feedback.new(rating: 0, progress_comments: "empty", comments: "empty", priority: 0, goal_rating: 0, communication_rating: 0, positive_rating: 0, reach_rating:0, bounce_rating: 0, account_rating: 0, decision_rating: 0, respect_rating: 0, motivation_rating: 0)
     feedback3.timestamp = feedback3.format_time(DateTime.now.prev_day.prev_day)
     feedback3.user = user3
     feedback3.team = team
@@ -423,10 +424,9 @@ class TeamTest < ActiveSupport::TestCase
     feedbacks.append(feedback2)
     feedbacks.append(feedback3)
 
-    current_week_average = Feedback::average_rating(feedbacks)
-    #something wrong with this code when calculating the sum and average of feedback
-    #current_week_average = Team.feedback_average_rating(team.feedback_by_period.drop(1),team.users)
-    assert_equal 2.0, current_week_average
+    current_week_average = Feedback::average_rating(feedbacks)*2.5
+   
+    assert_equal 5.00, current_week_average
   end
 
   #User Acceptance Criteria: Tests that when 1 user submit feedback, average is correctly calculated.
