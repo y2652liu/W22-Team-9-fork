@@ -96,7 +96,7 @@ class FeedbackTest < ActiveSupport::TestCase
     
     ratings.each do |rating|
       #feedbacks << Feedback.new(rating: rating, comments: "None", user: user1, timestamp: DateTime.now, team: team)
-      feedbacks << Feedback.new(rating: rating, progress_comments: "empty", comments: "empty", priority: 0, goal_rating: 0, communication_rating: 0, positive_rating: 0, reach_rating:0, bounce_rating: 0, account_rating: 0, decision_rating: 0, respect_rating: 0, motivation_rating: 0, user: user1, timestamp: DateTime.now, team: team)
+      feedbacks << Feedback.new(rating: rating, progress_comments: "empty", comments: "empty", priority: rating, goal_rating: rating, communication_rating: rating, positive_rating: rating, reach_rating:rating, bounce_rating: rating, account_rating: rating, decision_rating: rating, respect_rating: rating, motivation_rating: rating, user: user1, timestamp: DateTime.now, team: team)
     end 
     
     average_rating = Feedback::average_rating(feedbacks)
