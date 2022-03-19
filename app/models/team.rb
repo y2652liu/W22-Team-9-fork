@@ -27,24 +27,28 @@ class Team < ApplicationRecord
   end
   
   def find_priority_weighted(start_date, end_date)
-    #if AT LEAST ONE of the feedbacks have a priority score of 0, meaning "urgent", the professor will see a status of "Urgent" for the respective team
-    #if at least 1/3 of the feedbacks submitted have a priority score of 1, meaning "medium", the professor will see a status of "Urgent" for the respective team, used float division
-    #every other case is considered a priority of low since it was the default score submitted per feedback
-    #array index 0 represents number of "urgent" priorities that a team has, index 1 represents number of "medium" priorities, index 2 represents number of "low" priorities
-    priority_holder = Array.new(3)
+     priority_holder = Array.new(3)
     #gets all feedbacks for a given week
     feedbacks = self.feedbacks.where(:timestamp => start_date..end_date)
-    
-    if feedbacks.count == 0
-      return nil
+    rating = Team::feedback_average_rating(feedbacks,users)
+    rating = rating.nil? ? 10 : rating
+    users_not_submitted = self.users_not_submitted(feedbacks)
+    users_not_submitted = self.users.to_ary.size == 0 ? 0 : users_not_submitted.size.to_f / self.users.to_ary.size
+    submitted = Array.new
+    feedbacks.each do |feedback|
+      submitted << feedback.user
     end
+
+    #if feedbacks.count == 0
+    #  return nil
+    #end
     
     priority_holder.each_with_index {|val, index| priority_holder[index] = feedbacks.where(priority: index).count}
 
-    if priority_holder[0] > 0
+    if priority_holder[0] > 0  or rating <= 6.0 or submitted.count <= self.users.count/2
       return "High" 
-    elsif priority_holder[1] >= feedbacks.count/3.0
-      return "Medium" 
+    elsif priority_holder[1] >= feedbacks.count/2.0
+      return "Medium"
     else
       return "Low"
     end 
@@ -53,7 +57,7 @@ class Team < ApplicationRecord
   #gets the average team rating for the professor's team summary view
   def self.feedback_average_rating(feedbacks,users)
     if feedbacks.count > 0
-      (feedbacks.sum{|feedback| feedback.overall_rating}.to_f/users.size.to_f)*2.5.round(2)
+      return (feedbacks.sum{|feedback| feedback.overall_rating}.to_f/users.size.to_f)*2.5.round(2)
     else
       return nil
     end
@@ -172,15 +176,10 @@ class Team < ApplicationRecord
   
   def status(start_date, end_date)
     priority = self.find_priority_weighted(start_date, end_date)
-    feedbacks = self.feedbacks.where(:timestamp => start_date..end_date)
-    rating = Team::feedback_average_rating(feedbacks,users)
-    rating = rating.nil? ? 10 : rating
-    users_not_submitted = self.users_not_submitted(feedbacks)
-    users_not_submitted = self.users.to_ary.size == 0 ? 0 : users_not_submitted.size.to_f / self.users.to_ary.size
-    
-    if priority == 'High' or rating <= 5
+
+    if priority == 'High'
       return 'red'
-    elsif priority == 'Medium' or rating <= 7 or users_not_submitted >= 0.5
+    elsif priority == 'Medium' 
       return 'yellow'
     else 
       return 'green'
