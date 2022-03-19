@@ -34,14 +34,18 @@ class Team < ApplicationRecord
     rating = rating.nil? ? 10 : rating
     users_not_submitted = self.users_not_submitted(feedbacks)
     users_not_submitted = self.users.to_ary.size == 0 ? 0 : users_not_submitted.size.to_f / self.users.to_ary.size
-
-    if feedbacks.count == 0
-      return nil
+    submitted = Array.new
+    feedbacks.each do |feedback|
+      submitted << feedback.user
     end
+
+    #if feedbacks.count == 0
+    #  return nil
+    #end
     
     priority_holder.each_with_index {|val, index| priority_holder[index] = feedbacks.where(priority: index).count}
 
-    if priority_holder[0] > 0  or rating <= 6 or users_not_submitted >= 0.5
+    if priority_holder[0] > 0  or rating <= 6.0 or submitted.count <= self.users.count/2
       return "High" 
     elsif priority_holder[1] >= feedbacks.count/2.0
       return "Medium"
@@ -53,7 +57,7 @@ class Team < ApplicationRecord
   #gets the average team rating for the professor's team summary view
   def self.feedback_average_rating(feedbacks,users)
     if feedbacks.count > 0
-      (feedbacks.sum{|feedback| feedback.overall_rating}.to_f/users.size.to_f)*2.5.round(2)
+      return (feedbacks.sum{|feedback| feedback.overall_rating}.to_f/users.size.to_f)*2.5.round(2)
     else
       return nil
     end
@@ -172,7 +176,7 @@ class Team < ApplicationRecord
   
   def status(start_date, end_date)
     priority = self.find_priority_weighted(start_date, end_date)
-    
+
     if priority == 'High'
       return 'red'
     elsif priority == 'Medium' 
