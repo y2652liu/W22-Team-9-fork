@@ -1,10 +1,9 @@
-#This feature is archeived at this point as it allows flexible submission demo on client meeting demo.
 # Acceptance Criteria: 
-# 1. As a student, I am able to see the submit button from Mon.-Sun.
+# 1. As a student, I am able to see the "days left to submit" message only from Thur.-Sun.
 
 require "application_system_test_case"
 
-class SubmitAfterWednesdayTest < ApplicationSystemTestCase
+class DaysLeftToSubmitTest < ApplicationSystemTestCase
 # I modeled this test class off of create_summary_page_view_of_teams_test.rb (mostly) created by the earlier team
     setup do
         # create prof, team, and user
@@ -25,8 +24,8 @@ class SubmitAfterWednesdayTest < ApplicationSystemTestCase
       visit root_url 
       login 'cici@gmail.com', 'testpassword'
 
-      # check if there is a valid link
-      assert_link 'Submit for: Test Team'
+      #check if has message
+      assert_text 'days left to submit feedback:'
     end
     
     
@@ -39,8 +38,8 @@ class SubmitAfterWednesdayTest < ApplicationSystemTestCase
         visit root_url 
         login 'cici@gmail.com', 'testpassword'
   
-        # check if there is a valid link
-        assert_link 'Submit for: Test Team'
+        #check if has message
+        assert_text 'days left to submit feedback:'
     end
 
 
@@ -53,8 +52,8 @@ class SubmitAfterWednesdayTest < ApplicationSystemTestCase
         visit root_url 
         login 'cici@gmail.com', 'testpassword'
       
-        # check if there is a valid link
-        assert_link 'Submit for: Test Team'
+        #check if has message
+        assert_text 'days left to submit feedback:'
     end
 
 
@@ -66,9 +65,9 @@ class SubmitAfterWednesdayTest < ApplicationSystemTestCase
       
       visit root_url 
       login 'cici@gmail.com', 'testpassword'
-     
-      # check if there is a valid link
-      assert_link 'Submit for: Test Team'
+      
+      #check if has message
+      assert_text 'days left to submit feedback:'
      end
 
     # check Monday
@@ -79,12 +78,9 @@ class SubmitAfterWednesdayTest < ApplicationSystemTestCase
       
       visit root_url 
       login 'cici@gmail.com', 'testpassword'
-
-      # check if there is a valid link
-      assert_link 'Submit for: Test Team'
       
-      # check if there is not a valid link
-      #assert_no_link 'Submit for: Test Team'
+      #check if has no message
+      assert_no_text 'days left to submit feedback:'
 
     end
 
@@ -97,11 +93,9 @@ class SubmitAfterWednesdayTest < ApplicationSystemTestCase
       visit root_url 
       login 'cici@gmail.com', 'testpassword'
       
-      # check if there is a valid link
-      assert_link 'Submit for: Test Team'
-      
-      # check if there is not a valid link
-      #assert_no_link 'Submit for: Test Team'
+      #check if has no message
+      assert_no_text 'days left to submit feedback:'
+
     end
 
     # check Wednesday
@@ -113,11 +107,9 @@ class SubmitAfterWednesdayTest < ApplicationSystemTestCase
       visit root_url 
       login 'cici@gmail.com', 'testpassword'
       
-      # check if there is a valid link
-      assert_link 'Submit for: Test Team'
-      
-      # check if there is not a valid link
-      #assert_no_link 'Submit for: Test Team'
+      #check if has no message
+      assert_no_text 'days left to submit feedback:'
+
     end
 
 end
