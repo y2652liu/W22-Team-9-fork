@@ -34,16 +34,15 @@ class AddPriorityToFeedbacksTest < ApplicationSystemTestCase
     click_on "Submit for"
     
     choose('feedback[rating]', option: 1)
-    choose('feedback[rating]', option: 4)
-    choose('feedback[goal_rating:]', option: 4)
-    choose('feedback[communication_rating:]', option: 4)
-    choose('feedback[positive_rating:]', option: 4)
-    choose('feedback[reach_rating:]', option: 4)
-    choose('feedback[bounce_rating:]', option: 4)
-    choose('feedback[account_rating:]', option: 4)
-    choose('feedback[decision_rating:]', option: 4)
-    choose('feedback[respect_rating:]', option: 4)
-    choose('feedback[motivation_rating:]', option: 4)
+    choose('feedback[goal_rating]', option: 4)
+    choose('feedback[communication_rating]', option: 4)
+    choose('feedback[positive_rating]', option: 4)
+    choose('feedback[reach_rating]', option: 4)
+    choose('feedback[bounce_rating]', option: 4)
+    choose('feedback[account_rating]', option: 4)
+    choose('feedback[decision_rating]', option: 4)
+    choose('feedback[respect_rating]', option: 4)
+    choose('feedback[motivation_rating]', option: 4)
     fill_in 'feedback[comments]', with: "I did not select a priority, default of low set"
     click_on "Create Feedback"
     #I FEEL LIKE THAT THERES MORE TO THE RATINGS
@@ -60,6 +59,15 @@ class AddPriorityToFeedbacksTest < ApplicationSystemTestCase
     click_on "Submit for"
     
     choose('feedback[rating]', option: 1)
+    choose('feedback[goal_rating]', option: 4)
+    choose('feedback[communication_rating]', option: 4)
+    choose('feedback[positive_rating]', option: 4)
+    choose('feedback[reach_rating]', option: 4)
+    choose('feedback[bounce_rating]', option: 4)
+    choose('feedback[account_rating]', option: 4)
+    choose('feedback[decision_rating]', option: 4)
+    choose('feedback[respect_rating]', option: 4)
+    choose('feedback[motivation_rating]', option: 4)
     select "Urgent - I believe my team has serious issues and needs immediate intervention.", :from => 'feedback[priority]'
     fill_in "feedback[comments]", with: "I selected a priority, it's URGENT"
     click_on "Create Feedback"
@@ -121,9 +129,9 @@ class AddPriorityToFeedbacksTest < ApplicationSystemTestCase
     #Passes acceptance criteria 3: As a professor, I am able to view overall priority for all team's summary view
     #Case 2, professor should see a team's overall priority as "Medium" under team Urgency/Intervention column if at least 1/3 of student give a priority of "medium" for feedback
     
-    feedback4 = save_feedback(5, "Data1", @user, DateTime.civil_from_format(:local, 2021, 2, 15), @team, 1, "progress_comments", 2,2,2,2,2,2,2,2,2)
-    feedback5 = save_feedback(2, "Data2", @user2, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
-    feedback6 = save_feedback(1, "Data3", @user10, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback4 = save_feedback(2, "Data1", @user, DateTime.civil_from_format(:local, 2021, 2, 15), @team, 1, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback5 = save_feedback(2, "Data2", @user2, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 1, "progress_comments", 3,3,3,3,3,3,3,3,3)
+    feedback6 = save_feedback(2, "Data3", @user10, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 1, "progress_comments", 3,3,3,3,3,3,3,3,3)
     
     visit root_url 
     login 'msmucker@gmail.com', 'professor'
@@ -137,9 +145,9 @@ class AddPriorityToFeedbacksTest < ApplicationSystemTestCase
     #Passes acceptance criteria 3: As a professor, I am able to view overall priority for all team's summary view
     #Case 3, professor should see a team's overall priority as "Low" under team Urgency/Intervention column if no student has selected "Urgent" AND if 1/3 of feedbacks are not "Medium" priority
     
-    feedback4 = save_feedback(5, "Data1", @user, DateTime.civil_from_format(:local, 2021, 2, 15), @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
-    feedback5 = save_feedback(2, "Data2", @user2, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
-    feedback6 = save_feedback(1, "Data3", @user10, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback4 = save_feedback(1, "Data1", @user, DateTime.civil_from_format(:local, 2021, 2, 15), @team, 2, "progress_comments", 4,4,4,4,4,4,4,4,4)
+    feedback5 = save_feedback(1, "Data2", @user2, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2, "progress_comments", 4,4,4,4,4,4,4,4,4)
+    feedback6 = save_feedback(1, "Data3", @user10, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2, "progress_comments", 4,4,4,4,4,4,4,4,4)
     
     visit root_url 
     login 'msmucker@gmail.com', 'professor'

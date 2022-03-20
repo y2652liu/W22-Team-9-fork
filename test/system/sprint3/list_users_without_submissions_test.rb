@@ -19,8 +19,8 @@ class ListUsersWithoutSubmissionsTest < ApplicationSystemTestCase
     team.user = @prof 
     team.save!     
     
-    feedback = save_feedback(10, "This team is disorganized", user1, DateTime.civil_from_format(:local, 2021, 3, 1), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
-    feedback2 = save_feedback(5, "This team is disorganized", user2, DateTime.civil_from_format(:local, 2021, 3, 3), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    # feedback = save_feedback(10, "This team is disorganized", user1, DateTime.civil_from_format(:local, 2021, 3, 1), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    # feedback2 = save_feedback(5, "This team is disorganized", user2, DateTime.civil_from_format(:local, 2021, 3, 3), team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
   end
   
   # (1)
@@ -42,6 +42,6 @@ class ListUsersWithoutSubmissionsTest < ApplicationSystemTestCase
     assert_current_path teams_url 
     click_on "Team Cst"
     
-    assert_text "No feedbacks yet!"
+    assert_text "Team has no feedbacks yet!"
   end 
 end

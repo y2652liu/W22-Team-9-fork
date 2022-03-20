@@ -153,7 +153,7 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
     
     assert_current_path team_path(@team1)
     click_on "Teams"
-    assert_current_path root_url
+    assert_current_path teams_url
   end 
   
   def test_student_feedback_back_to_landing_page

@@ -28,10 +28,10 @@ class StudentViewAggregateHealthsTest < ApplicationSystemTestCase
   # (2)
   def test_view_overall_team_health
     #Passes Acceptance Criteria 2: As a student, I should be able to see my team's overall health
-    feedback1 = save_feedback(8, "Data1", @user, DateTime.civil_from_format(:local, 2021, 2, 15), @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
-    feedback2 = save_feedback(7, "Data2", @user2, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback1 = save_feedback(4, "Data1", @user, DateTime.civil_from_format(:local, 2021, 2, 15), @team, 2, "progress_comments", 4,4,4,4,4,4,4,4,4)
+    feedback2 = save_feedback(4, "Data2", @user2, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2, "progress_comments", 4,4,4,4,4,4,4,4,4)
     
-    average_rating = ((8+7).to_f/2).round(2)
+    average_rating = 10.0
     
     visit root_url 
     login 'test@gmail.com', '123456789'
@@ -45,13 +45,13 @@ class StudentViewAggregateHealthsTest < ApplicationSystemTestCase
   # (1)
   def test_view_weekly_team_health
     #Passes Acceptance Criteria 1: As a student, I should only be to allowed to see their team's detailed weekly health
-    feedback = save_feedback(10, "Week 9 data 1", @user, DateTime.civil_from_format(:local, 2021, 3, 1), @team, 0, "progress_comments", 2,2,2,2,2,2,2,2,2)
-    feedback2 = save_feedback(9, "Week 9 data 2", @user2, DateTime.civil_from_format(:local, 2021, 3, 3), @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
-    feedback3 = save_feedback(8, "Week 7 data 1", @user, DateTime.civil_from_format(:local, 2021, 2, 15), @team, 1, "progress_comments", 2,2,2,2,2,2,2,2,2)
-    feedback4 = save_feedback(7, "Week 7 data 2", @user2, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback = save_feedback(3, "Week 9 data 1", @user, DateTime.civil_from_format(:local, 2021, 3, 1), @team, 0, "progress_comments", 3,3,3,3,3,3,3,3,3)
+    feedback2 = save_feedback(3, "Week 9 data 2", @user2, DateTime.civil_from_format(:local, 2021, 3, 3), @team, 2, "progress_comments", 3,3,3,3,3,3,3,3,3)
+    feedback3 = save_feedback(4, "Week 7 data 1", @user, DateTime.civil_from_format(:local, 2021, 2, 15), @team, 1, "progress_comments", 4,4,4,4,4,4,4,4,4)
+    feedback4 = save_feedback(4, "Week 7 data 2", @user2, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 1, "progress_comments", 4,4,4,4,4,4,4,4,4)
     
-    average_ratingFeb = ((8+7).to_f/2).round(2)
-    average_ratingMarch = ((10+9).to_f/2).round(2)
+    average_ratingFeb = 10.0
+    average_ratingMarch = 7.5
     
     visit root_url 
     login 'test@gmail.com', '123456789'

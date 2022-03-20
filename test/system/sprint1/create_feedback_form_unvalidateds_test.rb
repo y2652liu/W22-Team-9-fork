@@ -31,7 +31,6 @@ class CreateFeedbackFormUnvalidatedsTest < ApplicationSystemTestCase
     fill_in "feedback[comments]", with: "This week has gone okay."
     click_on "Create Feedback"
     
-    assert_current_path root_url
     
     Feedback.all.each{ |feedback| 
       assert_equal(4 , feedback.overall_rating)
