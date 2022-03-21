@@ -41,16 +41,17 @@ class GroupFeedbackByPeriodsTest < ApplicationSystemTestCase
     user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Store2', is_admin: false)
     user2.save!
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
+    team.users =[user1, user2]
     team.user = prof 
     team.save!
     
     # feedback1 = Feedback.new(rating: 8, progress_comments: "good", comments: "This team is disorganized", priority: 2, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
     # feedback2 = Feedback.new(rating: 7, progress_comments: "good", comments: "This team is disorganized", priority: 2, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
     
-    feedback1 = saved_feedback(8, "Data1", user1, DateTime.civil_from_format(:local, 2021, 02, 15), team, "progress_comments", 2,2,2,2,2,2,2,2,2)
-    feedback2 = saved_feedback(7, "Data2", user2, DateTime.civil_from_format(:local, 2021, 02, 16), team, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback1 = saved_feedback(2, "Data1", user1, DateTime.civil_from_format(:local, 2021, 02, 15), team, 2,"progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback2 = saved_feedback(2, "Data2", user2, DateTime.civil_from_format(:local, 2021, 02, 16), team, 2,"progress_comments", 2,2,2,2,2,2,2,2,2)
     
-    average_rating = ((8+7).to_f/2).round(2)
+    average_rating = 5.0
     
     visit root_url 
     login 'msmucker@gmail.com', 'banana'
@@ -69,6 +70,7 @@ class GroupFeedbackByPeriodsTest < ApplicationSystemTestCase
     user2.save!
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.user = prof 
+    team.users=[user1, user2]
     team.save!
 
     # feedback = Feedback.new(rating: 10, progress_comments: "good", comments: "This team is disorganized", priority: 2, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
