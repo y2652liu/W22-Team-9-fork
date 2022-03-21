@@ -7,10 +7,10 @@ class StudentViewAggregateHealthsTest < ApplicationSystemTestCase
   include FeedbacksHelper
   
   setup do 
-    @user = User.new(email: 'test@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Adam', is_admin: false)
-    @user2 = User.new(email: 'test2@gmail.com', password: '1234567891', password_confirmation: '1234567891', name: 'Adam2', is_admin: false)
-    @user3 = User.new(email: 'test10@gmail.com', password: '1234567891', password_confirmation: '1234567891', name: 'Adam10', is_admin: false)
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    @user = User.new(email: 'test@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Adam', lastname: 'Traore', is_admin: false)
+    @user2 = User.new(email: 'test2@gmail.com', password: '1234567891', password_confirmation: '1234567891', name: 'Adam2', lastname: 'Traore2', is_admin: false)
+    @user3 = User.new(email: 'test10@gmail.com', password: '1234567891', password_confirmation: '1234567891', name: 'Adam10', lastname: 'Traore10', is_admin: false)
+    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     @team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
     @team2 = Team.create(team_name: 'Test Team 2', team_code: 'TEAM02', user: @prof)
     @user.teams << @team
@@ -28,10 +28,10 @@ class StudentViewAggregateHealthsTest < ApplicationSystemTestCase
   # (2)
   def test_view_overall_team_health
     #Passes Acceptance Criteria 2: As a student, I should be able to see my team's overall health
-    feedback1 = save_feedback(8, "Data1", @user, DateTime.civil_from_format(:local, 2021, 2, 15), @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
-    feedback2 = save_feedback(7, "Data2", @user2, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback1 = save_feedback(4, "Data1", @user, DateTime.civil_from_format(:local, 2021, 2, 15), @team, 2, "progress_comments", 4,4,4,4,4,4,4,4,4)
+    feedback2 = save_feedback(4, "Data2", @user2, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2, "progress_comments", 4,4,4,4,4,4,4,4,4)
     
-    average_rating = ((8+7).to_f/2).round(2)
+    average_rating = 10.0
     
     visit root_url 
     login 'test@gmail.com', '123456789'
@@ -45,13 +45,13 @@ class StudentViewAggregateHealthsTest < ApplicationSystemTestCase
   # (1)
   def test_view_weekly_team_health
     #Passes Acceptance Criteria 1: As a student, I should only be to allowed to see their team's detailed weekly health
-    feedback = save_feedback(10, "Week 9 data 1", @user, DateTime.civil_from_format(:local, 2021, 3, 1), @team, 0, "progress_comments", 2,2,2,2,2,2,2,2,2)
-    feedback2 = save_feedback(9, "Week 9 data 2", @user2, DateTime.civil_from_format(:local, 2021, 3, 3), @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
-    feedback3 = save_feedback(8, "Week 7 data 1", @user, DateTime.civil_from_format(:local, 2021, 2, 15), @team, 1, "progress_comments", 2,2,2,2,2,2,2,2,2)
-    feedback4 = save_feedback(7, "Week 7 data 2", @user2, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
+    feedback = save_feedback(3, "Week 9 data 1", @user, DateTime.civil_from_format(:local, 2021, 3, 1), @team, 0, "progress_comments", 3,3,3,3,3,3,3,3,3)
+    feedback2 = save_feedback(3, "Week 9 data 2", @user2, DateTime.civil_from_format(:local, 2021, 3, 3), @team, 2, "progress_comments", 3,3,3,3,3,3,3,3,3)
+    feedback3 = save_feedback(4, "Week 7 data 1", @user, DateTime.civil_from_format(:local, 2021, 2, 15), @team, 1, "progress_comments", 4,4,4,4,4,4,4,4,4)
+    feedback4 = save_feedback(4, "Week 7 data 2", @user2, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 1, "progress_comments", 4,4,4,4,4,4,4,4,4)
     
-    average_ratingFeb = ((8+7).to_f/2).round(2)
-    average_ratingMarch = ((10+9).to_f/2).round(2)
+    average_ratingFeb = 10.0
+    average_ratingMarch = 7.5
     
     visit root_url 
     login 'test@gmail.com', '123456789'

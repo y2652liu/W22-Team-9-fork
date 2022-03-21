@@ -9,7 +9,7 @@ class DeleteUserTest < ApplicationSystemTestCase
   setup do
     Option.create(reports_toggled: true, admin_code: 'ADMIN')
     @generated_code = Team.generate_team_code
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark Smucker', is_admin: true, password: 'password', password_confirmation: 'password')
+    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'password', password_confirmation: 'password')
     @team = Team.create(team_name: 'Test Team', team_code: @generated_code.to_s, user: @prof)
   end
   
@@ -17,7 +17,7 @@ class DeleteUserTest < ApplicationSystemTestCase
   def test_delete_astudent_as_prof
     Option.destroy_all
     Option.create(reports_toggled: true, admin_code: 'ADMIN')
-    @bob = User.create(email: 'bob@gmail.com', name: 'Bob', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+    @bob = User.create(email: 'bob@gmail.com', name: 'Bob', lastname: 'Bold', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
     @bob.teams << @team
     
     visit root_url 
@@ -30,6 +30,7 @@ class DeleteUserTest < ApplicationSystemTestCase
     within('#user' + @bob.id.to_s) do
       assert_text @bob.email
       assert_text @bob.name
+      assert_text @bob.lastname
       click_on 'Delete User'
     end
     
@@ -48,7 +49,7 @@ class DeleteUserTest < ApplicationSystemTestCase
   def test_delete_admin_as_prof
     Option.destroy_all
     Option.create(reports_toggled: true, admin_code: 'ADMIN')
-    @ta = User.create(email: 'amir@gmail.com', name: 'Amir', is_admin: true, password: 'password', password_confirmation: 'password')
+    @ta = User.create(email: 'amir@gmail.com', name: 'Amir', lastname: 'Khan', is_admin: true, password: 'password', password_confirmation: 'password')
     
     visit root_url 
     # Login as professor
@@ -76,7 +77,7 @@ class DeleteUserTest < ApplicationSystemTestCase
   def test_delete_as_student
     Option.destroy_all
     Option.create(reports_toggled: true, admin_code: 'ADMIN')
-    @bob = User.create(email: 'bob@gmail.com', name: 'Bob', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+    @bob = User.create(email: 'bob@gmail.com', name: 'Bob', lastname: 'Bold', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
     @bob.teams << @team
     
     visit root_url 

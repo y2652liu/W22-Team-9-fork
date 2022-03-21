@@ -13,9 +13,9 @@ require "application_system_test_case"
 class LoginPortalUnvalidatedsTest < ApplicationSystemTestCase
   # (1)
   def test_login 
-    prof = User.create(email: 'msmucker@gmail.com', name: 'Mark Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: prof)
-    bob = User.create(email: 'bob@gmail.com', name: 'Bob', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+    bob = User.create(email: 'bob@gmail.com', name: 'Bob', lastname: 'Folden', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
     bob.teams << team
     
     # login with valid credentials
@@ -30,7 +30,7 @@ class LoginPortalUnvalidatedsTest < ApplicationSystemTestCase
     assert_current_path root_url 
     
     # test urls to see if they can be accessed 
-    urls = [new_report_url, new_feedback_url]
+    urls = [new_feedback_url]
     
     for url in urls
       visit url
@@ -48,8 +48,7 @@ class LoginPortalUnvalidatedsTest < ApplicationSystemTestCase
     # test urls to see if they can be accessed without logging in
     urls = [users_url, teams_url, 
             new_team_url, new_feedback_url, 
-            feedbacks_url, reports_url,
-            new_report_url]
+            feedbacks_url]
     
     for url in urls
       visit url
@@ -62,9 +61,9 @@ class LoginPortalUnvalidatedsTest < ApplicationSystemTestCase
     # SPRINT 2 UPDATE: Since students are now able to see reports they were involved in, this test has been modified to allow reports_url to be accessed without admin status.
     
     # login as student 
-    prof = User.create(email: 'msmucker@gmail.com', name: 'Mark Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: prof)
-    bob = User.create(email: 'bob@gmail.com', name: 'Bob', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+    bob = User.create(email: 'bob@gmail.com', name: 'Bob', lastname: 'Folden', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
     bob.teams << team
     visit root_url 
     login 'bob@gmail.com', 'testpassword'
@@ -90,7 +89,7 @@ class LoginPortalUnvalidatedsTest < ApplicationSystemTestCase
     
     # test urls to see if they can be accessed without admin status
       
-    urls = [new_team_url, teams_url, feedbacks_url, reports_url]
+    urls = [new_team_url, teams_url, feedbacks_url]
     
     for url in urls
       visit url

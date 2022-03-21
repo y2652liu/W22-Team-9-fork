@@ -14,7 +14,7 @@ require "application_system_test_case"
 class StudentRegistrationPortalUnvalidatedsTest < ApplicationSystemTestCase
   # (1-7)
   def test_register_student  
-    prof = User.create(email: 'msmucker@gmail.com', name: 'Mark Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     Team.create(team_name: 'Test Team', team_code: 'TEam01', user: prof)
     
     # register new student
@@ -22,6 +22,7 @@ class StudentRegistrationPortalUnvalidatedsTest < ApplicationSystemTestCase
     click_on "Sign Up"
     
     fill_in "user[name]", with: "Bob"
+    fill_in "user[lastname]", with: "Holton"
     fill_in "user[team_code]", with: "TEam01"
     fill_in "user[email]", with: "bob@uwaterloo.ca"
     fill_in "user[password]", with: "testpassword"
@@ -29,7 +30,7 @@ class StudentRegistrationPortalUnvalidatedsTest < ApplicationSystemTestCase
     click_on "Create account"
     
     assert_current_path root_url
-    assert_text "Welcome, Bob"
+    assert_text "Welcome, Bob Holton"
     click_on "Logout"
     
     # check student enrollment (professor)

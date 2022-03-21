@@ -39,14 +39,14 @@ class Feedback < ApplicationRecord
     if field == 'priority'
       return Feedback.order('feedbacks.priority asc')
     elsif field == 'team'
-      return Feedback.find_by_sql("SELECT u.name, f.id, f.user_id, f.team_id, t.team_name, f.rating, f.priority, f.comments, f.timestamp
+      return Feedback.find_by_sql("SELECT *
         FROM teams as t, feedbacks as f, users as u
         WHERE f.team_id = t.id AND u.id = f.user_id  
         ORDER BY t.team_name asc")
     elsif field == 'date'
       return Feedback.order('feedbacks.timestamp desc')
     elsif field == 'name'
-      return Feedback.find_by_sql("SELECT u.name, f.id, f.user_id, f.team_id, t.team_name, f.rating, f.priority, f.comments, f.timestamp
+      return Feedback.find_by_sql("SELECT f.id, f.rating, f.comments, f.timestamp, f.created_at, f.updated_at, f.team_id, f.user_id, f.priority, f.goal_rating, f.communication_rating, f.positive_rating, f.reach_rating, f.bounce_rating, f.account_rating, f.decision_rating, f.respect_rating, f.progress_comments, f.motivation_rating
       FROM teams as t, feedbacks as f, users as u
       WHERE f.team_id = t.id AND u.id = f.user_id  
       ORDER BY u.name asc")

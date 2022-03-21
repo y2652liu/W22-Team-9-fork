@@ -4,9 +4,9 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
   include FeedbacksHelper
   
   setup do 
-    @prof = User.new(email: 'msmucker@gmail.com', password: 'professor', password_confirmation: 'professor', name: 'Mark', is_admin: true)
+    @prof = User.new(email: 'msmucker@gmail.com', password: 'professor', password_confirmation: 'professor', name: 'Mark', lastname: 'Smucker', is_admin: true)
     @prof.save
-    @user1 = User.new(email: 'adam@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Adam', is_admin: false)
+    @user1 = User.new(email: 'adam@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Adam', lastname: 'Traore', is_admin: false)
     @user1.save
 
     @team1 = Team.new(team_code: 'Code', team_name: 'Team 1')
@@ -24,7 +24,7 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
     click_on "Manage Teams"
     assert_current_path teams_url
     
-    click_on "Back"
+    click_on "Home"
     assert_current_path root_url
   end 
   
@@ -42,7 +42,7 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
     end
     assert_current_path team_path(@team1)
     
-    click_on "Back"
+    click_on "Teams"
     assert_current_path teams_url
   end 
   
@@ -61,8 +61,8 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
     
     click_on 'Remove User From Team'
     
-    click_on "Back"
-    assert_current_path team_path(@team1)
+    click_on "Remove User"
+    assert_current_path root_url
   end 
   
   def test_team_edit_back_to_team_index
@@ -152,8 +152,8 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
     end
     
     assert_current_path team_path(@team1)
-    click_on "Back"
-    assert_current_path root_url
+    click_on "Teams"
+    assert_current_path teams_url
   end 
   
   def test_student_feedback_back_to_landing_page

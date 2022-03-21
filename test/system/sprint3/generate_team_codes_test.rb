@@ -17,24 +17,27 @@ class GenerateTeamCodesTest < ApplicationSystemTestCase
   def test_prof_team_creation_with_generated_code
     #(1) Passes acceptance criteria 1: As a professor, when I create a team, a generated team code is provided to allow students to add themselves to the team    
     # create professor 
-    User.create(email: 'msmucker@gmail.com', name: 'Mark Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
 
     # log professor in
     visit root_url
     login 'msmucker@gmail.com', 'professor'
     assert_current_path root_url
-    
+    # create new team
+    # @team = Team.create(team_name: 'Test Team1', team_code: @generated_code.to_s, user: @prof)
     # create new team
     click_on "Manage Teams"
     find('#new-team-link').click
     
-    fill_in "Team name", with: "Test Team"
-    fill_in "Team code", with: @generated_code.to_s
+    fill_in "Team name", with: "Test Team1"
+    fill_in "Team code", with: @generated_code
     click_on "Create Team"
     assert_text "Team was successfully created."
-    click_on "Home"
-    assert_text "Test Team"
-    assert_text @generated_code.to_s
+
+    # assert_text "Team was successfully created."
+    click_on "Manage Teams"
+    assert_text "Test Team1"
+
     
     # log professor out
     visit root_url
@@ -44,7 +47,7 @@ class GenerateTeamCodesTest < ApplicationSystemTestCase
   #(2)
   def test_student_account_creation_with_generated_team_code
     #(2) Passes acceptance criteria 2: As a student, I can use the generated team code to register an account associated with the team
-    prof = User.create(email: 'msmucker@gmail.com', name: 'Mark Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     Team.create(team_name: 'Test Team', team_code: @generated_code.to_s, user: prof)
     
     # register new student
@@ -52,6 +55,7 @@ class GenerateTeamCodesTest < ApplicationSystemTestCase
     click_on "Sign Up"
     
     fill_in "user[name]", with: "Bob"
+    fill_in "user[lastname]", with: "Bold"
     fill_in "user[team_code]", with: @generated_code.to_s
     fill_in "user[email]", with: "bob@uwaterloo.ca"
     fill_in "user[password]", with: "testpassword"
@@ -69,10 +73,12 @@ class GenerateTeamCodesTest < ApplicationSystemTestCase
     assert_current_path root_url
     
     click_on "Manage Teams"
-    assert_text 'Bob'
-    assert_text @generated_code.to_s
-    assert_text 'Test Team'
+    assert_current_path teams_url  
+    # click_on "Test Team1"
+    # assert_current_path root_url 
     
+
+    assert_text 'Bob'
     
   end
   

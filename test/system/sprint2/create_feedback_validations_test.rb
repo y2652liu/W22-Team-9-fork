@@ -7,8 +7,8 @@ require "application_system_test_case"
 
 class CreateFeedbackValidationsTest < ApplicationSystemTestCase
    setup do
-    @user = User.new(email: 'test@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Adam', is_admin: false)
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    @user = User.new(email: 'test@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Adam', lastname: 'Gold', is_admin: false)
+    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     @team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
     @user.teams << @team
     @user.save
@@ -38,7 +38,16 @@ class CreateFeedbackValidationsTest < ApplicationSystemTestCase
     
     click_on "Submit for"
     
-    choose('feedback[rating]', option: 1)
+    choose('feedback[rating]', option: 4)
+    choose('feedback[goal_rating]', option: 4)
+    choose('feedback[communication_rating]', option: 4)
+    choose('feedback[positive_rating]', option: 4)
+    choose('feedback[reach_rating]', option: 4)
+    choose('feedback[bounce_rating]', option: 4)
+    choose('feedback[account_rating]', option: 4)
+    choose('feedback[decision_rating]', option: 4)
+    choose('feedback[respect_rating]', option: 4)
+    choose('feedback[motivation_rating]', option: 4)
     select "Urgent - I believe my team has serious issues and needs immediate intervention.", :from => "feedback[priority]"
     click_on "Create Feedback"
     assert_current_path root_url
@@ -70,7 +79,16 @@ class CreateFeedbackValidationsTest < ApplicationSystemTestCase
     
     click_on "Submit for"
     
-    choose('feedback[rating]', option: 1)
+    choose('feedback[rating]', option: 4)
+    choose('feedback[goal_rating]', option: 4)
+    choose('feedback[communication_rating]', option: 4)
+    choose('feedback[positive_rating]', option: 4)
+    choose('feedback[reach_rating]', option: 4)
+    choose('feedback[bounce_rating]', option: 4)
+    choose('feedback[account_rating]', option: 4)
+    choose('feedback[decision_rating]', option: 4)
+    choose('feedback[respect_rating]', option: 4)
+    choose('feedback[motivation_rating]', option: 4)
     fill_in "feedback[comments]", with: "I did not select a priority, default of low set"
     click_on "Create Feedback"
     assert_current_path root_url

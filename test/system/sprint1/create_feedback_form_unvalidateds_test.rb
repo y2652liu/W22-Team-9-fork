@@ -11,9 +11,9 @@ require "application_system_test_case"
 class CreateFeedbackFormUnvalidatedsTest < ApplicationSystemTestCase
   setup do
     # create prof, team, and user
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     @team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
-    @bob = User.create(email: 'bob@gmail.com', name: 'Bob', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+    @bob = User.create(email: 'bob@gmail.com', name: 'Bob', lastname: 'Korsen', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
     @bob.teams << @team
   end
   
@@ -31,7 +31,6 @@ class CreateFeedbackFormUnvalidatedsTest < ApplicationSystemTestCase
     fill_in "feedback[comments]", with: "This week has gone okay."
     click_on "Create Feedback"
     
-    assert_current_path root_url
     
     Feedback.all.each{ |feedback| 
       assert_equal(4 , feedback.overall_rating)
@@ -56,10 +55,10 @@ class CreateFeedbackFormUnvalidatedsTest < ApplicationSystemTestCase
     visit root_url 
     login 'msmucker@gmail.com', 'professor'
     
-    click_on "Test Team"
+    click_on "Test Team", match: :first
     assert_current_path team_url(@team)
     assert_text "This team is disorganized"
-    assert_text "4"
+    assert_text "5.5"
     assert_text "Urgent"
     assert_text "Test Team"
     assert_text datetime.strftime("%Y-%m-%d %H:%M")
