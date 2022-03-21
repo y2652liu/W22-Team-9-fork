@@ -1,15 +1,15 @@
 *STORY*: Update "Help Tab" Instructions
 USER ACCEPTANCE CRITERIA: Text alignment in Help Tab is justified on Instructor help page
 USER ACCEPTANCE CRITERIA: Text alignment in Help Tab is justified on Student help page
-
+USER ACCEPTANCE CRITERIA: Instructions are expanded to follow the new functionality
 T1: Testing that the text is justified on Instructor help page
 1. Enter the following in each field: 
     msmucker@gmail.com 
     professor
 2. Log in and click on "Help" tab
-3. Text on "Help" tab should be successfully justified
+3. Text on "Help" tab should be updated on Instructions help page as per latest functionality
 
-T2: Testing that the text is justified on Student help page
+T2: Testing that the text is updated on Student help page as per latest functionality
 1. Enter the following in each field: 
     msmucker@gmail.com 
     professor
