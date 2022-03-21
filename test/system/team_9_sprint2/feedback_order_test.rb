@@ -1,10 +1,15 @@
 # Acceptance Criteria: 
-# 1. As an instructor, on dashboard, details link is no longer there; team name links to team's /show
+# 1. Sort by name
+# 2. Sort by urgency
+# 3. Sort by team
+# 4. Sort by submission time
+# 5. Sort by rating
+# Above can all be found and used on the feedbacks and ratings tab
 
 
 require "application_system_test_case"
 
-class ShowTeamNameLink < ApplicationSystemTestCase
+class FeedbackOrder < ApplicationSystemTestCase
 
     setup do
         @user = User.new(email: 'xyz@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Gary', lastname: 'Brown', is_admin: false)
