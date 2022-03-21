@@ -2,19 +2,22 @@
   <h1>Help page</h1>
   <div class="help-div">
     <h2>Navigation Bar</h2>
-    <p align="justify"><b>Manage Teams</b> - Allows you to create and delete teams</p>
-    <p align="justify"><b>Manage Users</b> - Allows you to create and delete users</p>
-    <p align="justify"><b>Reports</b> - Allows you to view user Reports.
-                            Reports allow users to report other users for any reason.
-                            They can optionally include a comment for doing so. <br>
-                            This page also allows you to disable reports by pressing the "Toggle Reports" button.
-                            If you disable reports, users will be unable to report other users and when
-                            you visit the reports page, you will see a message "Reports are disabled.".
-                            If you choose, you can always re-enable the reports functionality by clikcing the "Toggle Reports"
-                            button again.
-    </p>
-    <p align="justify"><b>Feedback & Ratings</b> - Takes you to the Feedback & Rating page. Shows 
-                                        Feedback on Team and associated ratings.
+    <p align="justify"><b>Manage Teams</b> - Allows you to create and delete teams, aswell as view a list of all the teams using the platform</p>
+    <ul style=“list-style-type:circle>
+                               <li> By clicking on a respective team's name, there is a detailed view of the respective team along with the historical feedback. </li>
+                               <li> There is also the capability to delete users entirely from the team. </li>
+                               </ul>
+    <p align="justify"><b>Manage Users</b> - Allows you to create and delete users, aswell as view a list of all the users using the platform </p>
+    <ul style=“list-style-type:circle>
+                               <li> There is also a regenerate password functionality when clicking on the respective user. </li>
+                               </ul>
+    
+    <p align="justify"><b>Feedback & Ratings</b> - Takes you to the Feedback & Rating page 
+    <ul style=“list-style-type:circle>
+                               <li> Shows feedback on team and associated ratings. </li>
+                               <li> By clicking on the respective column headers, there is a sorting feature that sorts in ascending order. </li>
+                               </ul>
+                              
     </p>
   </div>
   <div class="help-div">
@@ -26,19 +29,23 @@
   </div>
   <div class="help-div">
     <h2>Team Summary View </h2>
-    <p align="justify"><b>Urgency/Intervention Level</b> - This displays the overall urgency of Team's feedback. <br>
-                                           Values will either be "No Feedback", "Urgent" or "Low". <br>
-                                           If at least one of the team's feedback has a priority score of 0 (urgent), 
-                                           then this will display "Urgent".
-                                           If 1/3 of feedback has a priority score of 1 (medium), then this will display "Urgent"
-                                           Otherwise this will display "Low".
+    <p align="justify"><b>Team Name</b> - The assigned name to the team</p>
+    <p align="justify"><b>Urgency/Invervention Level</b> - This displays the overall urgency of Team's feedback <br>
+                               <ul style=“list-style-type:circle>
+                               <li> Values displayed will either be "Low", "Medium" or "High".</li>
+                               <li> If the average rating is below 6 or if one student selects, "Urgent" then this will display "High".</li>
+                               <li> The priority will reflect the average of the total submissions, in all other instances.</li>
+                                 </ul>
     </p>
-    <p align="justify"><b>Average Rating (Out of 4)</b> - Average rating from team members feedback.</p>
-    <p align="justify"><b>Team Name</b> - The assigned name to the team.</p>
-    <p align="justify"><b>Team Code</b> - Provide this code to students prior to signup, and instruct them to enter the code into the 
-      'Team/admin code' field upon signup so they are added to the appropriate team.</p>
-    <p align="justify"><b>Team Members</b> - List of team members.</p>
-    <p align="justify"><b>View Team Aggregated Feedback</b> - Show aggregated team feedback.</p>
+    <p align="justify"><b>Average Rating of Period</b> - Displays average rating, on a scale of 1 to 10, based off of total team's submitted feedback in given period<br> 
+                               <ul style=“list-style-type:circle>
+                               <li> If there are yet to be feedback submissions then "No Feedbacks" will be displayed. </li>
+                               </ul>
+    <p align="justify"><b>Team Members</b> - List of team members</p>
+    <p align="justify"><b>Missing Feedback</b> - Displays the number of feedbacks that are yet to be submitted</p>
+    
+
+    
     
   </div>
   <p><%= link_to 'Back', :back %></p>
