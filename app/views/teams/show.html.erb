@@ -112,7 +112,7 @@
             <%= range[:start_date].strftime('%b %e, %Y') %> to <%= range[:end_date].strftime('%b %e, %Y') %>
           </h3>
         </div>
-        <p>Average Rating of Period (Out of 10): <%= overall_rating %></p>
+        <p>Average Rating of Period (Out of 10): <%= overall_rating.round(2) %></p>
         <p>Weighted Priority: <%= priority %></p>
       </div>
       <br/>
