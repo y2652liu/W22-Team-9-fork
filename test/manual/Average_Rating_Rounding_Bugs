@@ -1,0 +1,80 @@
+*USER ACCEPTANCE CRITERIA*: Average rating should be rounded on all views
+
+T1: Instructor Dashboard Previous Week Rounding
+1. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor
+2. Move mouse to 'Manage Teams', and click on 'New Team'
+3. Create a team and copy the Team Code
+4. Click on ‘Logout/Account’
+
+5. Click on 'Sign up'
+6. Create a student account with the copied Team Code
+7. Click on 'Submit for XXX Team' and submit feedback where 9 questions have "Strongly Agree" and 1 has "Strongly Disagree".
+8. Click on ‘Logout/Account’
+
+9. Click on 'Sign up'
+10. Create a student account with the copied Team Code
+11. Click on 'Submit for XXX Team' and submit feedback where 8 questions have "Strongly Agree" and 2 has "Strongly Disagree".
+12. Click on ‘Logout/Account’
+
+13. Click on 'Sign up'
+14. Create a student account with the copied Team Code
+15. Click on ‘Logout/Account’
+
+16. Wait 1 week and login as Instructor
+17. On Instructor's dashboard Average Rating under Previous Week should be reported with 2 decimals as ("5.67")
+
+T2: Student Dashboard Previous Week Rounding
+1. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor
+2. Move mouse to 'Manage Teams', and click on 'New Team'
+3. Create a team and copy the Team Code
+4. Click on ‘Logout/Account’
+
+5. Click on 'Sign up'
+6. Create a student account with the copied Team Code
+7. Click on 'Submit for XXX Team' and submit feedback where 9 questions have "Strongly Agree" and 1 has "Strongly Disagree".
+8. Click on ‘Logout/Account’
+
+9. Click on 'Sign up'
+10. Create a student account with the copied Team Code
+11. Click on 'Submit for XXX Team' and submit feedback where 8 questions have "Strongly Agree" and 2 has "Strongly Disagree".
+12. Click on ‘Logout/Account’
+
+13. Click on 'Sign up'
+14. Create a student account with the copied Team Code
+15. Click on ‘Logout/Account’
+
+16. Wait 1 week and login as Student
+17. On Student's dashboard Average Rating under Previous Week should be reported with 2 decimals as ("5.67")
+
+T3: Student Dashboard View Historical Feedback
+1. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor
+2. Move mouse to 'Manage Teams', and click on 'New Team'
+3. Create a team and copy the Team Code
+4. Click on ‘Logout/Account’
+
+5. Click on 'Sign up'
+6. Create a student account with the copied Team Code
+7. Click on 'Submit for XXX Team' and submit feedback where 9 questions have "Strongly Agree" and 1 has "Strongly Disagree".
+8. Click on ‘Logout/Account’
+
+9. Click on 'Sign up'
+10. Create a student account with the copied Team Code
+11. Click on 'Submit for XXX Team' and submit feedback where 8 questions have "Strongly Agree" and 2 has "Strongly Disagree".
+12. Click on ‘Logout/Account’
+
+13. Click on 'Sign up'
+14. Create a student account with the copied Team Code
+15. Click on ‘Logout/Account’
+
+16. On Student's dashboard, click on "View Historical Data"
+17. Under Historical Feedback, Current Week with 2 decimals as ("5.67")
+
+18. Wait 1 week and login as Student
+19. On Student's dashboard, click on "View Historical Data"
+20. Under Historical Feedback, Previous Week should be reported with 2 decimals as ("5.67")
