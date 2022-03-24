@@ -1,7 +1,7 @@
 T1: Login as Professor
 1. Navigate to https://msci342-w22-team-9.herokuapp.com/
 2. Enter the following in each field: 
-    msmucker@gmail.com 
+    msmucker@uwaterloo.ca 
     professor  
 3. Select ‘Login’ 
 4. Assert login was successful
@@ -20,7 +20,7 @@ T2: Create New Team
 T3: Signup
 1. Navigate to https://msci342-w22-team-9.herokuapp.com/ 
 2. Enter the following in each field: 
-    msmucker@gmail.com 
+    msmucker@uwaterloo.ca 
     professor  
 3. Select ‘Login’ 
 4 Move mouse to 'Manage Teams', and click on 'New Team'
@@ -30,7 +30,7 @@ T3: Signup
 8. Enter the following in each field: 
     First Name: Bob
     Last Name: Smith 
-    Email: bobsmith@gmail.com
+    Email: bobsmith@uwaterloo.ca
     Team Code: TEAM01
     Password: student
     Confirm Password: student
@@ -58,7 +58,7 @@ T6: Student View Historical Feedback
 T7: View Team Summary
 1. Navigate to https://msci342-w22-team-9.herokuapp.com/
 2. Enter the following in each field: 
-    msmucker@gmail.com 
+    msmucker@uwaterloo.ca 
     professor  
 3. Select ‘Login’ 
 4. Assert that the Test Team appears in the team summary view  
