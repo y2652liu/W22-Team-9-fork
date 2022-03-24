@@ -1,0 +1,28 @@
+*USER ACCEPTANCE CRITERIA*: Feedback & Rating display needs to be out of 10
+
+T1: Instructor Dashboard Previous Week Rounding
+1. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor
+2. Move mouse to 'Manage Teams', and click on 'New Team'
+3. Create a team and copy the Team Code
+4. Click on ‘Logout/Account’
+
+5. Click on 'Sign up'
+6. Create a student account with the copied Team Code
+7. Click on 'Submit for XXX Team' and submit feedback where 9 questions have "Strongly Agree" and 1 has "Strongly Disagree".
+8. Click on ‘Logout/Account’
+
+9. Click on 'Sign up'
+10. Create a student account with the copied Team Code
+11. Click on 'Submit for XXX Team' and submit feedback where 8 questions have "Strongly Agree" and 2 has "Strongly Disagree".
+12. Click on ‘Logout/Account’
+
+13. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor
+14. Click on Feedbacks & Ratings  
+15. The rating for First Student should be displayed with rating of 9.0
+16. The rating for Second Student should be displayed with rating of 8.0
+17. Click on ‘Logout/Account’
+

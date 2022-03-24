@@ -18,7 +18,7 @@
       <tr>
         <td><%= feedback.user.name %></td>
         <td><%= feedback.team.team_name %></td>
-        <td><%= feedback.overall_rating %></td>
+        <td><%= feedback.overall_rating*2.5 %></td>
         <%if feedback.priority == 2%>
           <td><%='Low'%></td>
         <%elsif feedback.priority == 1%>
