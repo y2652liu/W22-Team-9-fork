@@ -3,7 +3,7 @@ require "application_system_test_case"
 class RemoveEditLinkFromUsersTest < ApplicationSystemTestCase
   setup do
     Option.create(reports_toggled: true, admin_code: 'ADMIN')
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'password', password_confirmation: 'password')
+    @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'password', password_confirmation: 'password')
   end
   
   def test_remove_edit_link_for_users
@@ -12,7 +12,7 @@ class RemoveEditLinkFromUsersTest < ApplicationSystemTestCase
     
     visit root_url 
     # Login as professor
-    login 'msmucker@gmail.com', 'password'
+    login 'msmucker@uwaterloo.ca', 'password'
 
     click_on "Manage Users"
     

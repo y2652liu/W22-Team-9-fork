@@ -3,10 +3,10 @@ require 'date'
 
 class FeedbacksControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = User.new(email: 'test@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Adam', lastname: 'Bouvaird', is_admin: false)
-    @user2 = User.new(email: 'test2@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Zac', lastname: 'Bouvaird', is_admin: false)
-    @user3 = User.new(email: 'test3@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Charles', lastname: 'Bouvaird', is_admin: false)
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    @user = User.new(email: 'test@uwaterloo.ca', password: '123456789', password_confirmation: '123456789', name: 'Adam', lastname: 'Bouvaird', is_admin: false)
+    @user2 = User.new(email: 'test2@uwaterloo.ca', password: '123456789', password_confirmation: '123456789', name: 'Zac', lastname: 'Bouvaird', is_admin: false)
+    @user3 = User.new(email: 'test3@uwaterloo.ca', password: '123456789', password_confirmation: '123456789', name: 'Charles', lastname: 'Bouvaird', is_admin: false)
+    @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     @team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
     @user.teams << @team
     @user.save
@@ -27,14 +27,14 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
   test "should get index prof" do
     #only admin user should be able to see feedbacks
     # login user
-    post('/login', params: { email: 'msmucker@gmail.com', password: 'professor'})
+    post('/login', params: { email: 'msmucker@uwaterloo.ca', password: 'professor'})
     get feedbacks_url
     assert_response :success
   end
   
   test "should not get index student" do
     #students should now have access to the list of feedbacks. It should redirect them back to their homepage!
-    post('/login', params: { email: 'test@gmail.com', password: '123456789'})
+    post('/login', params: { email: 'test@uwaterloo.ca', password: '123456789'})
     get feedbacks_url
     assert_response :redirect
   end 
@@ -42,7 +42,7 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
     Option.create(reports_toggled: true, admin_code: 'ADMIN')
     # login user
-    post('/login', params: { email: 'test2@gmail.com', password: '123456789'})
+    post('/login', params: { email: 'test2@uwaterloo.ca', password: '123456789'})
     
     get new_feedback_url
     assert_response :success
@@ -50,7 +50,7 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
 
   test "should create feedback with default priority" do
     # login user
-    post('/login', params: { email: 'test3@gmail.com', password: '123456789'})
+    post('/login', params: { email: 'test3@uwaterloo.ca', password: '123456789'})
     
     assert_difference('Feedback.count') do
         #not passing in a priority value results in default value of 2, which represents low priority
@@ -61,7 +61,7 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
   
   test "should create feedback with selected priority" do
     # login user
-    post('/login', params: { email: 'test3@gmail.com', password: '123456789'})
+    post('/login', params: { email: 'test3@uwaterloo.ca', password: '123456789'})
     
     assert_difference('Feedback.count') do
         #student selects a priority of 0, meaning it's urgent
@@ -72,28 +72,28 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
 
   test "should show feedback" do
     # login professor
-    post('/login', params: { email: 'msmucker@gmail.com', password: 'professor'})
+    post('/login', params: { email: 'msmucker@uwaterloo.ca', password: 'professor'})
     get feedback_url(@feedback)
     assert_response :success
   end
 
   test "should get edit" do
     # login professor
-    post('/login', params: { email: 'msmucker@gmail.com', password: 'professor'})
+    post('/login', params: { email: 'msmucker@uwaterloo.ca', password: 'professor'})
     get edit_feedback_url(@feedback)
     assert_response :success
   end
 
   test "should update feedback" do
     # login professor
-    post('/login', params: { email: 'msmucker@gmail.com', password: 'professor'})
+    post('/login', params: { email: 'msmucker@uwaterloo.ca', password: 'professor'})
     patch feedback_url(@feedback), params: { feedback: { comments: "test comment2", rating: 2, priority: 1, goal_rating: 4, communication_rating: 4, positive_rating: 4, reach_rating: 4, bounce_rating: 4, account_rating: 4, decision_rating: 4, respect_rating: 4, progress_comments: "Test progress", motivation_rating: 4 } }
     assert_redirected_to feedback_url(@feedback)
   end
 
   test "should destroy feedback" do
     # login professor
-    post('/login', params: { email: 'msmucker@gmail.com', password: 'professor'})
+    post('/login', params: { email: 'msmucker@uwaterloo.ca', password: 'professor'})
     assert_difference('Feedback.count', -1) do
       delete feedback_url(@feedback)
     end

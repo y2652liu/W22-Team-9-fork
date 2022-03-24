@@ -12,12 +12,12 @@ class GroupFeedbackByPeriodsTest < ApplicationSystemTestCase
     @week_range = week_range(2021, 7)
     #sets the app's date to week of Feb 15 - 21, 2021 for testing
     travel_to Time.new(2021, 02, 15, 06, 04, 44)
-    # @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    # @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     
     # @team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
     # @team2 = Team.create(team_name: 'Test Team 2', team_code: 'TEAM02', user: @prof)
     
-    # @bob = User.create(email: 'bob@gmail.com', name: 'Bob', lastname: 'Kosner', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+    # @bob = User.create(email: 'bob@uwaterloo.ca', name: 'Bob', lastname: 'Kosner', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
     # @bob.teams << @team
     
   end 
@@ -35,10 +35,10 @@ class GroupFeedbackByPeriodsTest < ApplicationSystemTestCase
   
   # (1)
   def test_team_summary_by_period
-    prof = User.create(email: 'msmucker@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Mark', lastname: 'Smucker', is_admin: true)
-    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Store1', is_admin: false)
+    prof = User.create(email: 'msmucker@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Mark', lastname: 'Smucker', is_admin: true)
+    user1 = User.create(email: 'charles2@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Store1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Store2', is_admin: false)
+    user2 = User.create(email: 'charles3@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Store2', is_admin: false)
     user2.save!
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.users =[user1, user2]
@@ -54,7 +54,7 @@ class GroupFeedbackByPeriodsTest < ApplicationSystemTestCase
     average_rating = 5.0
     
     visit root_url 
-    login 'msmucker@gmail.com', 'banana'
+    login 'msmucker@uwaterloo.ca', 'banana'
     assert_current_path root_url 
     
     assert_text 'Current Week: ' + @week_range[:start_date].strftime('%b %e, %Y').to_s + " to " + @week_range[:end_date].strftime('%b %e, %Y').to_s
@@ -63,10 +63,10 @@ class GroupFeedbackByPeriodsTest < ApplicationSystemTestCase
   
   # (2)
   def test_view_by_period
-    prof = User.create(email: 'msmucker@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Mark', lastname: 'Smucker', is_admin: true)
-    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Store1', is_admin: false)
+    prof = User.create(email: 'msmucker@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Mark', lastname: 'Smucker', is_admin: true)
+    user1 = User.create(email: 'charles2@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Store1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Store2', is_admin: false)
+    user2 = User.create(email: 'charles3@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Store2', is_admin: false)
     user2.save!
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.user = prof 
@@ -86,7 +86,7 @@ class GroupFeedbackByPeriodsTest < ApplicationSystemTestCase
     average_rating_2 = 7.5
     
     visit root_url 
-    login 'msmucker@gmail.com', 'banana'
+    login 'msmucker@uwaterloo.ca', 'banana'
     assert_current_path root_url 
     
     click_on 'Team 1', match: :first

@@ -7,16 +7,16 @@ class HelpMenuBarStudentsTest < ApplicationSystemTestCase
   # I modeled this test class off of help_pages_test created
   # by the earlier team
   setup do
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     @team = Team.new(team_code: 'Code', team_name: 'Team 1')
     @team.user = @prof 
     @team.save!
     
-    @user = User.create(email: 'bob@gmail.com', name: 'Bob', lastname: 'Kosner', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+    @user = User.create(email: 'bob@uwaterloo.ca', name: 'Bob', lastname: 'Kosner', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
     @user.teams << @team
     @user.save
     visit root_url
-    login 'bob@gmail.com', 'testpassword'
+    login 'bob@uwaterloo.ca', 'testpassword'
   end
 
   def test_home_to_help

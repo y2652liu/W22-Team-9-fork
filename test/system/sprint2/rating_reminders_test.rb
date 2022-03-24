@@ -6,10 +6,10 @@ require "application_system_test_case"
 
 class RatingReminders < ApplicationSystemTestCase
   setup do 
-    @user = User.create(email: 'user2@gmail.com', name: 'Mark', lastname: 'Rooter', is_admin: false, password: 'professor', password_confirmation: 'professor')
+    @user = User.create(email: 'user2@uwaterloo.ca', name: 'Mark', lastname: 'Rooter', is_admin: false, password: 'professor', password_confirmation: 'professor')
     @user.save
     visit root_url
-    login 'user2@gmail.com', 'professor'
+    login 'user2@uwaterloo.ca', 'professor'
   end
 
   # Test that no feedback visible visible if user is not part of team

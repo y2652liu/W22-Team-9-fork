@@ -11,16 +11,16 @@ require "application_system_test_case"
 class CreateFeedbackFormUnvalidatedsTest < ApplicationSystemTestCase
   setup do
     # create prof, team, and user
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     @team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
-    @bob = User.create(email: 'bob@gmail.com', name: 'Bob', lastname: 'Korsen', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+    @bob = User.create(email: 'bob@uwaterloo.ca', name: 'Bob', lastname: 'Korsen', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
     @bob.teams << @team
   end
   
   # Test that feedback can be added using correct form (1, 2)
   def test_add_feedback 
     visit root_url 
-    login 'bob@gmail.com', 'testpassword'    
+    login 'bob@uwaterloo.ca', 'testpassword'    
     
     click_on "Submit for"
     assert_current_path new_feedback_url
@@ -53,7 +53,7 @@ class CreateFeedbackFormUnvalidatedsTest < ApplicationSystemTestCase
     feedback.save
     
     visit root_url 
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     
     click_on "Test Team", match: :first
     assert_current_path team_url(@team)

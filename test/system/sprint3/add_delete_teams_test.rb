@@ -6,9 +6,9 @@ require "application_system_test_case"
 
 class AddDeleteTeamsTest < ApplicationSystemTestCase
   setup do 
-    @prof = User.new(email: 'charles@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Stuart', is_admin: true)
+    @prof = User.new(email: 'charles@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Stuart', is_admin: true)
     @prof.save
-    @user1 = User.new(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Stuart', is_admin: false)
+    @user1 = User.new(email: 'charles2@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Stuart', is_admin: false)
     @user1.save
 
     @team1 = Team.new(team_code: 'Code', team_name: 'Team 1')
@@ -20,7 +20,7 @@ class AddDeleteTeamsTest < ApplicationSystemTestCase
     @team2.user = @prof
     @team2.save
     
-    @user2 = User.new(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Stuart', is_admin: false)
+    @user2 = User.new(email: 'charles3@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Stuart', is_admin: false)
     @user2.teams = [@team2]
     @user2.save
     
@@ -32,7 +32,7 @@ class AddDeleteTeamsTest < ApplicationSystemTestCase
   # (1)
   def test_delete_team_professor 
     visit root_url
-    login 'charles@gmail.com', 'banana'
+    login 'charles@uwaterloo.ca', 'banana'
     assert_current_path root_url
     
     click_on 'Manage Teams'
@@ -56,7 +56,7 @@ class AddDeleteTeamsTest < ApplicationSystemTestCase
   #(2)
   def test_delete_team_student 
     visit root_url
-    login 'charles2@gmail.com', 'banana'
+    login 'charles2@uwaterloo.ca', 'banana'
     assert_current_path root_url
     
     assert_no_text 'Manage Teams'
