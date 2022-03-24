@@ -47,11 +47,11 @@ T4: Submit Feedback
 
 
 T5: Student View Feedback Summary
-1. Assert that in student team summary view Test Team is displayed, with urgency level of medium, average rating of 4 and the Test Student team member
+1. Assert that in student team summary view Test Team is displayed, with urgency level of medium, average rating of 10 and the Test Student team member
 
 T6: Student View Historical Feedback 
 1. Click on View Historical Data
-2. Assert Historical Feedback for current period exists, with average rating of 4 and priority of medium 
+2. Assert Historical Feedback for current period exists, with average rating of 10 and priority of medium 
 3. Select ‘Back’  
 4. Select ‘Logout’ 
 
@@ -66,7 +66,7 @@ T7: View Team Summary
 T8: View Detailed Feedback 
 1. Login as instructor 
 2. Click on Test Team on dashboard 
-3. Assert that feedback from Bob Smith appears, and that rating is 4 
+3. Assert that feedback from Bob Smith appears, and that rating is 10 
 3. Assert that team member list only includes Bob Smith 
 4. Select ‘Back’  
 5. Select ‘Logout’ 
