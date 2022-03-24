@@ -56,8 +56,7 @@ class UrgentCommentsTest < ApplicationSystemTestCase
     choose('feedback[motivation_rating]', option: 4)
     select "Urgent - I believe my team has serious issues and needs immediate intervention.", :from => "feedback[priority]"
     click_on "Create Feedback"
-    assert_current_path feedback_url
-    assert_text "Comments are mandatory for urgent priority" 
+    assert_text "are required for urgent priority" 
   end 
   
 end
