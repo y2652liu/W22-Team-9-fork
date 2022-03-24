@@ -13,6 +13,8 @@
   <%= @team.user.name %>
 </p>
 
+<p><%= link_to 'In Depth', team_show_in_depth_path(@team) %></p>
+
 
 <h2>Team Members:</h2>
 <% if @team.users.length > 0 %>

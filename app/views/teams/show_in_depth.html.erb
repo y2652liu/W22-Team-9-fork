@@ -1,0 +1,55 @@
+<% @team= Team.find params[:id] %>
+
+<table>
+    <thead>
+      <tr>
+        <th><%= 'Name' %></th>
+        <th><%= 'Goal Rating' %></th>
+        <th><%= 'Communication Rating' %></th>
+        <th><%= 'Positive Rating' %></th>
+        <th><%= 'Motivation Rating' %></th>
+        <th><%= 'Reach Rating' %></th>
+        <th><%= 'Bounce Rating' %></th>
+        <th><%= 'Account Rating' %></th>
+        <th><%= 'Decision Rating' %></th>
+        <th><%= 'Respect Rating' %></th>
+        <th><%= 'Rating' %></th>
+
+        <th colspan="11" style="width: 150px;"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @team.feedbacks.each do |feedback| %>
+        <tr>
+          <td><%= feedback.user.name + " " +feedback.user.lastname %></td>
+
+          <td><%= feedback.goal_rating %></td>
+        
+          <td><%= feedback.communication_rating %></td>
+       
+          <td><%= feedback.positive_rating %></td>
+    
+          <td><%= feedback.motivation_rating %></td>
+    
+          <td><%= feedback.reach_rating %></td>
+       
+          <td><%= feedback.bounce_rating %></td>
+       
+          <td><%= feedback.account_rating %></td>
+       
+          <td><%= feedback.decision_rating %></td>
+       
+          <td><%= feedback.respect_rating %></td>
+        
+          <td><%= feedback.rating %></td>
+        </tr>
+
+        <tr>
+          <td Colspan="6" style= "align=left"><%= "Comments: " + feedback.comments %></td>
+          <td Colspan="6"><%= "Progress Comments: "+feedback.progress_comments %></td>
+        </tr>
+
+      <% end %>
+    </tbody>
+  </table>
