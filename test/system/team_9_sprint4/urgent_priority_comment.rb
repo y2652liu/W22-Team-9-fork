@@ -1,8 +1,7 @@
 require "application_system_test_case"
 
 # Acceptance Criteria:
-# 1. As student, I should be able to see the time I have started a feedback
-# 2. As a student, I should be able to see the time that I have submitted a feedback
+# 1. As a student when submitting feedback there is an error pushed out when student selects urgent priority and tries to submit the feedback form without writing a comment
 
 class UrgentCommentsTest < ApplicationSystemTestCase
   setup do
