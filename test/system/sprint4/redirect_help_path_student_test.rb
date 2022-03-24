@@ -4,9 +4,9 @@ class RedirectHelpPathStudentTest < ApplicationSystemTestCase
   setup do
     Option.create(reports_toggled: true, admin_code: 'ADMIN')
     @generated_code = Team.generate_team_code
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'password', password_confirmation: 'password')
+    @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'password', password_confirmation: 'password')
     @team = Team.create(team_name: 'Test Team', team_code: @generated_code.to_s, user: @prof)
-    @bob = User.create(email: 'bob@gmail.com', name: 'Bob', lastname: 'Bold', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+    @bob = User.create(email: 'bob@uwaterloo.ca', name: 'Bob', lastname: 'Bold', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
     @bob.teams << @team
   end
   
@@ -16,7 +16,7 @@ class RedirectHelpPathStudentTest < ApplicationSystemTestCase
     
     visit root_url 
     # Login as professor
-    login 'msmucker@gmail.com', 'password'
+    login 'msmucker@uwaterloo.ca', 'password'
 
     visit '/help'
     
@@ -29,7 +29,7 @@ class RedirectHelpPathStudentTest < ApplicationSystemTestCase
     
     visit root_url 
     # Login as student
-    login 'bob@gmail.com', 'testpassword'
+    login 'bob@uwaterloo.ca', 'testpassword'
 
     visit '/help'
 

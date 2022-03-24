@@ -6,10 +6,10 @@ class DisplayErrorsValidationsTest < ApplicationSystemTestCase
   setup do
     Option.create(reports_toggled: true)
     # create prof, team, and user
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
-    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Chocolate', is_admin: false)
+    @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    user1 = User.create(email: 'charles2@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Chocolate', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Chocolate2', is_admin: false)
+    user2 = User.create(email: 'charles3@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Chocolate2', is_admin: false)
     user2.save!
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.users = [user1, user2]
@@ -19,7 +19,7 @@ class DisplayErrorsValidationsTest < ApplicationSystemTestCase
   #Login errors
   def test_invalid_login 
     visit root_url 
-    login 'msmucker@gmail.com', 'testing'
+    login 'msmucker@uwaterloo.ca', 'testing'
     
     assert_text "Cannot log you in. Invalid email or password."
   end 
@@ -31,7 +31,7 @@ class DisplayErrorsValidationsTest < ApplicationSystemTestCase
     fill_in "user[name]", with: "Scott"
     fill_in "user[lastname]", with: "Storch"
     fill_in "user[team_code]", with: "TEAM01"
-    fill_in "user[email]", with: "SCOTTF@gmail.com"
+    fill_in "user[email]", with: "SCOTTF@uwaterloo.ca"
     fill_in "user[password]", with: "testpassword"
     fill_in "user[password_confirmation]", with: "testpassword"
     click_on "Create account"
@@ -48,8 +48,7 @@ class DisplayErrorsValidationsTest < ApplicationSystemTestCase
     assert_text "8 errors prohibited this user from being saved:"
     assert_text "Password can't be blank"
     assert_text "Password is too short (minimum is 6 characters)"
-    assert_text "Email can't be blank"
-    assert_text "Email is invalid"
+    assert_text "Must be a uwaterloo.ca account"
     assert_text "Name can't be blank"
     assert_text "Password confirmation can't be blank"
     assert_text "Teams cannot be blank"
@@ -57,7 +56,7 @@ class DisplayErrorsValidationsTest < ApplicationSystemTestCase
   #Team signup errors 
   def test_invalid_team_signup
     visit root_url 
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url
       
     click_on "Manage Teams"
@@ -72,7 +71,7 @@ class DisplayErrorsValidationsTest < ApplicationSystemTestCase
   #Feedback errors
   #def test_invalid_feedback
     #visit root_url 
-    #login 'charles2@gmail.com', 'banana'
+    #login 'charles2@uwaterloo.ca', 'banana'
     #assert_current_path root_url
       
     #click_on "Submit for"

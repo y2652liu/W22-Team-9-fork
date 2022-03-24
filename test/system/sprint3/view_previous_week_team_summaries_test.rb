@@ -7,9 +7,9 @@ class ViewPreviousWeekTeamSummariesTest < ApplicationSystemTestCase
   include FeedbacksHelper
   
   setup do
-    @user = User.new(email: 'test@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Adam', lastname: 'Mohsen', is_admin: false)
-    @user2 = User.new(email: 'test2@gmail.com', password: '1234567891', password_confirmation: '1234567891', name: 'Adam2', lastname: 'Mohsen2', is_admin: false)
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    @user = User.new(email: 'test@uwaterloo.ca', password: '123456789', password_confirmation: '123456789', name: 'Adam', lastname: 'Mohsen', is_admin: false)
+    @user2 = User.new(email: 'test2@uwaterloo.ca', password: '1234567891', password_confirmation: '1234567891', name: 'Adam2', lastname: 'Mohsen2', is_admin: false)
+    @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     @team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
     @team2 = Team.create(team_name: 'Test Team 2', team_code: 'TEAM02', user: @prof)
     @user.teams << @team
@@ -41,7 +41,7 @@ class ViewPreviousWeekTeamSummariesTest < ApplicationSystemTestCase
     feedback1 = save_feedback(4, "Data2", @user2, DateTime.civil_from_format(:local, 2021, 2, 8), @team, 0, "progress_comments", 4,4,4,4,4,4,4,4,4)
     eedback1 = save_feedback(4, "Data2", @user, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 1, "progress_comments", 4,4,4,4,4,4,4,4,4)
     visit root_url 
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url 
     
     assert_text 'Previous Week: ' + (@week_range[:start_date] - 7.days).strftime('%b %-e, %Y').to_s + " to " + (@week_range[:end_date] - 7.days).strftime('%b %-e, %Y').to_s
@@ -59,7 +59,7 @@ class ViewPreviousWeekTeamSummariesTest < ApplicationSystemTestCase
     feedback1 = save_feedback(4, "Data2", @user2, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2, "progress_comments", 4,4,4,4,4,4,4,4,4)
     
     visit root_url 
-    login 'test@gmail.com', '123456789'
+    login 'test@uwaterloo.ca', '123456789'
     assert_current_path root_url 
     
     assert_text 'Previous Week: ' + (@week_range[:start_date] - 7.days).strftime("%b %-e, %Y").to_s + " to " + (@week_range[:end_date] - 7.days).strftime('%-b %-e, %Y').to_s

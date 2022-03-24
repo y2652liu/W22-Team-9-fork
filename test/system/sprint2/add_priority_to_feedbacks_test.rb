@@ -8,10 +8,10 @@ class AddPriorityToFeedbacksTest < ApplicationSystemTestCase
   include FeedbacksHelper
   
   setup do 
-    @user = User.new(email: 'test@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Adam', lastname: 'Gold', is_admin: false)
-    @user2 = User.new(email: 'test2@gmail.com', password: '1234567891', password_confirmation: '1234567891', name: 'Adam2', lastname: 'Gold2', is_admin: false)
-    @user10 = User.new(email: 'test10@gmail.com', password: '1234567891', password_confirmation: '1234567891', name: 'Adam10', lastname: 'Gold10', is_admin: false)
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    @user = User.new(email: 'test@uwaterloo.ca', password: '123456789', password_confirmation: '123456789', name: 'Adam', lastname: 'Gold', is_admin: false)
+    @user2 = User.new(email: 'test2@uwaterloo.ca', password: '1234567891', password_confirmation: '1234567891', name: 'Adam2', lastname: 'Gold2', is_admin: false)
+    @user10 = User.new(email: 'test10@uwaterloo.ca', password: '1234567891', password_confirmation: '1234567891', name: 'Adam10', lastname: 'Gold10', is_admin: false)
+    @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     @team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
     @user.teams << @team
     @user.save!
@@ -28,7 +28,7 @@ class AddPriorityToFeedbacksTest < ApplicationSystemTestCase
   def test_create_feedback_with_no_priority
     #Passes acceptance criteria 1: Student submits a feedback with no user selected priority, instead the default value for priority is 2, meaning 'low' priority
     visit root_url
-    login 'test@gmail.com', '123456789'
+    login 'test@uwaterloo.ca', '123456789'
     assert_current_path root_url
     
     click_on "Submit for"
@@ -53,7 +53,7 @@ class AddPriorityToFeedbacksTest < ApplicationSystemTestCase
   def test_create_feedback_with_selected_priority
     #Passes acceptance criteria 1: Student submits a feedback with a selected priority
     visit root_url
-    login 'test@gmail.com', '123456789'
+    login 'test@uwaterloo.ca', '123456789'
     assert_current_path root_url
     
     click_on "Submit for"
@@ -84,7 +84,7 @@ class AddPriorityToFeedbacksTest < ApplicationSystemTestCase
     feedback4 = save_feedback(7, "Week 7 data 2", @user2, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
     
     visit root_url 
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url 
     click_on "Test Team", match: :first
     assert_current_path team_path(@team)
@@ -118,7 +118,7 @@ class AddPriorityToFeedbacksTest < ApplicationSystemTestCase
     feedback3 = save_feedback(7, "Data2", @user10, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2, "progress_comments", 2,2,2,2,2,2,2,2,2)
     
     visit root_url 
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url 
     
     assert_text 'Current Week: ' + @week_range[:start_date].strftime('%b %-e, %Y').to_s + " to " + @week_range[:end_date].strftime('%b %-e, %Y').to_s
@@ -134,7 +134,7 @@ class AddPriorityToFeedbacksTest < ApplicationSystemTestCase
     feedback6 = save_feedback(2, "Data3", @user10, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 1, "progress_comments", 3,3,3,3,3,3,3,3,3)
     
     visit root_url 
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url 
     
     assert_text 'Current Week: ' + @week_range[:start_date].strftime('%b %-e, %Y').to_s + " to " + @week_range[:end_date].strftime('%b %-e, %Y').to_s
@@ -150,7 +150,7 @@ class AddPriorityToFeedbacksTest < ApplicationSystemTestCase
     feedback6 = save_feedback(1, "Data3", @user10, DateTime.civil_from_format(:local, 2021, 2, 16), @team, 2, "progress_comments", 4,4,4,4,4,4,4,4,4)
     
     visit root_url 
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url 
     
     assert_text 'Current Week: ' + @week_range[:start_date].strftime('%b %-e, %Y').to_s + " to " + @week_range[:end_date].strftime('%b %-e, %Y').to_s

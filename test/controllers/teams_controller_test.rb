@@ -4,9 +4,9 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
   setup do
     Option.create(reports_toggled: true)
     # create test admin
-    @prof = User.new(email: 'charles@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Marcos', is_admin: true)
+    @prof = User.new(email: 'charles@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Marcos', is_admin: true)
     @prof.save
-    @user = User.new(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Marcos', is_admin: false)
+    @user = User.new(email: 'charles2@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Marcos', is_admin: false)
     @user.save
 
     @team = Team.new(team_code: 'Code', team_name: 'Team 1')
@@ -14,7 +14,7 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
     @team.save
     @user.teams << @team
     # login user
-    post('/login', params: { email: 'charles@gmail.com', password: 'banana'})
+    post('/login', params: { email: 'charles@uwaterloo.ca', password: 'banana'})
       assert_redirected_to root_url
   end
 
@@ -46,10 +46,10 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
   def test_should_not_show_team 
     get '/logout'
     
-    user2 = User.new(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Marcos', is_admin: false)
+    user2 = User.new(email: 'charles3@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Marcos', is_admin: false)
     user2.save
     
-    post('/login', params: { email: 'charles3@gmail.com', password: 'banana'})
+    post('/login', params: { email: 'charles3@uwaterloo.ca', password: 'banana'})
     get team_url(@team)
     assert_redirected_to root_url
   end
@@ -74,7 +74,7 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
   
   def test_student_cannot_destroy_team 
     get('/logout')
-    post('/login', params: { email: 'charles2@gmail.com', password: 'banana'})
+    post('/login', params: { email: 'charles2@uwaterloo.ca', password: 'banana'})
     
     assert_difference('Team.count', 0) do
       delete team_url(@team)
@@ -88,7 +88,7 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
     team2.user = @prof
     team2.save
     
-    user2 = User.new(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Marcos', is_admin: false)
+    user2 = User.new(email: 'charles3@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Marcos', is_admin: false)
     user2.teams = [team2]
     user2.save
     
@@ -156,21 +156,21 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
     # logout admin
     get '/logout'
     # login to user account
-    post('/login', params: { email: 'charles2@gmail.com', password: 'banana'})
+    post('/login', params: { email: 'charles2@uwaterloo.ca', password: 'banana'})
 
     get team_url(@team)
     assert_response :success
-    post('/login', params: { email: 'charles@gmail.com', password: 'banana'}) 
+    post('/login', params: { email: 'charles@uwaterloo.ca', password: 'banana'}) 
   end
   
   def test_delete_user_from_team_as_prof
-    post(login_path, params: { email: 'msmucker@gmail.com', password: 'professor'})
+    post(login_path, params: { email: 'msmucker@uwaterloo.ca', password: 'professor'})
     post team_remove_user_from_team_path(user_id: @user.id, team_id: @team.id)
     assert_equal([], @team.users)
   end
   
   def test_delete_user_from_team_as_student
-    post(login_path, params: { email: 'charles2@gmail.com', password: 'banana'})
+    post(login_path, params: { email: 'charles2@uwaterloo.ca', password: 'banana'})
     post team_remove_user_from_team_path(user_id: @user.id, team_id: @team.id)
     assert_not_equal([], @team.users)
   end

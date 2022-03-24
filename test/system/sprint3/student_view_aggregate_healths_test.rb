@@ -7,10 +7,10 @@ class StudentViewAggregateHealthsTest < ApplicationSystemTestCase
   include FeedbacksHelper
   
   setup do 
-    @user = User.new(email: 'test@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Adam', lastname: 'Traore', is_admin: false)
-    @user2 = User.new(email: 'test2@gmail.com', password: '1234567891', password_confirmation: '1234567891', name: 'Adam2', lastname: 'Traore2', is_admin: false)
-    @user3 = User.new(email: 'test10@gmail.com', password: '1234567891', password_confirmation: '1234567891', name: 'Adam10', lastname: 'Traore10', is_admin: false)
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    @user = User.new(email: 'test@uwaterloo.ca', password: '123456789', password_confirmation: '123456789', name: 'Adam', lastname: 'Traore', is_admin: false)
+    @user2 = User.new(email: 'test2@uwaterloo.ca', password: '1234567891', password_confirmation: '1234567891', name: 'Adam2', lastname: 'Traore2', is_admin: false)
+    @user3 = User.new(email: 'test10@uwaterloo.ca', password: '1234567891', password_confirmation: '1234567891', name: 'Adam10', lastname: 'Traore10', is_admin: false)
+    @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     @team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
     @team2 = Team.create(team_name: 'Test Team 2', team_code: 'TEAM02', user: @prof)
     @user.teams << @team
@@ -34,7 +34,7 @@ class StudentViewAggregateHealthsTest < ApplicationSystemTestCase
     average_rating = 10.0
     
     visit root_url 
-    login 'test@gmail.com', '123456789'
+    login 'test@uwaterloo.ca', '123456789'
     assert_current_path root_url 
     
     assert_text 'Current Week: ' + @week_range[:start_date].strftime('%b %-e, %Y').to_s + " to " + @week_range[:end_date].strftime('%b %-e, %Y').to_s
@@ -54,7 +54,7 @@ class StudentViewAggregateHealthsTest < ApplicationSystemTestCase
     average_ratingMarch = 7.5
     
     visit root_url 
-    login 'test@gmail.com', '123456789'
+    login 'test@uwaterloo.ca', '123456789'
     assert_current_path root_url 
     click_on 'View Historical Data'
     assert_current_path team_path(@team)
@@ -80,7 +80,7 @@ class StudentViewAggregateHealthsTest < ApplicationSystemTestCase
     
     visit root_url 
     #user1 should not be able to view user3's weekly team health data
-    login 'test@gmail.com', '123456789'
+    login 'test@uwaterloo.ca', '123456789'
     visit team_url(@team2)
     assert_current_path root_url
   end 

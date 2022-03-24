@@ -6,11 +6,11 @@ require "application_system_test_case"
 
 class AddChangePasswordsTest < ApplicationSystemTestCase
   def test_change_password 
-    User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
 
     # log professor in
     visit root_url
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url
     
     click_on 'Change Password'
@@ -23,19 +23,19 @@ class AddChangePasswordsTest < ApplicationSystemTestCase
     assert_text 'Password successfully updated!'
     click_on 'Logout'
     
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path login_url 
     
-    login 'msmucker@gmail.com', 'professor2'
+    login 'msmucker@uwaterloo.ca', 'professor2'
     assert_current_path root_url
   end
   
   def test_change_password_incorrect_existing
-    User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
 
     # log professor in
     visit root_url
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url
     
     click_on 'Change Password'
@@ -49,10 +49,10 @@ class AddChangePasswordsTest < ApplicationSystemTestCase
     click_on 'Back'
     click_on 'Logout'
     
-    login 'msmucker@gmail.com', 'professor3'
+    login 'msmucker@uwaterloo.ca', 'professor3'
     assert_current_path login_url 
     
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url
   end
 end

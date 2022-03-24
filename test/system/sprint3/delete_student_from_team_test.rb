@@ -8,9 +8,9 @@ class DeleteStudentFromTeamTest < ApplicationSystemTestCase
   setup do
     Option.create(reports_toggled: true)
     @generated_code = Team.generate_team_code
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     @team = Team.create(team_name: 'Test Team', team_code: @generated_code.to_s, user: @prof)
-    @bob = User.create(email: 'bob@gmail.com', name: 'Bob', lastname: 'Bold', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+    @bob = User.create(email: 'bob@uwaterloo.ca', name: 'Bob', lastname: 'Bold', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
     @bob.teams << @team
   end
   
@@ -18,7 +18,7 @@ class DeleteStudentFromTeamTest < ApplicationSystemTestCase
   def test_delete_student_as_prof
     visit root_url 
     # Login as professor
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
 
     click_on "Manage Teams"
     click_on "Test Team"
@@ -32,7 +32,7 @@ class DeleteStudentFromTeamTest < ApplicationSystemTestCase
   def test_delete_student_as_student
     visit root_url 
     # Login as student
-    login 'bob@gmail.com', 'testpassword'
+    login 'bob@uwaterloo.ca', 'testpassword'
     visit team_path(@bob.teams.first.id)
     
     # Verify that we are on the team's page

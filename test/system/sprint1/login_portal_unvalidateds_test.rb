@@ -13,14 +13,14 @@ require "application_system_test_case"
 class LoginPortalUnvalidatedsTest < ApplicationSystemTestCase
   # (1)
   def test_login 
-    prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: prof)
-    bob = User.create(email: 'bob@gmail.com', name: 'Bob', lastname: 'Folden', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+    bob = User.create(email: 'bob@uwaterloo.ca', name: 'Bob', lastname: 'Folden', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
     bob.teams << team
     
     # login with valid credentials
     visit root_url 
-    login 'bob@gmail.com', 'testpassword'
+    login 'bob@uwaterloo.ca', 'testpassword'
     assert_current_path root_url
     
     visit login_url 
@@ -42,7 +42,7 @@ class LoginPortalUnvalidatedsTest < ApplicationSystemTestCase
   def test_invalid_login
     # login with invalid credentials
     visit root_url 
-    login 'bad@gmail.com', 'bad'
+    login 'bad@uwaterloo.ca', 'bad'
     assert_current_path login_url 
     
     # test urls to see if they can be accessed without logging in
@@ -61,12 +61,12 @@ class LoginPortalUnvalidatedsTest < ApplicationSystemTestCase
     # SPRINT 2 UPDATE: Since students are now able to see reports they were involved in, this test has been modified to allow reports_url to be accessed without admin status.
     
     # login as student 
-    prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: prof)
-    bob = User.create(email: 'bob@gmail.com', name: 'Bob', lastname: 'Folden', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+    bob = User.create(email: 'bob@uwaterloo.ca', name: 'Bob', lastname: 'Folden', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
     bob.teams << team
     visit root_url 
-    login 'bob@gmail.com', 'testpassword'
+    login 'bob@uwaterloo.ca', 'testpassword'
     assert_current_path root_url 
     
     # test urls to see if they can be accessed without admin status
@@ -84,7 +84,7 @@ class LoginPortalUnvalidatedsTest < ApplicationSystemTestCase
     
     # login as admin
     visit root_url 
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url 
     
     # test urls to see if they can be accessed without admin status

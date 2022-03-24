@@ -7,8 +7,8 @@ require "application_system_test_case"
 
 class CreateFeedbackValidationsTest < ApplicationSystemTestCase
    setup do
-    @user = User.new(email: 'test@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Adam', lastname: 'Gold', is_admin: false)
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    @user = User.new(email: 'test@uwaterloo.ca', password: '123456789', password_confirmation: '123456789', name: 'Adam', lastname: 'Gold', is_admin: false)
+    @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     @team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
     @user.teams << @team
     @user.save
@@ -33,7 +33,7 @@ class CreateFeedbackValidationsTest < ApplicationSystemTestCase
     #Passes acceptance criteria 2: Student can submit feedback with no comment
     #"Happy test", student submits feedback with no comments
     visit root_url
-    login 'test@gmail.com', '123456789'
+    login 'test@uwaterloo.ca', '123456789'
     assert_current_path root_url
     
     click_on "Submit for"
@@ -59,7 +59,7 @@ class CreateFeedbackValidationsTest < ApplicationSystemTestCase
     #Passes acceptance criteria 3: Student cannot submit a comment that has greater than 2048 characters
     #"Sad test", student tries to submit feedback with a comment that is greater than 2048 characters
     visit root_url
-    login 'test@gmail.com', '123456789'
+    login 'test@uwaterloo.ca', '123456789'
     assert_current_path root_url
     
     click_on "Submit for"
@@ -75,7 +75,7 @@ class CreateFeedbackValidationsTest < ApplicationSystemTestCase
   def test_create_valid_feedback_default_priority
     #Passes acceptance criteria 4: Student cannot submit feedback without priority, instead the default value for priority is 2, meaning 'low' priority
     visit root_url
-    login 'test@gmail.com', '123456789'
+    login 'test@uwaterloo.ca', '123456789'
     assert_current_path root_url
     
     click_on "Submit for"

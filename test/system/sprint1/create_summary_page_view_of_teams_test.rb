@@ -7,21 +7,21 @@ require "application_system_test_case"
 class CreateSummaryPageViewOfTeamsTest < ApplicationSystemTestCase
   setup do
     # create prof, team, and user
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     
     @team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
     @team2 = Team.create(team_name: 'Test Team 2', team_code: 'TEAM02', user: @prof)
     
-    @bob = User.create(email: 'bob@gmail.com', name: 'Bob', lastname: 'Kosner', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+    @bob = User.create(email: 'bob@uwaterloo.ca', name: 'Bob', lastname: 'Kosner', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
     @bob.teams << @team
     
-    @andy = User.create(email: 'andy@gmail.com', name: 'Andy', lastname: 'Polsen', is_admin: false, password: 'testpassword2', password_confirmation: 'testpassword2')
+    @andy = User.create(email: 'andy@uwaterloo.ca', name: 'Andy', lastname: 'Polsen', is_admin: false, password: 'testpassword2', password_confirmation: 'testpassword2')
     @andy.teams << @team
     
-    @sarah = User.create(email: 'sarah@gmail.com', name: 'Sarah', lastname: 'Solde', is_admin: false, password: 'testpassword3', password_confirmation: 'testpassword3')
+    @sarah = User.create(email: 'sarah@uwaterloo.ca', name: 'Sarah', lastname: 'Solde', is_admin: false, password: 'testpassword3', password_confirmation: 'testpassword3')
     @sarah.teams << @team
     
-    @mike = User.create(email: 'mike@gmail.com', name: 'Mike', lastname: 'Wazowski', is_admin: false, password: 'testpassword4', password_confirmation: 'testpassword4')
+    @mike = User.create(email: 'mike@uwaterloo.ca', name: 'Mike', lastname: 'Wazowski', is_admin: false, password: 'testpassword4', password_confirmation: 'testpassword4')
     @mike.teams << @team2
   end
   
@@ -36,7 +36,7 @@ class CreateSummaryPageViewOfTeamsTest < ApplicationSystemTestCase
     feedback.save
     
     visit root_url 
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     
     click_on "Feedback & Ratings"
     assert_current_path feedbacks_url
@@ -72,7 +72,7 @@ class CreateSummaryPageViewOfTeamsTest < ApplicationSystemTestCase
     feedbackSarah.save
     
     visit root_url 
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     
     #check to see landing page summary view of team's average ratings
     assert_text "Test Team"
@@ -117,7 +117,7 @@ class CreateSummaryPageViewOfTeamsTest < ApplicationSystemTestCase
   #def test_team_aggregated_view_no_feedback
   #  #when a team has no feedback submitted
   #  visit root_url 
-  #  login 'msmucker@gmail.com', 'professor'
+  #  login 'msmucker@uwaterloo.ca', 'professor'
   #  
   #  #check to see landing page summary view of team's average ratings
   #  assert_text "Test Team 2"

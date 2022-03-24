@@ -8,12 +8,12 @@ require "application_system_test_case"
 class ListUsersWithoutSubmissionsTest < ApplicationSystemTestCase
   setup do
     # create prof, team, and user
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
-    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Chocolate1', is_admin: false)
+    @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    user1 = User.create(email: 'charles2@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Chocolate1', is_admin: false)
     user1.save!
-    user2 = User.create(email: 'charles3@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Chocolate2', is_admin: false)
+    user2 = User.create(email: 'charles3@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles2', lastname: 'Chocolate2', is_admin: false)
     user2.save!
-    user3 = User.create(email: 'charles4@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles3', lastname: 'Chocolate3', is_admin: false)
+    user3 = User.create(email: 'charles4@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles3', lastname: 'Chocolate3', is_admin: false)
     team = Team.new(team_code: 'Code', team_name: 'Team Cst')
     team.users = [user1, user2, user3]
     team.user = @prof 
@@ -26,7 +26,7 @@ class ListUsersWithoutSubmissionsTest < ApplicationSystemTestCase
   # (1)
   def test_not_submitted_feedback_summary_view 
     visit root_url 
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url 
     
     assert_text "Missing Feedback"
@@ -36,7 +36,7 @@ class ListUsersWithoutSubmissionsTest < ApplicationSystemTestCase
   # (2)
   def test_not_submitted_feedback_detailed_view 
     visit root_url 
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url 
     click_on "Manage Teams"
     assert_current_path teams_url 

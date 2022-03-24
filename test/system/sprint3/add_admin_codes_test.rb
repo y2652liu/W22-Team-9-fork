@@ -9,9 +9,9 @@ require "application_system_test_case"
 class AddAdminCodesTest < ApplicationSystemTestCase
   setup do 
     # create prof, team, and user
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     @team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
-    @bob = User.create(email: 'bob@gmail.com', name: 'Bob', lastname: 'Kosner', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+    @bob = User.create(email: 'bob@uwaterloo.ca', name: 'Bob', lastname: 'Kosner', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
     @bob.teams << @team
     
     Option.destroy_all
@@ -21,7 +21,7 @@ class AddAdminCodesTest < ApplicationSystemTestCase
   # (1)
   def test_view_admin_code 
     visit root_url 
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     
     assert_text 'admin_CODE'
   end
@@ -29,7 +29,7 @@ class AddAdminCodesTest < ApplicationSystemTestCase
   # (3)
   def test_cannot_view_admin_code 
     visit root_url 
-    login 'bob@gmail.com', 'testpassword'
+    login 'bob@uwaterloo.ca', 'testpassword'
     
     assert_no_text 'admin_CODE'
   end
@@ -37,7 +37,7 @@ class AddAdminCodesTest < ApplicationSystemTestCase
   # (2)
   def test_regenerate_admin_code 
     visit root_url 
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     
     click_on 'Regenerate Code'
     assert_current_path root_url
@@ -48,7 +48,7 @@ class AddAdminCodesTest < ApplicationSystemTestCase
   # (4)
   def test_cannot_regenerate_admin_code
     visit root_url 
-    login 'bob@gmail.com', 'testpassword'
+    login 'bob@uwaterloo.ca', 'testpassword'
     
     assert_no_text 'Regenerate Code'
     
@@ -60,7 +60,7 @@ class AddAdminCodesTest < ApplicationSystemTestCase
   # 04/09/2021: bugfix - test that team cannot be created with admin code
   def test_cannot_use_code_for_team 
     visit root_url 
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
 
     click_on "Manage Teams"
     find('#new-team-link').click
