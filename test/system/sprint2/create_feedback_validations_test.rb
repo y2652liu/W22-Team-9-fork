@@ -49,6 +49,7 @@ class CreateFeedbackValidationsTest < ApplicationSystemTestCase
     choose('feedback[respect_rating]', option: 4)
     choose('feedback[motivation_rating]', option: 4)
     select "Urgent - I believe my team has serious issues and needs immediate intervention.", :from => "feedback[priority]"
+    fill_in 'feedback_comments', :with => 'i hate this team'
     click_on "Create Feedback"
     assert_current_path root_url
     assert_text "Feedback was successfully created."

@@ -13,11 +13,16 @@ class Feedback < ApplicationRecord
   validates_presence_of :decision_rating
   validates_presence_of :respect_rating
   validates_presence_of :motivation_rating
+  validates_presence_of :comments, presence: true, if: :priority_status?, message: "are required for urgent priority"
+  
   #allows a max of 2048 characters for additional comments
   validates_length_of :comments, :maximum => 2048, :message => "Please limit your comment to 2048 characters or less!"
   validates_length_of :progress_comments, :maximum => 2048, :message => "Please limit your comment to 2048 characters or less!"
 
-
+  def priority_status?
+    self.priority == 0
+  end
+  
   def format_time(given_date)
   #refomats the UTC time in terms if YYYY/MM?DD HH:MM
       #current_time = given_date.in_time_zone('Eastern Time (US & Canada)').strftime('%Y/%m/%d %H:%M')
