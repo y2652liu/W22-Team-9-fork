@@ -277,21 +277,21 @@ class FeedbackTest < ActiveSupport::TestCase
     #Unsorted order: "4", "0", "2"
     unsorted = Feedback.all
     #Sorted order: "0", "2", "4" 
-    sorted = Feedback.order_by 'team'
+    sorted = Feedback.order_by 'rating'
 
     #USER ACCEPTANCE CRITERIA VERIFICATION:
 
     #The user acceptance criteria is verified when the first Team is "0"
-    assert_equal(unsorted[2].rating,sorted[0].rating)
-    assert_equal(feedback3.rating,sorted[0].rating)
+    assert_equal(unsorted[1].rating,sorted[0].rating)
+    assert_equal(feedback2.rating,sorted[0].rating)
 
     #The user acceptance criteria is verified when the second Team is "2"
-    assert_equal(unsorted[0].rating,sorted[1].rating)
-    assert_equal(feedback.rating,sorted[1].rating)
+    assert_equal(unsorted[2].rating,sorted[1].rating)
+    assert_equal(feedback3.rating,sorted[1].rating)
 
     #The user acceptance criteria is verified when the third Team is "4" 
-    assert_equal(unsorted[1].rating,sorted[2].rating)
-    assert_equal(feedback2.rating,sorted[2].rating)
+    assert_equal(unsorted[0].rating,sorted[2].rating)
+    assert_equal(feedback.rating,sorted[2].rating)
   end
 
 end

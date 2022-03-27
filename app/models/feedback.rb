@@ -56,7 +56,8 @@ class Feedback < ApplicationRecord
       WHERE f.team_id = t.id AND u.id = f.user_id  
       ORDER BY u.name asc")
     elsif field == 'rating'
-      return Feedback.order('feedbacks.rating asc')
+      #Used the idea of sorting by calling the method within the model: https://stackoverflow.com/questions/4055799/how-do-you-order-by-a-custom-model-method-that-has-no-attribute-in-sql
+      Feedback.all.sort_by(&:overall_rating)
     end
   end
 end
