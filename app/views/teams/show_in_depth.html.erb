@@ -1,55 +1,62 @@
 <% @team= Team.find params[:id] %>
 
+<h1>In Depth Look at <%=@team.team_name %>'s Feedback </h1>
+
+<p>Goal Rating: We are accomplishing goals we set for ourselves</p>
+<p>Communication Rating: Communication has been clear and consistent</p>
+<p>Positive Rating: Our team keeps a positive attitude regardless of the situation</p>
+<p>Motivation Rating: I feel like I can reach out at any moment for help</p>
+<p>Bounce Rating: My team is able to bounce back when facing a problem</p>
+<p>Accountability Rating: My team members take accountability for their roles</p>
+<p>Decision Rating: My team is able to effectively make decisions</p>
+<p>Respect Rating: I feel respected in my role as a part of the team </p>
+<p>Rating: I would say that my team health is exceptional</p>
+<% @team.feedbacks.each do |feedback| %>
+
+
 <table>
-    <thead>
-      <tr>
-        <th><%= 'Name' %></th>
-        <th><%= 'Goal Rating' %></th>
-        <th><%= 'Communication Rating' %></th>
-        <th><%= 'Positive Rating' %></th>
-        <th><%= 'Motivation Rating' %></th>
-        <th><%= 'Reach Rating' %></th>
-        <th><%= 'Bounce Rating' %></th>
-        <th><%= 'Account Rating' %></th>
-        <th><%= 'Decision Rating' %></th>
-        <th><%= 'Respect Rating' %></th>
-        <th><%= 'Rating' %></th>
-
-        <th colspan="11" style="width: 150px;"></th>
-      </tr>
-    </thead>
-
+    <caption><b><%= feedback.user.name + " " + feedback.user.lastname %></b></caption>
     <tbody>
-      <% @team.feedbacks.each do |feedback| %>
-        <tr>
-          <td><%= feedback.user.name + " " +feedback.user.lastname %></td>
+      <tr>
+        <td><%= 'Goal Rating' %></td>
+        <td><%= feedback.goal_rating %></td>
+        <td><%= 'Bounce Rating' %></td>
+        <td><%= feedback.bounce_rating %></td>
+      </tr>
+      <tr>
+        <td><%= 'Communication Rating' %></td>
+        <td><%= feedback.communication_rating %></td>
 
-          <td><%= feedback.goal_rating %></td>
-        
-          <td><%= feedback.communication_rating %></td>
-       
-          <td><%= feedback.positive_rating %></td>
-    
-          <td><%= feedback.motivation_rating %></td>
-    
-          <td><%= feedback.reach_rating %></td>
-       
-          <td><%= feedback.bounce_rating %></td>
-       
-          <td><%= feedback.account_rating %></td>
-       
-          <td><%= feedback.decision_rating %></td>
-       
-          <td><%= feedback.respect_rating %></td>
-        
-          <td><%= feedback.rating %></td>
-        </tr>
+        <td><%= 'Accountability Rating' %></td>
+        <td><%= feedback.account_rating %></td>
+      </tr>
+      <tr>
+        <td><%= 'Positive Rating' %></td>
+        <td><%= feedback.positive_rating %></td>
 
-        <tr>
-          <td Colspan="6" style= "align=left"><%= "Comments: " + feedback.comments %></td>
-          <td Colspan="6"><%= "Progress Comments: "+feedback.progress_comments %></td>
-        </tr>
+        <td><%= 'Decision Rating' %></td>
+        <td><%= feedback.decision_rating %></td>
+      </tr>
+      <tr>
+        <td><%= 'Motivation Rating' %></td>
+        <td><%= feedback.motivation_rating %></td>
 
-      <% end %>
+        <td><%= 'Respect Rating' %></td>
+        <td><%= feedback.respect_rating %></td>
+      </tr>
+
+      <tr>
+        <td><%= 'Reach Rating' %></td>
+        <td><%= feedback.reach_rating %></td>
+
+        <td><%= 'Rating' %></td>
+        <td><%= feedback.rating %></td>
+      </tr>
     </tbody>
-  </table>
+</table>
+<b>Comments: </b><%=  feedback.comments %><br>
+<b>Progress Comments: </b><%= feedback.progress_comments %>
+ <hr>
+ 
+ <% end %>
+
