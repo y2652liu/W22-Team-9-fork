@@ -33,8 +33,14 @@
             <td><%= link_to team.team_name, team %></td>
             <td><%= priority ? priority : "No feedback" %></td>
             
+            <% if @unsubmitted[:current_week][team.id].size == 0%>
             <% average_rating = Team.feedback_average_rating(team.feedbacks.where(timestamp: @week_range[:start_date]..@week_range[:end_date]),team.users)%>
             <td><%= average_rating ? average_rating.round(2) : "No feedback" %></td>
+            
+            <% else %>
+            <td></td>
+            <%end%>
+
             <td><%= team.student_names.size == 0 ? 'No members' : team.student_names.join(", ") %></td>
             <td><%= @unsubmitted[:current_week][team.id].size == 0 ? 'All submitted!' : @unsubmitted[:current_week][team.id].size %></td>
             
