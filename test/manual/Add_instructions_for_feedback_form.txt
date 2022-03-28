@@ -4,7 +4,7 @@ T1: Ensure that the feedback form contains clear instructions
 USER ACCEPTANCE CRITERIA: Explanation for 1-5 system is shown
 USER ACCEPTANCE CRITERIA: Explanation for urgent attention is shown
 1. Enter the following in each field: 
-    msmucker@gmail.com 
+    msmucker@uwaterloo.ca 
     professor
 2. Move mouse to 'Manage Teams', and click on 'New Team'
 3. Create a team and copy the Team Code

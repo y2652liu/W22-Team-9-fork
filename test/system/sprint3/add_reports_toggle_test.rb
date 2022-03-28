@@ -6,11 +6,11 @@ require "application_system_test_case"
 class AddReportsTogglesTest < ApplicationSystemTestCase
   setup do
     @generated_code = Team.generate_team_code
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     @team = Team.create(team_name: 'Test Team', team_code: @generated_code.to_s, user: @prof)
-    @bob = User.create(email: 'bob@gmail.com', name: 'Bob', lastname: 'Bold', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+    @bob = User.create(email: 'bob@uwaterloo.ca', name: 'Bob', lastname: 'Bold', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
     @bob.teams << @team
-    @steve = User.create(email: 'steve@gmail.com', name: 'Steve', lastname: 'Stout', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+    @steve = User.create(email: 'steve@uwaterloo.ca', name: 'Steve', lastname: 'Stout', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
     @steve.teams << @team
   end
   
@@ -22,7 +22,7 @@ class AddReportsTogglesTest < ApplicationSystemTestCase
   #   visit root_url 
     
   #   # Login as professor
-  #   login 'msmucker@gmail.com', 'professor'
+  #   login 'msmucker@uwaterloo.ca', 'professor'
     
   #   # Verify that reports_toggled is initially false
   #   assert_equal(Option.first.reports_toggled, false)
@@ -37,7 +37,7 @@ class AddReportsTogglesTest < ApplicationSystemTestCase
   #   click_on "Logout"
     
   #   # Login as student
-  #   login 'bob@gmail.com', 'testpassword'
+  #   login 'bob@uwaterloo.ca', 'testpassword'
     
   #   click_on "Submit a Report"
     
@@ -68,7 +68,7 @@ class AddReportsTogglesTest < ApplicationSystemTestCase
   #   Option.create(reports_toggled: true)
     
   #   visit root_url 
-  #   login 'msmucker@gmail.com', 'professor'
+  #   login 'msmucker@uwaterloo.ca', 'professor'
     
   #   # Verify that reports_toggled is initially true
   #   assert_equal(Option.first.reports_toggled, true)
@@ -87,7 +87,7 @@ class AddReportsTogglesTest < ApplicationSystemTestCase
   #   click_on "Logout"
     
   #   # Login as student
-  #   login 'bob@gmail.com', 'testpassword'
+  #   login 'bob@uwaterloo.ca', 'testpassword'
     
   #   # Ensure students do not have the option to submit or view reports
   #   assert_no_text "Submit Report"

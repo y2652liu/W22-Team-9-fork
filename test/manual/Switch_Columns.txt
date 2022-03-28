@@ -4,7 +4,7 @@ T1: Switch Name and Email Columns
 USER ACCEPTANCE CRITERIA: Name column is first
 USER ACCEPTANCE CRITERIA: Email column is second
 1. Enter the following in each field: 
-    msmucker@gmail.com 
+    msmucker@uwaterloo.ca
     professor
 2. Navigate to instructor dashboard
 3. Navigate to "Manage Users" Tab
@@ -15,7 +15,7 @@ USER ACCEPTANCE CRITERIA: Email column is second
 
 T1: Switch Team Column for Instructor Dashboard
 1. Enter the following in each field: 
-    msmucker@gmail.com 
+    msmucker@uwaterloo.ca
     professor
 2. Navigate to instructor dashboard
 3. Team Name should be displayed first under both current week and previous week sections

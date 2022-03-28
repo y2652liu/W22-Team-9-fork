@@ -9,15 +9,15 @@ class NextButtonTest < ApplicationSystemTestCase
     #setup taken from submit_after_wednesday.rb
     setup do
         # create prof, team, and user
-        @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+        @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
         
         @team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
         @team2 = Team.create(team_name: 'Test Team 2', team_code:'TEAM02', user: @prof)
 
-        @cici = User.create(email: 'cici@gmail.com', name: 'Cici', lastname: 'Liu', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+        @cici = User.create(email: 'cici@uwaterloo.ca', name: 'Cici', lastname: 'Liu', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
         @cici.teams << @team
 
-        @mike = User.create(email: 'bob@gmail.com', name: 'Mike', lastname: 'lin', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+        @mike = User.create(email: 'bob@uwaterloo.ca', name: 'Mike', lastname: 'lin', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
 
         @mike.teams << @team2
 
@@ -26,7 +26,7 @@ class NextButtonTest < ApplicationSystemTestCase
     # check button function
     def test_next_button
         visit root_url 
-        login 'msmucker@gmail.com', 'professor'
+        login 'msmucker@uwaterloo.ca', 'professor'
         assert_current_path root_url
 
         click_on "Manage Teams"
@@ -43,7 +43,7 @@ class NextButtonTest < ApplicationSystemTestCase
     # check previous button function
     def test_previous_button
         visit root_url 
-        login 'msmucker@gmail.com', 'professor'
+        login 'msmucker@uwaterloo.ca', 'professor'
         assert_current_path root_url
 
         click_on "Manage Teams"

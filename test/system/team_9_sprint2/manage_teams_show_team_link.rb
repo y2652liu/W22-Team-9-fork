@@ -10,18 +10,18 @@ class ShowTeamLink < ApplicationSystemTestCase
 
     setup do
         # create prof, team, and user
-        @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+        @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
         
         @team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
         
-        @mike = User.create(email: 'bob@gmail.com', name: 'Mike', lastname: 'Jackson', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+        @mike = User.create(email: 'bob@uwaterloo.ca', name: 'Mike', lastname: 'Jackson', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
         @mike.teams << @team
         
     end
 
     def test_team_name_link_show
         visit root_url 
-        login 'msmucker@gmail.com', 'professor'
+        login 'msmucker@uwaterloo.ca', 'professor'
         click_on "Manage Teams"
         assert_current_path teams_url
  

@@ -9,19 +9,19 @@ require "application_system_test_case"
 class ReportStudentUsingDropdownUnvalidatedsTest < ApplicationSystemTestCase
   setup do
     # create prof, team, and user
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     @team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
     @team2 = Team.create(team_name: 'Test Team 2', team_code: 'TEAM02', user: @prof)
-    @bob = User.create(email: 'bob@gmail.com', name: 'Bob', lastname: 'Folden', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+    @bob = User.create(email: 'bob@uwaterloo.ca', name: 'Bob', lastname: 'Folden', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
     @bob.teams << @team
-    @steve = User.create(email: 'steve@gmail.com', name: 'Steve', lastname: 'Stuart', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+    @steve = User.create(email: 'steve@uwaterloo.ca', name: 'Steve', lastname: 'Stuart', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
     @steve.teams << @team2
   end
   
   # (1, 2, 3, 4) 
   # def test_add_report 
   #   visit root_url 
-  #   login 'bob@gmail.com', 'testpassword'
+  #   login 'bob@uwaterloo.ca', 'testpassword'
     
   #   click_on "Submit a Report"
     

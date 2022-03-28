@@ -5,8 +5,8 @@ require "application_system_test_case"
 
 class PopulateEditFeedbackWithRatingTest < ApplicationSystemTestCase
   setup do
-    @user = User.new(email: 'test@gmail.com', password: 'password', password_confirmation: 'password', name: 'user', lastname: 'test', is_admin: false)
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    @user = User.new(email: 'test@uwaterloo.ca', password: 'password', password_confirmation: 'password', name: 'user', lastname: 'test', is_admin: false)
+    @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     @team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
     @user.teams << @team
     @user.save
@@ -19,7 +19,7 @@ class PopulateEditFeedbackWithRatingTest < ApplicationSystemTestCase
     
   def population_test
        visit root_url 
-       login 'msmucker@gmail.com', 'professor'
+       login 'msmucker@uwaterloo.ca', 'professor'
        
        click_on "Feedback & Ratings"
        click_on "Edit"

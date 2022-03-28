@@ -3,7 +3,7 @@
 T1: Ensure Feedback Questions are written and Co-ordinated Correctly
 USER ACCEPTANCE CRITERIA: "I would say my team's health is exception" is the final radio button question
 1. Enter the following in each field: 
-    msmucker@gmail.com 
+    msmucker@uwaterloo.ca
     professor
 2. Move mouse to 'Manage Teams', and click on 'New Team'
 3. Create a team and copy the Team Code
@@ -17,7 +17,7 @@ USER ACCEPTANCE CRITERIA: "I would say my team's health is exception" is the fin
 T2: Ensure the radio button layout for feedback questions is correct
 USER ACCEPTANCE CRITERIA: There are 10 radio button questions
 1. Enter the following in each field: 
-    msmucker@gmail.com 
+    msmucker@uwaterloo.ca
     professor
 2. Move mouse to 'Manage Teams', and click on 'New Team'
 3. Create a team and copy the Team Code

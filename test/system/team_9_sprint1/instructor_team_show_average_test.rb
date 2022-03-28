@@ -7,12 +7,12 @@ require "application_system_test_case"
   # I modeled this test class off of help_pages_test created
   # by the earlier team
   #setup do
-    #@prof = User.create(email: 'msmucker@gmail.com', name: 'Mark Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    #@prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     #@team = Team.new(team_code: 'Code', team_name: 'Team 1', id: 1)
     #@team.user = @prof 
     #@team.save!
     
-    #@user1 = User.create(email: 'test@gmail.com', name: 'Test User', is_admin: false, password: 'Security!', password_confirmation: 'Security!', teams: [@team])
+    #@user1 = User.create(email: 'test@uwaterloo.ca', name: 'Test User', is_admin: false, password: 'Security!', password_confirmation: 'Security!', teams: [@team])
     #@user1.save
 
 
@@ -21,7 +21,7 @@ require "application_system_test_case"
     #@feedback = save_feedback(10, "This team is disorganized", @user1, Time.zone.now.to_datetime - 30, @team, 2) 
     #@feedback = save_feedback(4, "This team is disorganized", @user2, Time.zone.now.to_datetime - 30, @team, 2) 
     #visit root_url
-    #login 'msmucker@gmail.com', 'professor'
+    #login 'msmucker@uwaterloo.ca', 'professor'
   #end
 
 
