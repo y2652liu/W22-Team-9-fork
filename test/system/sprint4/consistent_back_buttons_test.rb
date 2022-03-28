@@ -4,9 +4,9 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
   include FeedbacksHelper
   
   setup do 
-    @prof = User.new(email: 'msmucker@gmail.com', password: 'professor', password_confirmation: 'professor', name: 'Mark', lastname: 'Smucker', is_admin: true)
+    @prof = User.new(email: 'msmucker@uwaterloo.ca', password: 'professor', password_confirmation: 'professor', name: 'Mark', lastname: 'Smucker', is_admin: true)
     @prof.save
-    @user1 = User.new(email: 'adam@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Adam', lastname: 'Traore', is_admin: false)
+    @user1 = User.new(email: 'adam@uwaterloo.ca', password: '123456789', password_confirmation: '123456789', name: 'Adam', lastname: 'Traore', is_admin: false)
     @user1.save
 
     @team1 = Team.new(team_code: 'Code', team_name: 'Team 1')
@@ -18,7 +18,7 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
   def test_manage_team_back_to_home_page
     #Check to verify that the user can go back to home page from the "Manage Team Page", teams#index
     visit root_url
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url
     
     click_on "Manage Teams"
@@ -31,7 +31,7 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
   def test_specific_team_show_back_to_teams_index
     #Check to verify that the user can go back to teams#index from team#show
     visit root_url
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url
     
     click_on "Manage Teams"
@@ -49,7 +49,7 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
   def test_remove_user_from_team_back_to_specific_team_show
     #Check to verify that the user can go back to team#show from team delete user from team 
     visit root_url
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url
     
     click_on "Manage Teams"
@@ -68,7 +68,7 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
   def test_team_edit_back_to_team_index
      #Check to verify that the user can go back to teams#index from editing a team
     visit root_url
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url
     
     click_on "Manage Teams"
@@ -88,7 +88,7 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
   def test_team_delete_back_to_team_index
      #Check to verify that the user can go back to teams#index from deleting a team 
     visit root_url
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url
     
     click_on "Manage Teams"
@@ -106,7 +106,7 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
   def test_user_show_back_to_users_index
     #Check that user can go from a speficic user's page back to the index of users
      visit root_url
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url
     
     click_on "Manage Users"
@@ -125,7 +125,7 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
   def test_user_delete_back_to_users_index
     #Check that user can go from a speficic user's page back to the index of users
      visit root_url
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url
     
     click_on "Manage Users"
@@ -144,7 +144,7 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
   def test_detailed_team_view_back_to_prof_landing_page
     #Check that the professor can go from detailed team view back to landing page
      visit root_url
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url
     
      within('#' + @team1.id.to_s) do 
@@ -159,7 +159,7 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
   def test_student_feedback_back_to_landing_page
     #Check that students can go back from feedback page to their landing page
      visit root_url
-    login 'adam@gmail.com', '123456789'
+    login 'adam@uwaterloo.ca', '123456789'
     assert_current_path root_url
     
     click_on "Submit for: #{@team1.team_name}"
@@ -173,7 +173,7 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
     #Students can go back to their landing page after clicking on their team summary view per period  
     feedback = save_feedback(10, "Week 9 data 1", @user1, DateTime.civil_from_format(:local, 2021, 3, 1), @team1, 0, "progress_comments", 2,2,2,2,2,2,2,2,2)
     visit root_url
-    login 'adam@gmail.com', '123456789'
+    login 'adam@uwaterloo.ca', '123456789'
     assert_current_path root_url
   
     click_on 'View Historical Data'
@@ -186,7 +186,7 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
   def test_help_page_back_to_landing_professor
     #Check that a professor can go back to landing page when they go to the help page 
      visit root_url
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url
     
     click_on "Help"
@@ -199,7 +199,7 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
   def test_reset_password_back_to_landing_page
     #Check that users can go back to home landing page after going to the reset password page
     visit root_url
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url
     
     click_on "Change Password"
@@ -210,7 +210,7 @@ class ConsistentBackButtonsTest < ApplicationSystemTestCase
     
     click_on "Logout/Account"
     visit root_url
-    login 'adam@gmail.com', '123456789'
+    login 'adam@uwaterloo.ca', '123456789'
     assert_current_path root_url
     
     click_on "Change Password"

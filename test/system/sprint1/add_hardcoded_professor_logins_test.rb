@@ -16,7 +16,7 @@ class AddHardcodedProfessorLoginsTest < ApplicationSystemTestCase
 
     # log professor in
     visit root_url
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url
     
     # log professor out
@@ -31,7 +31,7 @@ class AddHardcodedProfessorLoginsTest < ApplicationSystemTestCase
 
     # log invalid professor in
     visit root_url
-    login 'msmucker2@gmail.com', 'professor'
+    login 'msmucker2@uwaterloo.ca', 'professor'
     assert_current_path login_url
   end
 end

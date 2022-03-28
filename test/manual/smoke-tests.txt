@@ -1,7 +1,7 @@
 T1: Login as Professor
 1. Navigate to https://msci342-w22-team-9.herokuapp.com/
 2. Enter the following in each field: 
-    msmucker@gmail.com 
+    msmucker@uwaterloo.ca 
     professor  
 3. Select ‘Login’ 
 4. Assert login was successful
@@ -20,7 +20,7 @@ T2: Create New Team
 T3: Signup
 1. Navigate to https://msci342-w22-team-9.herokuapp.com/ 
 2. Enter the following in each field: 
-    msmucker@gmail.com 
+    msmucker@uwaterloo.ca 
     professor  
 3. Select ‘Login’ 
 4 Move mouse to 'Manage Teams', and click on 'New Team'
@@ -30,7 +30,7 @@ T3: Signup
 8. Enter the following in each field: 
     First Name: Bob
     Last Name: Smith 
-    Email: bobsmith@gmail.com
+    Email: bobsmith@uwaterloo.ca
     Team Code: TEAM01
     Password: student
     Confirm Password: student
@@ -47,18 +47,18 @@ T4: Submit Feedback
 
 
 T5: Student View Feedback Summary
-1. Assert that in student team summary view Test Team is displayed, with urgency level of medium, average rating of 4 and the Test Student team member
+1. Assert that in student team summary view Test Team is displayed, with urgency level of medium, average rating of 10 and the Test Student team member
 
 T6: Student View Historical Feedback 
 1. Click on View Historical Data
-2. Assert Historical Feedback for current period exists, with average rating of 4 and priority of medium 
+2. Assert Historical Feedback for current period exists, with average rating of 10 and priority of medium 
 3. Select ‘Back’  
 4. Select ‘Logout’ 
 
 T7: View Team Summary
 1. Navigate to https://msci342-w22-team-9.herokuapp.com/
 2. Enter the following in each field: 
-    msmucker@gmail.com 
+    msmucker@uwaterloo.ca 
     professor  
 3. Select ‘Login’ 
 4. Assert that the Test Team appears in the team summary view  
@@ -66,7 +66,7 @@ T7: View Team Summary
 T8: View Detailed Feedback 
 1. Login as instructor 
 2. Click on Test Team on dashboard 
-3. Assert that feedback from Bob Smith appears, and that rating is 4 
+3. Assert that feedback from Bob Smith appears, and that rating is 10 
 3. Assert that team member list only includes Bob Smith 
 4. Select ‘Back’  
 5. Select ‘Logout’ 

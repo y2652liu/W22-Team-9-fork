@@ -1,0 +1,28 @@
+*Bug*: Show rating & manage user page display out of 10
+T1: Show rating page display not out of 10
+T2: Manage User Display not out of 10 + returns a wrong 0 (might be 1st question answer)
+USER ACCEPTANCE CRITERIA: Rating is out of 10, where all 10 questions are considered for the average, which is correctly shown on Show Rating Page and Manage User Page.
+
+T1
+1. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor
+2. Move mouse to 'Manage Teams', and click on 'New Team'
+3. Create a team and copy the Team Code
+4. Click on ‘Logout/Account’
+
+5. Click on 'Sign up'
+6. Create a student account with the copied Team Code
+7. Click on 'Submit for XXX Team'
+8. Have ratings submitted as 0,1,2,3,4,4,3,2,1,0.
+9. Click on ‘Logout/Account’
+
+10. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor
+11. Move mouse to 'Feedback & Ratings', find the student and click on 'Show'
+17. View Average Displayed on Student Dashboard ("5.0")
+
+T2
+18. Move mouse to 'Manage User', find the student and click on the name
+19. view rating "5.0"

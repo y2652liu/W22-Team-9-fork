@@ -2,11 +2,11 @@ require 'test_helper'
 require 'date'
 class FeedbackTest < ActiveSupport::TestCase
   setup do
-    @user = User.new(email: 'xyz@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Gary', lastname: 'Brown', is_admin: false)
-    @user1 = User.new(email: 'abc@gmail.com', password: '123456', password_confirmation: '123456', name: 'Zain', lastname: 'Malik', is_admin: false)
-    @user2 = User.new(email: 'def@gmail.com', password: '678912', password_confirmation: '678912', name: 'Andrew', lastname: 'Habib', is_admin: false)
+    @user = User.new(email: 'xyz@uwaterloo.ca', password: '123456789', password_confirmation: '123456789', name: 'Gary', lastname: 'Brown', is_admin: false)
+    @user1 = User.new(email: 'abc@uwaterloo.ca', password: '123456', password_confirmation: '123456', name: 'Zain', lastname: 'Malik', is_admin: false)
+    @user2 = User.new(email: 'def@uwaterloo.ca', password: '678912', password_confirmation: '678912', name: 'Andrew', lastname: 'Habib', is_admin: false)
     
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     
     @team = Team.create(team_name: 'Test Team 1', team_code: 'TEAM_A', user: @prof)
     @user.teams << @team
@@ -84,7 +84,7 @@ class FeedbackTest < ActiveSupport::TestCase
   end 
   
   def test_average_rating
-    user1 = User.create(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Semment', is_admin: false)
+    user1 = User.create(email: 'charles2@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles1', lastname: 'Semment', is_admin: false)
     user1.save!
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
     team.user = @prof 
@@ -277,21 +277,21 @@ class FeedbackTest < ActiveSupport::TestCase
     #Unsorted order: "4", "0", "2"
     unsorted = Feedback.all
     #Sorted order: "0", "2", "4" 
-    sorted = Feedback.order_by 'team'
+    sorted = Feedback.order_by 'rating'
 
     #USER ACCEPTANCE CRITERIA VERIFICATION:
 
     #The user acceptance criteria is verified when the first Team is "0"
-    assert_equal(unsorted[2].rating,sorted[0].rating)
-    assert_equal(feedback3.rating,sorted[0].rating)
+    assert_equal(unsorted[1].rating,sorted[0].rating)
+    assert_equal(feedback2.rating,sorted[0].rating)
 
     #The user acceptance criteria is verified when the second Team is "2"
-    assert_equal(unsorted[0].rating,sorted[1].rating)
-    assert_equal(feedback.rating,sorted[1].rating)
+    assert_equal(unsorted[2].rating,sorted[1].rating)
+    assert_equal(feedback3.rating,sorted[1].rating)
 
     #The user acceptance criteria is verified when the third Team is "4" 
-    assert_equal(unsorted[1].rating,sorted[2].rating)
-    assert_equal(feedback2.rating,sorted[2].rating)
+    assert_equal(unsorted[0].rating,sorted[2].rating)
+    assert_equal(feedback.rating,sorted[2].rating)
   end
 
 end

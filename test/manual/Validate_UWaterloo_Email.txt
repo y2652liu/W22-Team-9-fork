@@ -1,0 +1,11 @@
+*STORY*: Require a uwaterloo.ca email to sign up
+
+USER ACCEPTANCE CRITERIA: User can only sign up with an '@uwaterloo.ca' email, otherwise an error will be thrown
+
+1. Click on signup 
+2. Create a student account using a non-'uwaterloo.ca' email
+3. Validate that signup fails and an error message is thrown, -"Must be a uwaterloo.ca account"
+
+1. Click on signup 
+2. Create a student account using any '@uwaterloo.ca' email
+3. Validate that you are on the dashboard

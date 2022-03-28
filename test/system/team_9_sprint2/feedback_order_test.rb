@@ -12,11 +12,11 @@ require "application_system_test_case"
 class FeedbackOrder < ApplicationSystemTestCase
 
     setup do
-        @user = User.new(email: 'xyz@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Gary', lastname: 'Brown', is_admin: false)
-    @user1 = User.new(email: 'abc@gmail.com', password: '123456', password_confirmation: '123456', name: 'Zain', lastname: 'Malik', is_admin: false)
-    @user2 = User.new(email: 'def@gmail.com', password: '678912', password_confirmation: '678912', name: 'Andrew', lastname: 'Habib', is_admin: false)
+        @user = User.new(email: 'xyz@uwaterloo.ca', password: '123456789', password_confirmation: '123456789', name: 'Gary', lastname: 'Brown', is_admin: false)
+    @user1 = User.new(email: 'abc@uwaterloo.ca', password: '123456', password_confirmation: '123456', name: 'Zain', lastname: 'Malik', is_admin: false)
+    @user2 = User.new(email: 'def@uwaterloo.ca', password: '678912', password_confirmation: '678912', name: 'Andrew', lastname: 'Habib', is_admin: false)
     
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     
     @team = Team.create(team_name: 'Test Team 1', team_code: 'TEAM_A', user: @prof)
     @user.teams << @team
@@ -40,7 +40,7 @@ class FeedbackOrder < ApplicationSystemTestCase
         save_feedback(2, "hi", @user2, DateTime.now, @team, 2, "progress_comments", 2, 2, 2, 2, 2, 2, 2, 2, 2)
 
         visit root_url 
-        login 'msmucker@gmail.com', 'professor'
+        login 'msmucker@uwaterloo.ca', 'professor'
         click_on 'Feedback & Ratings'
         assert_current_path feedbacks_url
         assert_text 'Zain'
@@ -54,7 +54,7 @@ class FeedbackOrder < ApplicationSystemTestCase
         save_feedback(2, "hi", @user2, DateTime.now, @team, 2, "progress_comments", 2, 2, 2, 2, 2, 2, 2, 2, 2)
 
         visit root_url 
-        login 'msmucker@gmail.com', 'professor'
+        login 'msmucker@uwaterloo.ca', 'professor'
         click_on 'Feedback & Ratings'
         assert_current_path feedbacks_url
         assert_text 'Zain'
@@ -68,7 +68,7 @@ class FeedbackOrder < ApplicationSystemTestCase
         save_feedback(2, "hi", @user2, DateTime.now, @team, 2, "progress_comments", 2, 2, 2, 2, 2, 2, 2, 2, 2)
 
         visit root_url 
-        login 'msmucker@gmail.com', 'professor'
+        login 'msmucker@uwaterloo.ca', 'professor'
         click_on 'Feedback & Ratings'
         assert_current_path feedbacks_url
         assert_text 'Zain'
@@ -82,7 +82,7 @@ class FeedbackOrder < ApplicationSystemTestCase
         save_feedback(2, "hi", @user2, DateTime.now, @team, 2, "progress_comments", 2, 2, 2, 2, 2, 2, 2, 2, 2)
 
         visit root_url 
-        login 'msmucker@gmail.com', 'professor'
+        login 'msmucker@uwaterloo.ca', 'professor'
         click_on 'Feedback & Ratings'
         assert_current_path feedbacks_url
         assert_text 'Zain'

@@ -9,7 +9,7 @@
 option = Option.create(reports_toggled: false)
 option.generate_admin_code(6)
 
-email = 'msmucker@gmail.com'
+email = 'msmucker@uwaterloo.ca'
 name = 'Mark'
 lastname = 'Smucker'
 password = 'professor'

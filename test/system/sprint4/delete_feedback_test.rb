@@ -3,9 +3,9 @@ require "application_system_test_case"
 
 class DeleteFeedbackTest < ApplicationSystemTestCase
   setup do 
-    @prof = User.new(email: 'msmucker@gmail.com', password: 'professor', password_confirmation: 'professor', name: 'Mark', lastname: 'Smucker', is_admin: true)
+    @prof = User.new(email: 'msmucker@uwaterloo.ca', password: 'professor', password_confirmation: 'professor', name: 'Mark', lastname: 'Smucker', is_admin: true)
     @prof.save
-    @user = User.new(email: 'adam@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'Adam', lastname: 'Traore', is_admin: false)
+    @user = User.new(email: 'adam@uwaterloo.ca', password: '123456789', password_confirmation: '123456789', name: 'Adam', lastname: 'Traore', is_admin: false)
     @user.save
 
     @team = Team.new(team_code: 'Code', team_name: 'Team 1')
@@ -24,7 +24,7 @@ class DeleteFeedbackTest < ApplicationSystemTestCase
   
   def test_delete_feedback
     visit root_url
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url
     click_on "Feedback & Ratings"
     assert_text "This team is disorganized"
@@ -35,7 +35,7 @@ class DeleteFeedbackTest < ApplicationSystemTestCase
 
   #def test_edit_feedback
     #visit root_url
-    #login 'msmucker@gmail.com', 'professor'
+    #login 'msmucker@uwaterloo.ca', 'professor'
     #assert_current_path root_url
     #click_on "Feedback & Ratings"
     #click_on "Edit"

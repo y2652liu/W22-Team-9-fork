@@ -44,7 +44,7 @@
               <% @user.feedbacks.each do |fb| %>
                 <tr>
                   
-                  <td><%= fb.rating %></td>
+                  <td><%= fb.overall_rating*2.5 %></td>
                   <%if fb.priority == 2%>
                     <td><%='Low'%></td>
                   <%elsif fb.priority == 1%>

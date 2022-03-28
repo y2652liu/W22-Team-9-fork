@@ -12,9 +12,9 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   end
   
   def test_should_render_page 
-    prof = User.new(email: 'charles@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Marcos',  is_admin: true)
+    prof = User.new(email: 'charles@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Marcos',  is_admin: true)
     prof.save
-    user = User.new(email: 'charles2@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Marcov', is_admin: false)
+    user = User.new(email: 'charles2@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Marcov', is_admin: false)
     user.save
 
     team = Team.new(team_code: 'Code', team_name: 'Team 1')
@@ -23,7 +23,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     user.teams << team
 
     post '/login',
-        params: {email: 'charles2@gmail.com', password: 'banana'}
+        params: {email: 'charles2@uwaterloo.ca', password: 'banana'}
     
     get root_url 
     assert_response :success
@@ -35,11 +35,11 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   end
   
   def test_help_page 
-    user = User.new(email: 'charles@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Marcos', is_admin: false)
+    user = User.new(email: 'charles@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Marcos', is_admin: false)
     user.save!
     
     post '/login',
-        params: {email: 'charles@gmail.com', password: 'banana'}
+        params: {email: 'charles@uwaterloo.ca', password: 'banana'}
     get '/help'
     assert :success
   end
@@ -50,70 +50,70 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   end
   
   def test_reset_password 
-    user = User.new(email: 'charles@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Marcos', is_admin: false)
+    user = User.new(email: 'charles@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Marcos', is_admin: false)
     user.save!
     
     post '/login',
-        params: {email: 'charles@gmail.com', password: 'banana'}
+        params: {email: 'charles@uwaterloo.ca', password: 'banana'}
     post reset_password_path, params: {existing_password: 'banana', password: 'banana2', password_confirmation: 'banana2'}
     assert :success
     get '/logout'
     post '/login', 
-        params: {email: 'charles@gmail.com', password: 'banana'}
+        params: {email: 'charles@uwaterloo.ca', password: 'banana'}
     assert :failure
     post '/login',
-        params: {email: 'charles@gmail.com', password: 'banana2'}
+        params: {email: 'charles@uwaterloo.ca', password: 'banana2'}
     assert :success
   end
   
   def test_reset_password_wrong_existing 
-    user = User.new(email: 'charles@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Marcos', is_admin: false)
+    user = User.new(email: 'charles@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Marcos', is_admin: false)
     user.save!
     
     post '/login',
-        params: {email: 'charles@gmail.com', password: 'banana'}
+        params: {email: 'charles@uwaterloo.ca', password: 'banana'}
     post reset_password_path, params: {existing_password: 'banana3', password: 'banana2', password_confirmation: 'banana2'}
     assert_redirected_to reset_password_path
     get '/logout'
     post '/login', 
-        params: {email: 'charles@gmail.com', password: 'banana2'}
+        params: {email: 'charles@uwaterloo.ca', password: 'banana2'}
     assert :failure
     post '/login',
-        params: {email: 'charles@gmail.com', password: 'banana'}
+        params: {email: 'charles@uwaterloo.ca', password: 'banana'}
     assert :success
   end
   
   def test_reset_password_wrong_new
-    user = User.new(email: 'charles@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Marcos', is_admin: false)
+    user = User.new(email: 'charles@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Marcos', is_admin: false)
     user.save!
     
     post '/login',
-        params: {email: 'charles@gmail.com', password: 'banana'}
+        params: {email: 'charles@uwaterloo.ca', password: 'banana'}
     post reset_password_path, params: {existing_password: 'banana', password: 'bana', password_confirmation: 'bana'}
     assert_redirected_to reset_password_path
     get '/logout'
     post '/login', 
-        params: {email: 'charles@gmail.com', password: 'bana'}
+        params: {email: 'charles@uwaterloo.ca', password: 'bana'}
     assert :failure
     post '/login',
-        params: {email: 'charles@gmail.com', password: 'banana'}
+        params: {email: 'charles@uwaterloo.ca', password: 'banana'}
     assert :success
   end
   
   def test_reset_password_wrong_confirmation
-    user = User.new(email: 'charles@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Marcos', is_admin: false)
+    user = User.new(email: 'charles@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Marcos', is_admin: false)
     user.save!
     
     post '/login',
-        params: {email: 'charles@gmail.com', password: 'banana'}
+        params: {email: 'charles@uwaterloo.ca', password: 'banana'}
     post reset_password_path, params: {existing_password: 'banana', password: 'banana3', password_confirmation: 'banana2'}
     assert_redirected_to reset_password_path
     get '/logout'
     post '/login', 
-        params: {email: 'charles@gmail.com', password: 'banana3'}
+        params: {email: 'charles@uwaterloo.ca', password: 'banana3'}
     assert :failure
     post '/login',
-        params: {email: 'charles@gmail.com', password: 'banana'}
+        params: {email: 'charles@uwaterloo.ca', password: 'banana'}
     assert :success
   end
 end

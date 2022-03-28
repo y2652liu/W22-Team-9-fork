@@ -14,7 +14,7 @@ require "application_system_test_case"
 class StudentRegistrationPortalUnvalidatedsTest < ApplicationSystemTestCase
   # (1-7)
   def test_register_student  
-    prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     Team.create(team_name: 'Test Team', team_code: 'TEam01', user: prof)
     
     # register new student
@@ -36,7 +36,7 @@ class StudentRegistrationPortalUnvalidatedsTest < ApplicationSystemTestCase
     # check student enrollment (professor)
     assert_current_path login_url 
     visit root_url
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url
     
     click_on "Manage Teams"

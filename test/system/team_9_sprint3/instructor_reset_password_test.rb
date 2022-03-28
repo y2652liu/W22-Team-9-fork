@@ -11,11 +11,11 @@ class InstructorResetPasswordTest < ApplicationSystemTestCase
     #setup taken from submit_after_wednesday.rb
     setup do
         # create prof, team, and user
-        @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+        @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
         
         @team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
 
-        @cici = User.create(email: 'cici@gmail.com', name: 'Cici', lastname: 'Kiki', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+        @cici = User.create(email: 'cici@uwaterloo.ca', name: 'Cici', lastname: 'Kiki', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
         @cici.teams << @team
         
     end
@@ -24,7 +24,7 @@ class InstructorResetPasswordTest < ApplicationSystemTestCase
 
     def test_reset
         visit root_url 
-        login 'msmucker@gmail.com', 'professor'
+        login 'msmucker@uwaterloo.ca', 'professor'
 
         click_on 'Manage Users'
         click_on 'Cici'
@@ -42,7 +42,7 @@ class InstructorResetPasswordTest < ApplicationSystemTestCase
         
 
         click_on 'Logout/Account'
-        login 'cici@gmail.com', element
+        login 'cici@uwaterloo.ca', element
         assert_current_path root_url
     end
 

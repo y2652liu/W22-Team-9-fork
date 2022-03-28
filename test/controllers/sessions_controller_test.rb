@@ -2,7 +2,7 @@ require 'test_helper'
 
 class SessionsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = User.new(email: 'charles@gmail.com', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Bouvaird')
+    @user = User.new(email: 'charles@uwaterloo.ca', password: 'banana', password_confirmation: 'banana', name: 'Charles', lastname: 'Bouvaird')
     @user.save
   end
     
@@ -13,13 +13,13 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     
   def test_login_professor
     post '/login',
-        params: {email: 'msmucker@gmail.com', password: 'professor'}
+        params: {email: 'msmucker@uwaterloo.ca', password: 'professor'}
     assert_template :new
   end
  
   def test_login_logout
     post '/login',
-        params: {email: 'charles@gmail.com', password: 'banana'}
+        params: {email: 'charles@uwaterloo.ca', password: 'banana'}
     assert_redirected_to root_url
     get '/logout'
     assert_redirected_to root_url
@@ -27,7 +27,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   
   def test_wrong_password
      post '/login',
-      params: {email: 'charles@gmail.com', password: 'wrong_password'}
+      params: {email: 'charles@uwaterloo.ca', password: 'wrong_password'}
      assert_template :new
   end
 

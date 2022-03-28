@@ -17,11 +17,11 @@ class GenerateTeamCodesTest < ApplicationSystemTestCase
   def test_prof_team_creation_with_generated_code
     #(1) Passes acceptance criteria 1: As a professor, when I create a team, a generated team code is provided to allow students to add themselves to the team    
     # create professor 
-    User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
 
     # log professor in
     visit root_url
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url
     # create new team
     # @team = Team.create(team_name: 'Test Team1', team_code: @generated_code.to_s, user: @prof)
@@ -47,7 +47,7 @@ class GenerateTeamCodesTest < ApplicationSystemTestCase
   #(2)
   def test_student_account_creation_with_generated_team_code
     #(2) Passes acceptance criteria 2: As a student, I can use the generated team code to register an account associated with the team
-    prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     Team.create(team_name: 'Test Team', team_code: @generated_code.to_s, user: prof)
     
     # register new student
@@ -69,7 +69,7 @@ class GenerateTeamCodesTest < ApplicationSystemTestCase
     # check student enrollment (professor)
     assert_current_path login_url 
     visit root_url
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
     assert_current_path root_url
     
     click_on "Manage Teams"
