@@ -170,7 +170,7 @@
               <td><%= priority ? priority : "No feedback" %></td>
               <% average_rating = Team.feedback_average_rating(team.feedbacks.where(timestamp: (@week_range[:start_date] - 7.days)..(@week_range[:end_date] - 7.days)),team.users) %>
               <td><%= average_rating ? average_rating.round(2) : "No feedback" %></td>
-              <td><%= link_to team.team_name, team %></td>
+              <td><%= team.team_name %></td>
               <td><%= team.student_names.join(", ") %></td>
 
             </tr>
