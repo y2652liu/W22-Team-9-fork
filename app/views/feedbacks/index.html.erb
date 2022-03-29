@@ -1,14 +1,47 @@
 <h1>Feedbacks</h1>
 <p>You can find a history of all feedbacks submitted below.</p>
+
+<% @reverse_timestamp = params[:reverse_timestamp].to_i*-1 %>
+
+<% if @reverse_timestamp==0 %>
+<% @reverse_timestamp = '1'%>
+<% end%>
+
+<% @reverse_priority = params[:reverse_priority].to_i*-1 %>
+
+<% if @reverse_priority==0 %>
+<% @reverse_priority = '1'%>
+<% end%>
+
+<% @reverse_rating = params[:reverse_rating].to_i*-1 %>
+
+<% if @reverse_rating==0 %>
+<% @reverse_rating = '1'%>
+<% end%>
+
+<% @reverse_team = params[:reverse_team].to_i*-1 %>
+
+<% if @reverse_team==0 %>
+<% @reverse_team = '1'%>
+<% end%>
+
+<% @reverse_name = params[:reverse_name].to_i*-1 %>
+
+<% if @reverse_name==0 %>
+<% @reverse_name = '1'%>
+<% end%>
+
+
+
 <table>
   <thead>
     <tr>
-      <th><%= link_to 'Student Name', feedbacks_path(order_by: 'name') %></th>
-      <th><%= link_to 'Team', feedbacks_path(order_by: 'team') %></th>
-      <th><%= link_to 'Rating', feedbacks_path(order_by: 'rating') %></th>
-      <th><%= link_to 'Priority', feedbacks_path(order_by: 'priority') %></th>
+      <th><%= link_to 'Student Name', feedbacks_path(order_by: 'name', reverse_name: @reverse_name) %></th>
+      <th><%= link_to 'Team', feedbacks_path(order_by: 'team', reverse_team: @reverse_team) %></th>
+      <th><%= link_to 'Rating', feedbacks_path(order_by: 'rating', reverse_rating: @reverse_rating) %></th>
+      <th><%= link_to 'Priority', feedbacks_path(order_by: 'priority', reverse_priority: @reverse_priority) %></th>
       <th>Comments</th>
-      <th><%= link_to 'Timestamp', feedbacks_path(order_by: 'date') %></th>
+      <th><%= link_to 'Timestamp', feedbacks_path(order_by: 'date', reverse_timestamp: @reverse_timestamp) %></th>
       <th colspan="7"></th>
     </tr>
   </thead>

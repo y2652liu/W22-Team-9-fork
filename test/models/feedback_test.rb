@@ -294,5 +294,302 @@ class FeedbackTest < ActiveSupport::TestCase
     assert_equal(feedback.rating,sorted[2].rating)
   end
 
+
+
+
+  #the following tests (up to test_sort_rev_no_feedbacks) are used to test
+  #the reverse sort functionality, which has replaced the regular sort 
+  
+  #User Acceptance Criteria: Tests that the Team Name is correctly sorted in ascending order or descending if reversed
+  def test_sort_rev_urgency
+    feedback = Feedback.new(rating: 2, progress_comments: "good", comments: "Test Team 1", priority: 2, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    feedback.timestamp = feedback.format_time(DateTime.now)
+    feedback.user = @user
+    feedback.team = @user.teams.first
+    feedback.save
+    
+    #feedback with no optional comment
+    feedback2 = Feedback.new(rating: 2, progress_comments: "good", comments: "Test Team 2", priority: 1, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    feedback2.timestamp = feedback2.format_time(DateTime.now)
+    feedback2.user = @user
+    feedback2.team = @user.teams.first
+    feedback2.save
+
+
+    unsorted = Feedback.all
+
+    #sorted order: urgent, medium 
+    sorted = Feedback.order_by_rev 'priority', '-1'
+    #reverse sorted order: medium, urgent 
+    rev_sorted = Feedback.order_by_rev 'priority', '1'
+
+    assert_equal(unsorted[1],sorted[0])
+    assert_equal(feedback2,sorted[0])
+
+    assert_equal(unsorted[1],rev_sorted[1])
+    assert_equal(feedback2,rev_sorted[1])
+  end
+
+  #User Acceptance Criteria: Tests that the Team Name is correctly sorted in ascending order
+  def test_sort_rev_team 
+    #Feedback saved for user in Team: "Test Team 1"
+    feedback = Feedback.new(rating: 2, progress_comments: "good", comments: "Test Team 1", priority: 2, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    feedback.timestamp = feedback.format_time(DateTime.now)
+    feedback.user = @user
+    feedback.team = @user.teams.first
+    feedback.save
+
+    #Feedback saved for user1 in Team: "Test Team 2"
+    feedback2 = Feedback.new(rating: 2, progress_comments: "good", comments: "Test Team 2", priority: 1, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    feedback2.timestamp = feedback2.format_time(DateTime.now)
+    feedback2.user = @user1
+    feedback2.team = @user1.teams.first
+    feedback2.save
+
+    #Feedback saved for user2 in Team: "A"
+    feedback3 = Feedback.new(rating: 2, progress_comments: "good", comments: "A", priority: 3, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    feedback3.timestamp = feedback3.format_time(DateTime.now)
+    feedback3.user = @user2
+    feedback3.team = @user2.teams.first
+    feedback3.save
+
+
+    #Array [0, 1, 2]
+    #Unsorted order: "Test Team 1", "Test Team 2", "A"
+    unsorted = Feedback.all
+    #Sorted order: "A", "Test Team 1", "Test Team 2" 
+    sorted = Feedback.order_by_rev 'team', '-1'
+
+    #Reverse sorted order: "Test Team 2" , Test Team 1", "A", 
+    rev_sorted = Feedback.order_by_rev 'team', '1'
+
+
+    #The user acceptance criteria is verified when the first Team is "A"
+    assert_equal(unsorted[2].team,sorted[0].team)
+    assert_equal(feedback3.team,sorted[0].team)
+
+    #The user acceptance criteria is verified when the second Team is "Test Team 1"
+    assert_equal(unsorted[0].team,sorted[1].team)
+    assert_equal(feedback.team,sorted[1].team)
+
+    #The user acceptance criteria is verified when the third Team is "Test Team 2" 
+    assert_equal(unsorted[1].team,rev_sorted[0].team)
+    assert_equal(feedback2.team,rev_sorted[0].team)
+
+    #The user acceptance criteria is verified when the last Team is "A", when reversed
+    assert_equal(unsorted[2].team,rev_sorted[2].team)
+    assert_equal(feedback3.team,rev_sorted[2].team)
+
+    #The user acceptance criteria is verified when the second Team is "Test Team 1", when reveresed
+    assert_equal(unsorted[0].team,rev_sorted[1].team)
+    assert_equal(feedback.team,rev_sorted[1].team)
+
+    #The user acceptance criteria is verified when the first Team is "Test Team 2", when reveresed 
+    assert_equal(unsorted[1].team,rev_sorted[0].team)
+    assert_equal(feedback2.team,rev_sorted[0].team)
+  end
+
+
+  #User Acceptance Criteria: Tests that the Student Name is correctly sorted in ascending order, or descending when reveresed
+  def test_sort_rev_date 
+    #Feedback saved for user2 in Team: "A"
+    feedback3 = Feedback.new(rating: 2, progress_comments: "good", comments: "A", priority: 3, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    feedback3.timestamp = feedback3.format_time(DateTime.now.prev_day.prev_day)
+    feedback3.user = @user2
+    feedback3.team = @user2.teams.first
+    feedback3.save
+    
+    #Feedback saved for user in Team: "Test Team 1"
+    feedback = Feedback.new(rating: 2, progress_comments: "good", comments: "Test Team 1", priority: 2, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    feedback.timestamp = feedback.format_time(DateTime.now)
+    feedback.user = @user
+    feedback.team = @user.teams.first
+    feedback.save
+
+    #Feedback saved for user1 in Team: "Test Team 2"
+    feedback2 = Feedback.new(rating: 2, progress_comments: "good", comments: "Test Team 2", priority: 1, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    feedback2.timestamp = feedback2.format_time(DateTime.now.prev_day)
+    feedback2.user = @user1
+    feedback2.team = @user1.teams.first
+    feedback2.save
+
+
+    
+    unsorted = Feedback.all
+
+    #sorted is feedback2, feedback, feedback3
+    sorted = Feedback.order_by_rev 'date', '1'
+    #reverse sorted is feedback3, feedback, feedback2
+    rev_sorted = Feedback.order_by_rev 'date', '-1'
+
+    assert_equal(unsorted[1],sorted[0])
+    assert_equal(feedback3,sorted[2])
+
+    assert_equal(feedback,sorted[0])
+
+    assert_equal(unsorted[1],rev_sorted[2])
+    assert_equal(feedback3,rev_sorted[0])
+
+    assert_equal(feedback,rev_sorted[2])
+
+  end
+
+  #User Acceptance Criteria: Tests that the Student Name is correctly sorted in ascending order, or desecending when reveresed
+  def test_sort_rev_student_name 
+    #Feedback saved for Gary in Team: "Test Team 1"
+    feedback = Feedback.new(rating: 2, progress_comments: "good", comments: "Test Team 1", priority: 2, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    feedback.timestamp = feedback.format_time(DateTime.now)
+    feedback.user = @user
+    feedback.team = @user.teams.first
+    feedback.save
+
+    #Feedback saved for Zane in Team: "Test Team 2"
+    feedback2 = Feedback.new(rating: 2, progress_comments: "good", comments: "Test Team 2", priority: 1, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    feedback2.timestamp = feedback2.format_time(DateTime.now)
+    feedback2.user = @user1
+    feedback2.team = @user1.teams.first
+    feedback2.save
+
+    #Feedback saved for Andrew in Team: "A"
+    feedback3 = Feedback.new(rating: 2, progress_comments: "good", comments: "A", priority: 3, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    feedback3.timestamp = feedback3.format_time(DateTime.now)
+    feedback3.user = @user2
+    feedback3.team = @user2.teams.first
+    feedback3.save
+
+    #Array [0, 1, 2]
+    #Unsorted order: "Test Team 1", "Test Team 2", "A"
+    unsorted = Feedback.all
+    #Sorted order: "A", "Test Team 1", "Test Team 2" 
+    sorted = Feedback.order_by_rev 'name', '-1'
+
+    #Reverse Sorted order: "Test Team 2" , "Test Team 1", "A"
+    rev_sorted = Feedback.order_by_rev 'name', '1'
+
+
+    #USER ACCEPTANCE CRITERIA VERIFICATION:
+
+    #The user acceptance criteria is verified when the first Team is "A"
+    assert_equal(unsorted[2].user, sorted[0].user)
+    assert_equal(feedback3.user,sorted[0].user)
+
+    #The user acceptance criteria is verified when the second Team is "Test Team 1"
+    assert_equal(unsorted[0].user,sorted[1].user)
+    assert_equal(feedback.user,sorted[1].user)
+
+    #The user acceptance criteria is verified when the third Team is "Test Team 2" 
+    assert_equal(unsorted[1].user,sorted[2].user)
+    assert_equal(feedback2.user,sorted[2].user)
+
+
+    #The user acceptance criteria is verified when the last Team is "A", when reversed
+    assert_equal(unsorted[2].user, rev_sorted[2].user)
+    assert_equal(feedback3.user,rev_sorted[2].user)
+
+    #The user acceptance criteria is verified when the second Team is "Test Team 1", when reversed
+    assert_equal(unsorted[0].user,rev_sorted[1].user)
+    assert_equal(feedback.user,rev_sorted[1].user)
+
+    #The user acceptance criteria is verified when the first Team is "Test Team 2", when reversed
+    assert_equal(unsorted[1].user,rev_sorted[0].user)
+    assert_equal(feedback2.user,rev_sorted[0].user)
+  end
+
+  #User Acceptance Criteria: Tests that the Rating is correctly sorted in ascending order, or descending when reversed
+  def test_sort_rev_rating
+    #Rating of 4 saved for Gary in Team: "Test Team 1"
+    feedback = Feedback.new(rating: 4, progress_comments: "good", comments: "Test Team 1", priority: 2, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    feedback.timestamp = feedback.format_time(DateTime.now)
+    feedback.user = @user
+    feedback.team = @user.teams.first
+    feedback.save
+
+    #Rating of 0 saved for Zane in Team: "Test Team 2"
+    feedback2 = Feedback.new(rating: 0, progress_comments: "good", comments: "Test Team 2", priority: 1, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    feedback2.timestamp = feedback2.format_time(DateTime.now)
+    feedback2.user = @user1
+    feedback2.team = @user1.teams.first
+    feedback2.save
+
+    #Rating of 2 saved for Andrew in Team: "A"
+    feedback3 = Feedback.new(rating: 2, progress_comments: "good", comments: "A", priority: 3, goal_rating: 2, communication_rating: 2, positive_rating: 2, reach_rating:2, bounce_rating: 2, account_rating: 2, decision_rating: 2, respect_rating: 2, motivation_rating: 2)
+    feedback3.timestamp = feedback3.format_time(DateTime.now)
+    feedback3.user = @user2
+    feedback3.team = @user2.teams.first
+    feedback3.save
+
+    #Array [0, 1, 2]
+    #Unsorted order: "4", "0", "2"
+    unsorted = Feedback.all
+    #Sorted order: "0", "2", "4" 
+    sorted = Feedback.order_by_rev 'rating', '-1'
+
+    #Sorted order: "4", "2", "0" 
+    rev_sorted = Feedback.order_by_rev 'rating', '1'
+
+    #USER ACCEPTANCE CRITERIA VERIFICATION:
+
+    #The user acceptance criteria is verified when the first Team is "0"
+    assert_equal(unsorted[1].rating,sorted[0].rating)
+    assert_equal(feedback2.rating,sorted[0].rating)
+
+    #The user acceptance criteria is verified when the second Team is "2"
+    assert_equal(unsorted[2].rating,sorted[1].rating)
+    assert_equal(feedback3.rating,sorted[1].rating)
+
+    #The user acceptance criteria is verified when the third Team is "4" 
+    assert_equal(unsorted[0].rating,sorted[2].rating)
+    assert_equal(feedback.rating,sorted[2].rating)
+
+
+     #The user acceptance criteria is verified when the last Team is "0", when reversed
+     assert_equal(unsorted[1].rating,rev_sorted[2].rating)
+     assert_equal(feedback2.rating,rev_sorted[2].rating)
+ 
+     #The user acceptance criteria is verified when the second Team is "2", when reversed
+     assert_equal(unsorted[2].rating,rev_sorted[1].rating)
+     assert_equal(feedback3.rating,sorted[1].rating)
+ 
+     #The user acceptance criteria is verified when the first Team is "4" , when reversed
+     assert_equal(unsorted[0].rating,rev_sorted[0].rating)
+     assert_equal(feedback.rating,rev_sorted[0].rating)
+  end
+
+  # test to ensure that with no feedbacks everything functions properly
+  def test_sort_rev_no_feedbacks
+    unsorted = Feedback.all
+    sorted_rating = Feedback.order_by_rev 'rating', '-1'
+    rev_sorted_rating = Feedback.order_by_rev 'rating', '1'
+    
+    sorted_name = Feedback.order_by_rev 'name', '-1'
+    rev_sorted_name = Feedback.order_by_rev 'name', '1'
+
+    sorted_date = Feedback.order_by_rev 'date', '-1'
+    rev_sorted_date = Feedback.order_by_rev 'date', '1'
+
+    sorted_priority = Feedback.order_by_rev 'priority', '-1'
+    rev_sorted_priority = Feedback.order_by_rev 'priority', '1'
+
+    sorted_team = Feedback.order_by_rev 'team', '-1'
+    rev_sorted_team = Feedback.order_by_rev 'team', '1'
+
+    assert_empty sorted_team
+    assert_empty rev_sorted_team
+
+    assert_empty sorted_priority
+    assert_empty rev_sorted_priority
+
+    assert_empty sorted_date
+    assert_empty rev_sorted_date
+
+    assert_empty sorted_name
+    assert_empty rev_sorted_name
+
+    assert_empty sorted_rating
+    assert_empty rev_sorted_rating
+    assert_empty sorted_team
+    assert_empty unsorted
+  end
+
 end
 

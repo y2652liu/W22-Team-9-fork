@@ -10,11 +10,21 @@ class FeedbacksController < ApplicationController
   end
   # GET /feedbacks
   def index
+
     if params[:order_by] == nil
       @feedbacks = Feedback.all
-    else
-      @feedbacks = Feedback.order_by params[:order_by]
+    elsif !params[:reverse_timestamp].nil?
+      @feedbacks = Feedback.order_by_rev(params[:order_by], params[:reverse_timestamp])
+    elsif !params[:reverse_priority].nil?
+      @feedbacks = Feedback.order_by_rev(params[:order_by], params[:reverse_priority])
+    elsif !params[:reverse_rating].nil?
+      @feedbacks = Feedback.order_by_rev(params[:order_by], params[:reverse_rating])
+    elsif !params[:reverse_team].nil?
+      @feedbacks = Feedback.order_by_rev(params[:order_by], params[:reverse_team])
+    elsif !params[:reverse_name].nil?
+      @feedbacks = Feedback.order_by_rev(params[:order_by], params[:reverse_name])
     end
+    
   end
 
   # GET /feedbacks/1
