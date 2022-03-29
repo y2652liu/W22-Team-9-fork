@@ -172,11 +172,7 @@
               <td><%= average_rating ? average_rating.round(2) : "No feedback" %></td>
               <td><%= team.team_name %></td>
               <td><%= team.student_names.join(", ") %></td>
-              <%if team.feedbacks.size > 0%>
-                <td><%= link_to "View Historical Data", team %></td>
-              <% else %>
-                <td>Team Does Not Have Any Ratings!</td>
-              <%end%>
+
             </tr>
           <% end %>
         </tbody>
