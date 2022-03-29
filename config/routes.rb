@@ -13,6 +13,8 @@ Rails.application.routes.draw do
         
   get 'teams/:id/confirm_delete_user_from_team', to: 'teams#confirm_delete_user_from_team', as: 'team_confirm_delete_delete_user_from_team'  
   get 'teams/:id/confirm_delete', to: 'teams#confirm_delete', as: 'team_confirm_delete'
+  get 'teams/:id/show_in_depth', to: 'teams#show_in_depth', as: 'team_show_in_depth'
+
   resources :teams 
   
   get 'users/:id/confirm_delete', to: 'users#confirm_delete', as: 'user_confirm_delete'
