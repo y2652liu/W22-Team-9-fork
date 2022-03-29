@@ -11,7 +11,7 @@
 <p>Decision Rating: My team is able to effectively make decisions</p>
 <p>Respect Rating: I feel respected in my role as a part of the team </p>
 <p>Rating: I would say that my team health is exceptional</p>
-<% @team.feedbacks.each do |feedback| %>
+<% @team.feedbacks.reverse_each do |feedback| %>
 
 
 <table>
@@ -55,7 +55,8 @@
     </tbody>
 </table>
 <b>Comments: </b><%=  feedback.comments %><br>
-<b>Progress Comments: </b><%= feedback.progress_comments %>
+<b>Progress Comments: </b><%= feedback.progress_comments %><br>
+<b> Time: </b><%= feedback.timestamp.strftime("%T, %B %d, %Y") %>
  <hr>
  
  <% end %>
