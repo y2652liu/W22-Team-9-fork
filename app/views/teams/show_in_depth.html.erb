@@ -1,0 +1,63 @@
+<% @team= Team.find params[:id] %>
+
+<h1>In Depth Look at <%=@team.team_name %>'s Feedback </h1>
+
+<p>Goal Rating: We are accomplishing goals we set for ourselves</p>
+<p>Communication Rating: Communication has been clear and consistent</p>
+<p>Positive Rating: Our team keeps a positive attitude regardless of the situation</p>
+<p>Motivation Rating: I feel like I can reach out at any moment for help</p>
+<p>Bounce Rating: My team is able to bounce back when facing a problem</p>
+<p>Accountability Rating: My team members take accountability for their roles</p>
+<p>Decision Rating: My team is able to effectively make decisions</p>
+<p>Respect Rating: I feel respected in my role as a part of the team </p>
+<p>Rating: I would say that my team health is exceptional</p>
+<% @team.feedbacks.reverse_each do |feedback| %>
+
+
+<table>
+    <caption><b><%= feedback.user.name + " " + feedback.user.lastname %></b></caption>
+    <tbody>
+      <tr>
+        <td><%= 'Goal Rating' %></td>
+        <td><%= feedback.goal_rating * 2.5%></td>
+        <td><%= 'Bounce Rating' %></td>
+        <td><%= feedback.bounce_rating * 2.5 %></td>
+      </tr>
+      <tr>
+        <td><%= 'Communication Rating' %></td>
+        <td><%= feedback.communication_rating * 2.5 %></td>
+
+        <td><%= 'Accountability Rating' %></td>
+        <td><%= feedback.account_rating * 2.5 %></td>
+      </tr>
+      <tr>
+        <td><%= 'Positive Rating' %></td>
+        <td><%= feedback.positive_rating * 2.5 %></td>
+
+        <td><%= 'Decision Rating' %></td>
+        <td><%= feedback.decision_rating * 2.5 %></td>
+      </tr>
+      <tr>
+        <td><%= 'Motivation Rating' %></td>
+        <td><%= feedback.motivation_rating * 2.5 %></td>
+
+        <td><%= 'Respect Rating' %></td>
+        <td><%= feedback.respect_rating * 2.5 %></td>
+      </tr>
+
+      <tr>
+        <td><%= 'Reach Rating' %></td>
+        <td><%= feedback.reach_rating  * 2.5 %></td>
+
+        <td><%= 'Rating' %></td>
+        <td><%= feedback.rating * 2.5%></td>
+      </tr>
+    </tbody>
+</table>
+<b>Comments: </b><%=  feedback.comments %><br>
+<b>Progress Comments: </b><%= feedback.progress_comments %><br>
+<b> Time: </b><%= feedback.timestamp.strftime("%T, %B %d, %Y") %>
+ <hr>
+ 
+ <% end %>
+

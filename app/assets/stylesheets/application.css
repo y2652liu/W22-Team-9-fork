@@ -19,7 +19,7 @@ html {
 }
 
 body {
-  flex-basis: 60%;
+  flex-basis: 100%;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.042), 0 6px 20px 0 rgba(0, 0, 0, 0.111);
   padding: 5em;
   padding-top: 0em;
