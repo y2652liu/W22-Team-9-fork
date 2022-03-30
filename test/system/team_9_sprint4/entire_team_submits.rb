@@ -12,10 +12,10 @@ require "application_system_test_case"
 
 class EntireTeamSubmitsTest < ApplicationSystemTestCase
     setup do
-      @user = User.new(email: 'test@gmail.com', password: 'asdasd', password_confirmation: 'asdasd', name: 'Zac', lastname: 'Efron', is_admin: false)
-      @user2 = User.new(email: 'test2@gmail.com', password: 'asdasd', password_confirmation: 'asdasd', name: 'Zactwo', lastname: 'Efrontwo', is_admin: false)
+      @user = User.new(email: 'test@uwaterloo.ca', password: 'asdasd', password_confirmation: 'asdasd', name: 'Zac', lastname: 'Efron', is_admin: false)
+      @user2 = User.new(email: 'test2@uwaterloo.ca', password: 'asdasd', password_confirmation: 'asdasd', name: 'Zactwo', lastname: 'Efrontwo', is_admin: false)
       
-      @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+      @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
       @team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
       @user.teams << @team
       @user.save
@@ -25,7 +25,7 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
       
     def test_student_dashboard_not_all_submit
       visit root_url
-      login 'test@gmail.com', 'asdasd'
+      login 'test@uwaterloo.ca', 'asdasd'
       assert_current_path root_url
     
       click_on "Submit for"
@@ -51,7 +51,7 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
 
     def test_student_view_history_not_all_submit
       visit root_url
-      login 'test@gmail.com', 'asdasd'
+      login 'test@uwaterloo.ca', 'asdasd'
       assert_current_path root_url
     
       click_on "Submit for"
@@ -79,7 +79,7 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
 
     def test_instructor_dashboard_not_all_submit
       visit root_url
-      login 'test@gmail.com', 'asdasd'
+      login 'test@uwaterloo.ca', 'asdasd'
       assert_current_path root_url
     
       click_on "Submit for"
@@ -101,7 +101,7 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
       log_out
 
       visit root_url
-      login 'msmucker@gmail.com', 'professor'
+      login 'msmucker@uwaterloo.ca', 'professor'
       assert_current_path root_url
       
       #averge should not show on instrcuctor dashboard
@@ -111,7 +111,7 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
     
     def test_instructor_manage_team_not_all_submit
       visit root_url
-      login 'test@gmail.com', 'asdasd'
+      login 'test@uwaterloo.ca', 'asdasd'
       assert_current_path root_url
     
       click_on "Submit for"
@@ -133,7 +133,7 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
       log_out
       
         visit root_url
-        login 'msmucker@gmail.com', 'professor'
+        login 'msmucker@uwaterloo.ca', 'professor'
         assert_current_path root_url
       
         #averge should not show on instrcuctor manage team
@@ -145,7 +145,7 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
 
     def test_student_dashboard_all_submitted
         visit root_url
-        login 'test@gmail.com', 'asdasd'
+        login 'test@uwaterloo.ca', 'asdasd'
         assert_current_path root_url
       
         click_on "Submit for"
@@ -166,7 +166,7 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
         assert_current_path root_url
         
         visit root_url
-        login 'test2@gmail.com', 'asdasd'
+        login 'test2@uwaterloo.ca', 'asdasd'
         assert_current_path root_url
       
         click_on "Submit for"
@@ -192,7 +192,7 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
   
       def test_student_view_history_all_submitted
         visit root_url
-        login 'test@gmail.com', 'asdasd'
+        login 'test@uwaterloo.ca', 'asdasd'
         assert_current_path root_url
       
         click_on "Submit for"
@@ -213,7 +213,7 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
         assert_current_path root_url
         
         visit root_url
-        login 'test2@gmail.com', 'asdasd'
+        login 'test2@uwaterloo.ca', 'asdasd'
         assert_current_path root_url
       
         click_on "Submit for"
@@ -242,7 +242,7 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
   
       def test_instructor_dashboard_all_submitted
         visit root_url
-        login 'test@gmail.com', 'asdasd'
+        login 'test@uwaterloo.ca', 'asdasd'
         assert_current_path root_url
       
         click_on "Submit for"
@@ -263,7 +263,7 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
         assert_current_path root_url
         
         visit root_url
-        login 'test2@gmail.com', 'asdasd'
+        login 'test2@uwaterloo.ca', 'asdasd'
         assert_current_path root_url
       
         click_on "Submit for"
@@ -283,7 +283,7 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
         
         
         visit root_url
-          login 'msmucker@gmail.com', 'professor'
+          login 'msmucker@uwaterloo.ca', 'professor'
           assert_current_path root_url
         
           #averge should show on instrcuctor dashboard
@@ -293,7 +293,7 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
       
       def test_instructor_manage_team_all_submitted
         visit root_url
-        login 'test@gmail.com', 'asdasd'
+        login 'test@uwaterloo.ca', 'asdasd'
         assert_current_path root_url
       
         click_on "Submit for"
@@ -314,7 +314,7 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
         assert_current_path root_url
         
         visit root_url
-        login 'test2@gmail.com', 'asdasd'
+        login 'test2@uwaterloo.ca', 'asdasd'
         assert_current_path root_url
       
         click_on "Submit for"
@@ -333,7 +333,7 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
         click_on "Create Feedback"
 
         visit root_url
-          login 'msmucker@gmail.com', 'professor'
+          login 'msmucker@uwaterloo.ca', 'professor'
           assert_current_path root_url
         
           #averge should show on instrcuctor manage team
