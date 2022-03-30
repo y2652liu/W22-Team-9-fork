@@ -8,12 +8,12 @@ class CreateReportValidationTest < ApplicationSystemTestCase
     
     setup do
         # create prof, team, and user
-        @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+        @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
         @team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
         @team2 = Team.create(team_name: 'Test Team 2', team_code: 'TEAM02', user: @prof)
-        @bob = User.create(email: 'bob@gmail.com', name: 'Bob', lastname: 'Bold', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+        @bob = User.create(email: 'bob@uwaterloo.ca', name: 'Bob', lastname: 'Bold', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
         @bob.teams << @team
-        @steve = User.create(email: 'steve@gmail.com', name: 'Steve', lastname: 'Stout', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+        @steve = User.create(email: 'steve@uwaterloo.ca', name: 'Steve', lastname: 'Stout', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
         @steve.teams << @team2
     end
     
@@ -21,7 +21,7 @@ class CreateReportValidationTest < ApplicationSystemTestCase
     def test_report_nocomment
  
         visit root_url 
-        login 'bob@gmail.com', 'testpassword'
+        login 'bob@uwaterloo.ca', 'testpassword'
         click_on "Submit a report"
         select "Steve", from: "Reportee"
         
@@ -33,7 +33,7 @@ class CreateReportValidationTest < ApplicationSystemTestCase
     def test_report_commentover2048
  
         visit root_url 
-        login 'bob@gmail.com', 'testpassword'
+        login 'bob@uwaterloo.ca', 'testpassword'
         click_on "Submit a report"
         select "Steve", from: "Reportee" 
 
@@ -44,7 +44,7 @@ class CreateReportValidationTest < ApplicationSystemTestCase
    def test_report_prioritynotinrange
  
         visit root_url 
-        login 'bob@gmail.com', 'testpassword'
+        login 'bob@uwaterloo.ca', 'testpassword'
         click_on "Submit a report"
         select "Steve", from: "Reportee"
         

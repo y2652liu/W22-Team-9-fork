@@ -5,7 +5,7 @@ USER ACCEPTANCE CRITERIA: No name(s) is shown in the missing feedback tab of sec
 USER ACCEPTANCE CRITERIA: The number of incomplete feedbacks is shown in the feedback tab of dashboard table
 
 1. Enter the following in each field: 
-    msmucker@gmail.com 
+    msmucker@uwaterloo.ca
     professor
 2. Navigate to Manage Team and copy code under Team code column
 3. Log out of instructor side and navigate to sign up page and enter the following in each field:

@@ -7,7 +7,7 @@ USER ACCEPTANCE CRITERIA: Rating is out of 10, where all 10 questions are consid
 
 T1,T4
 1. Enter the following in each field: 
-    msmucker@gmail.com 
+    msmucker@uwaterloo.ca
     professor
 2. Move mouse to 'Manage Teams', and click on 'New Team'
 3. Create a team and copy the Team Code
@@ -32,7 +32,7 @@ T1,T4
 
 T2
 18. Enter the following in each field: 
-    msmucker@gmail.com 
+    msmucker@uwaterloo.ca 
     professor
 19. view dashboard 'Rating (Out of 10)' has rating "5.67"
 

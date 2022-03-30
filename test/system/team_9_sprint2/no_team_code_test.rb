@@ -11,7 +11,7 @@ class AddChangePasswordsTest < ApplicationSystemTestCase
   def test_change_password 
     # log professor in
     visit root_url
-    login 'msmucker@gmail.com', 'professor'
+    login 'msmucker@uwaterloo.ca', 'professor'
 
     assert has_no_content?('Team Code')
     

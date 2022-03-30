@@ -5,7 +5,7 @@ USER ACCEPTANCE CRITERIA: Can submit form accurately with chosen answers
 USER ACCEPTANCE CRITERIA: Creating a scale: 1 (strongly disagree) to 5 questions (strongly agree)
 USER ACCEPTANCE CRITERIA: Questions are displayed
 1. Enter the following in each field: 
-    msmucker@gmail.com 
+    msmucker@uwaterloo.ca 
     professor
 2. Move mouse to 'Manage Teams', and click on 'New Team'
 3. Create a team and copy the Team Code
@@ -17,7 +17,7 @@ USER ACCEPTANCE CRITERIA: Questions are displayed
 9. Fill and submit feedback form
 10. Click on ‘Logout/Account’
 11. Enter the following in each field: 
-     msmucker@gmail.com 
+     msmucker@uwaterloo.ca 
      professor
 12. Navigate to "Feedback & Ratings" Tab
 13. View and confirm submitted feedback is present

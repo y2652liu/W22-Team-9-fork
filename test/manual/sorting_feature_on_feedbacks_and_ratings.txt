@@ -10,7 +10,7 @@ USER ACCEPTANCE CRITERIA: Priority is correctly sorted with most Urgent at the t
 6. Repeat steps 1-5, but change priority in step 4 to low
 7. Repeat steps 1-5, but change priority in step 4 to urgent
 8. Sign in by entering the following in each field: 
-    msmucker@gmail.com 
+    msmucker@uwaterloo.ca
     professor
 9. Click on Feedback & Ratings
 10. Note order of feedbacks
@@ -25,7 +25,7 @@ USER ACCEPTANCE CRITERIA: Team Name is correctly sorted in Alphabetical order
 4. Fill in and submit feedback form 
 5. Click on logout/account
 6. Enter the following in each field: 
-    msmucker@gmail.com 
+    msmucker@uwaterloo.ca
     professor
 7. Move mouse to 'Manage Teams', and click on 'New Team'
 8. Create a team called "A" and copy the Team Code
@@ -35,7 +35,7 @@ USER ACCEPTANCE CRITERIA: Team Name is correctly sorted in Alphabetical order
 12. Fill in and submit feedback form 
 13. Click on logout/account
 14. Sign in by entering the following in each field: 
-    msmucker@gmail.com 
+    msmucker@uwaterloo.ca
     professor
 15. Click on Feedback & Ratings
 16. Note order of feedbacks
@@ -51,7 +51,7 @@ USER ACCEPTANCE CRITERIA: Timestamp is correctly sorted with the most recent at 
 5. Click on logout/account
 6. Repeat steps 1-5 twice
 7. Sign in by entering the following in each field: 
-    msmucker@gmail.com 
+    msmucker@uwaterloo.ca
     professor
 8. Click on Feedback & Ratings
 9. Note order of feedbacks
@@ -66,7 +66,7 @@ USER ACCEPTANCE CRITERIA: Name is correctly sorted in Alphabetical order
 4. Fill in and submit feedback form 
 5. Click on logout/account
 6. Enter the following in each field: 
-    msmucker@gmail.com 
+    msmucker@uwaterloo.ca 
     professor
 7. Move mouse to 'Manage Teams', and click on 'New Team'
 8. Create a team called "A" and copy the Team Code
@@ -76,7 +76,7 @@ USER ACCEPTANCE CRITERIA: Name is correctly sorted in Alphabetical order
 12. Fill in and submit feedback form 
 13. Click on logout/account
 14. Sign in by entering the following in each field: 
-    msmucker@gmail.com 
+    msmucker@uwaterloo.ca
     professor
 15. Click on Feedback & Ratings
 16. Note order of feedbacks
@@ -95,7 +95,7 @@ USER ACCEPTANCE CRITERIA: Rating is correctly sorted with lowest rating at the t
 8. Fill in and submit feedback form with all answers "Strongly Disagree"
 9. Click on logout/account
 10. Sign in by entering the following in each field: 
-    msmucker@gmail.com 
+    msmucker@uwaterloo.ca
     professor
 11. Click on Feedback & Ratings
 12. Note order of feedbacks

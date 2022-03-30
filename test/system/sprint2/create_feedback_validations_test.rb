@@ -18,7 +18,7 @@ class CreateFeedbackValidationsTest < ApplicationSystemTestCase
     #Passes acceptance criteria 1: student cannot submit feedback without a rating
     #"Sad test", student tries to submit feedback without a rating    
     #visit root_url
-    #login 'test@gmail.com', '123456789'
+    #login 'test@uwaterloo.ca', '123456789'
     #assert_current_path root_url
     
     #click_on "Submit for"

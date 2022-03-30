@@ -7,11 +7,11 @@
 # I modeled this test class off of create_summary_page_view_of_teams_test.rb (mostly) created by the earlier team
     #setup do
         # create prof, team, and user
-        #@prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+        #@prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
         
         #@team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
         
-        #@cici = User.create(email: 'cici@gmail.com', name: 'Cici', lastname: 'Awesome', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+        #@cici = User.create(email: 'cici@uwaterloo.ca', name: 'Cici', lastname: 'Awesome', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
         #@cici.teams << @team
         
     #end
@@ -22,7 +22,7 @@
       #Timecop.freeze(new_timethu)
 
       #visit root_url 
-      #login 'cici@gmail.com', 'testpassword'
+      #login 'cici@uwaterloo.ca', 'testpassword'
 
       #check if has message
       #assert_text 'days left to submit feedback:'
@@ -36,7 +36,7 @@
         #Timecop.freeze(new_timefri)
   
         #visit root_url 
-        #login 'cici@gmail.com', 'testpassword'
+        #login 'cici@uwaterloo.ca', 'testpassword'
   
         #check if has message
         #assert_text 'days left to submit feedback:'
@@ -50,7 +50,7 @@
         #Timecop.freeze(new_timesat)
       
         #visit root_url 
-        #login 'cici@gmail.com', 'testpassword'
+        #login 'cici@uwaterloo.ca', 'testpassword'
       
         #check if has message
         #assert_text 'days left to submit feedback:'
@@ -64,7 +64,7 @@
       #Timecop.freeze(new_timesun)
       
       #visit root_url 
-      #login 'cici@gmail.com', 'testpassword'
+      #login 'cici@uwaterloo.ca', 'testpassword'
       
       #check if has message
       #assert_text 'days left to submit feedback:'
@@ -77,7 +77,7 @@
       #Timecop.freeze(new_timemon)
       
       #visit root_url 
-      #login 'cici@gmail.com', 'testpassword'
+      #login 'cici@uwaterloo.ca', 'testpassword'
       
       #check if has no message
       #assert_no_text 'days left to submit feedback:'
@@ -91,7 +91,7 @@
       #Timecop.freeze(new_timetue)
       
       #visit root_url 
-      #login 'cici@gmail.com', 'testpassword'
+      #login 'cici@uwaterloo.ca', 'testpassword'
       
       #check if has no message
       #assert_no_text 'days left to submit feedback:'
@@ -105,7 +105,7 @@
       #Timecop.freeze(new_timewed)
       
       #visit root_url 
-      #login 'cici@gmail.com', 'testpassword'
+      #login 'cici@uwaterloo.ca', 'testpassword'
       
       #check if has no message
       #assert_no_text 'days left to submit feedback:'

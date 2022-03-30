@@ -9,13 +9,13 @@ require "application_system_test_case"
 class AddStudentViewsForReportsTest < ApplicationSystemTestCase
   setup do
     # Create prof, team, and users
-    @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+    @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
     @team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
-    @bob = User.create(email: 'bob@gmail.com', name: 'Bob', lastname: 'Kosner', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+    @bob = User.create(email: 'bob@uwaterloo.ca', name: 'Bob', lastname: 'Kosner', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
     @bob.teams << @team
-    @steve = User.create(email: 'steve@gmail.com', name: 'Steve', lastname: 'Stout', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+    @steve = User.create(email: 'steve@uwaterloo.ca', name: 'Steve', lastname: 'Stout', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
     @steve.teams << @team
-    @anna = User.create(email: 'anna@gmail.com', name: 'Anna', lastname: 'Lost', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+    @anna = User.create(email: 'anna@uwaterloo.ca', name: 'Anna', lastname: 'Lost', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
     @anna.teams << @team
     # Report.create(reporter_id: @bob.id, reportee_id: @steve.id, description: 'Made fun of my shirt.', priority: 0)
     # Report.create(reporter_id: @anna.id, reportee_id: @bob.id, description: 'Laughed at my haircut.', priority: 0)
@@ -23,7 +23,7 @@ class AddStudentViewsForReportsTest < ApplicationSystemTestCase
   
   # def test_view_reports_as_reportee
   #   visit root_url 
-  #   login 'steve@gmail.com', 'testpassword'
+  #   login 'steve@uwaterloo.ca', 'testpassword'
     
   #   click_on "Reports"
   #   assert_current_path reports_url
@@ -35,7 +35,7 @@ class AddStudentViewsForReportsTest < ApplicationSystemTestCase
   
   # def test_cannot_view_reporter_as_reportee
   #   visit root_url 
-  #   login 'steve@gmail.com', 'testpassword'
+  #   login 'steve@uwaterloo.ca', 'testpassword'
     
   #   click_on "Reports"
   #   assert_current_path reports_url
@@ -46,7 +46,7 @@ class AddStudentViewsForReportsTest < ApplicationSystemTestCase
   
   # def test_cannot_view_irrelevant_reports
   #   visit root_url 
-  #   login 'steve@gmail.com', 'testpassword'
+  #   login 'steve@uwaterloo.ca', 'testpassword'
     
   #   click_on "Reports"
   #   assert_current_path reports_url
@@ -57,7 +57,7 @@ class AddStudentViewsForReportsTest < ApplicationSystemTestCase
   
   # def test_can_view_submitted_reports
   #   visit root_url 
-  #   login 'anna@gmail.com', 'testpassword'
+  #   login 'anna@uwaterloo.ca', 'testpassword'
     
   #   click_on "Reports"
   #   assert_current_path reports_url

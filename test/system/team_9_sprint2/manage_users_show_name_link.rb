@@ -10,18 +10,18 @@ class ShowNameLink < ApplicationSystemTestCase
 
     setup do
         # create prof, team, and user
-        @prof = User.create(email: 'msmucker@gmail.com', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
+        @prof = User.create(email: 'msmucker@uwaterloo.ca', name: 'Mark', lastname: 'Smucker', is_admin: true, password: 'professor', password_confirmation: 'professor')
         
         @team = Team.create(team_name: 'Test Team', team_code: 'TEAM01', user: @prof)
         
-        @bob = User.create(email: 'bob@gmail.com', name: 'Bob', lastname: 'Bold', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+        @bob = User.create(email: 'bob@uwaterloo.ca', name: 'Bob', lastname: 'Bold', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
         @bob.teams << @team
         
     end
 
     def test_user_name_link_show
         visit root_url 
-        login 'msmucker@gmail.com', 'professor'
+        login 'msmucker@uwaterloo.ca', 'professor'
         click_on "Manage Users"
         assert_current_path users_url
  
