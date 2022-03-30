@@ -36,7 +36,7 @@
       <% end %>
     </tbody>
   </table>
-<% else %>
+<% else %> 
   <p>There are no members in this team!</p>
 <% end %>
 
@@ -56,12 +56,7 @@
               </h3>
             </div>
 
-<<<<<<< HEAD
             <% if (missing.size == 0 or range[:end_date].past?) %>
-=======
-            <% if missing.size == 0 or range[:end_date].past? %>
-            
->>>>>>> ecc662fded4d2cbaa9fc7847dc769ba5a8a8cc0c
             <p>Average Rating of Period (Out of 10): <%= overall_rating.round(2) %></p>
             <% else %>
             <p></p>
