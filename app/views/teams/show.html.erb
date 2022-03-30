@@ -40,7 +40,7 @@
       <% end %>
     </tbody>
   </table>
-<% else %>
+<% else %> 
   <p>There are no members in this team!</p>
 <% end %>
 
@@ -59,7 +59,13 @@
                 <%= range[:start_date].strftime('%b %e, %Y') %> to <%= range[:end_date].strftime('%b %e, %Y') %>
               </h3>
             </div>
+
+            <% if (missing.size == 0 or range[:end_date].past?) %>
             <p>Average Rating of Period (Out of 10): <%= overall_rating.round(2) %></p>
+            <% else %>
+            <p></p>
+            <% end %>
+            
             <p>Weighted Priority: <%= priority %></p>
             <p>Missing Feedback: <%= missing.join(", ") %></p>
             <table>
@@ -116,7 +122,15 @@
             <%= range[:start_date].strftime('%b %e, %Y') %> to <%= range[:end_date].strftime('%b %e, %Y') %>
           </h3>
         </div>
+
+        <% if (missing.size == 0 or range[:end_date].past?) %>
         <p>Average Rating of Period (Out of 10): <%= overall_rating.round(2) %></p>
+        
+        <% else %>
+        <p></p>
+        <% end %>
+
+
         <p>Weighted Priority: <%= priority %></p>
       </div>
       <br/>
