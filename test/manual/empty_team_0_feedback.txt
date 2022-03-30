@@ -1,5 +1,5 @@
 T1: BUG: When there are 0 members, it is reported as "All Submitted"
-USER ACCEPTANCE CRITERIA: Rating is out of 10, where all 10 questions are considered for the average, which is correctly shown on instrutor's dashboard, ManageTeam and Student Dashboard.
+USER ACCEPTANCE CRITERIA: Should display a 0 under missing feedback for an empty team.
 
 T1
 1. Enter the following in each field: 
