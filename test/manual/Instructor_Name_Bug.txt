@@ -1,0 +1,17 @@
+*BUG* Only first name of instructor is displayed under "view historical data" section
+*USER ACCEPTANCE CRITERIA*: Instructor's full name is displayed to the users in the team they are apart of
+
+T1: Instructor Full Name on View Historical Data
+1. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor
+2. Move mouse to 'Manage Teams', and click on 'New Team'
+3. Create a team and copy the Team Code
+4. Click on ‘Logout/Account’
+
+5. Click on 'Sign up'
+6. Create a student account with the copied Team Code
+7. Click on 'Submit for XXX Team' and submit feedback where 9 questions have "Strongly Agree" and 1 has "Strongly Disagree".
+
+8. On the Student's dashboard click on "View Historical Data"
+9. Under "Created By:" ensure the Instructor's Full Name is visible (for example Mark Smucker)
