@@ -98,7 +98,7 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
       click_on "Create Feedback"
       assert_current_path root_url
 
-      log_out
+      click_on "Logout/Account"
 
       visit root_url
       login 'msmucker@uwaterloo.ca', 'professor'
@@ -130,7 +130,7 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
       click_on "Create Feedback"
       assert_current_path root_url
 
-      log_out
+      click_on "Logout/Account"
       
         visit root_url
         login 'msmucker@uwaterloo.ca', 'professor'
@@ -138,7 +138,7 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
       
         #averge should not show on instrcuctor manage team
         #(10.0+0)/2=5.0
-        click_on "Test Team"
+        click_on "Test Team",:match => :first
         assert_no_text "5.0"
     end
 
@@ -164,7 +164,7 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
         click_on "Create Feedback"
         
         assert_current_path root_url
-        
+        click_on "Logout/Account"
         visit root_url
         login 'test2@uwaterloo.ca', 'asdasd'
         assert_current_path root_url
@@ -211,7 +211,7 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
         click_on "Create Feedback"
         
         assert_current_path root_url
-        
+        click_on "Logout/Account"
         visit root_url
         login 'test2@uwaterloo.ca', 'asdasd'
         assert_current_path root_url
@@ -261,7 +261,7 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
         click_on "Create Feedback"
         
         assert_current_path root_url
-        
+        click_on "Logout/Account"
         visit root_url
         login 'test2@uwaterloo.ca', 'asdasd'
         assert_current_path root_url
@@ -281,6 +281,7 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
         fill_in 'feedback_comments', :with => 'i love this team'
         click_on "Create Feedback"
         
+        click_on "Logout/Account"
         
         visit root_url
           login 'msmucker@uwaterloo.ca', 'professor'
@@ -312,7 +313,7 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
         click_on "Create Feedback"
         
         assert_current_path root_url
-        
+        click_on "Logout/Account"
         visit root_url
         login 'test2@uwaterloo.ca', 'asdasd'
         assert_current_path root_url
@@ -331,14 +332,14 @@ class EntireTeamSubmitsTest < ApplicationSystemTestCase
         select "Urgent - I believe my team has serious issues and needs immediate intervention.", :from => "feedback[priority]"
         fill_in 'feedback_comments', :with => 'i love this team'
         click_on "Create Feedback"
-
+        click_on "Logout/Account"
         visit root_url
           login 'msmucker@uwaterloo.ca', 'professor'
           assert_current_path root_url
         
           #averge should show on instrcuctor manage team
           #(10.0+10.0)/2=10.0
-          click_on "Test Team"
+          click_on "Test Team",:match => :first
           assert_text "10.0"
       end
   end
