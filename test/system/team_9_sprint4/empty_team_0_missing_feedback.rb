@@ -1,7 +1,7 @@
 require "application_system_test_case"
 
 # Acceptance Criteria:
-# 1. As a student when submitting feedback before deadline but others hasn't submit yet, I should not see the average display on my dashboard.
+# 1. Should display a 0 under missing feedback for an empty team.
 
 class EmptyTeamZeroMissingFeedback < ApplicationSystemTestCase
     setup do
