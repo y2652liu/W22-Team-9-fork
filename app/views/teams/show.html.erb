@@ -54,8 +54,13 @@
   <% else %>
         <% @periods.each do |key, period, range, overall_rating, missing, priority| %>
           <div id=<%= key[:year] %>-<%= key[:week] %> >
+            
             <div style="display: inline">
+              <% if (missing.size == 0 or range[:end_date].past?) %>
               <span class=<%= 'dot-' + @team.status(range[:start_date], range[:end_date]) %> style="vertical-align: middle" ></span>
+              <% else %>
+              <span class=<%= 'dot-beige'%> style="vertical-align: middle" ></span>
+              <% end %>
               <h3 style="display: inline">  
                 <%= range[:start_date].strftime('%b %e, %Y') %> to <%= range[:end_date].strftime('%b %e, %Y') %>
               </h3>
@@ -67,7 +72,12 @@
             <p></p>
             <% end %>
             
-            <p>Weighted Priority: <%= priority %></p>
+            <% if (missing.size == 0 or range[:end_date].past?) %>
+              <p>Weighted Priority: <%= priority %></p>
+            <% else %>
+              <p></p>
+            <% end %>
+            
             <p>Missing Feedback: <%= missing.join(", ") %></p>
             <table>
               <thead>
@@ -118,7 +128,12 @@
     <% @periods.each do |key, period, range, overall_rating, missing, priority| %>
       <div id=<%= key[:year] %>-<%= key[:week] %> >
         <div style="display: inline">
-          <span class=<%= 'dot-' + @team.status(range[:start_date], range[:end_date]) %> style="vertical-align: middle" ></span>
+
+          <% if (missing.size == 0 or range[:end_date].past?) %>
+            <span class=<%= 'dot-' + @team.status(range[:start_date], range[:end_date]) %> style="vertical-align: middle" ></span>
+          <% else %>
+            <span class=<%= 'dot-beige'%> style="vertical-align: middle" ></span>
+          <% end %>
           <h3 style="display: inline">  
             <%= range[:start_date].strftime('%b %e, %Y') %> to <%= range[:end_date].strftime('%b %e, %Y') %>
           </h3>
@@ -131,8 +146,11 @@
         <p></p>
         <% end %>
 
-
+        <% if (missing.size == 0 or range[:end_date].past?) %>
         <p>Weighted Priority: <%= priority %></p>
+        <% else %>
+        <p></p>
+        <% end %>
       </div>
       <br/>
     <% end %>

@@ -28,17 +28,29 @@
       <tbody>
         <% @teams.each do |team| %>
           <tr id=<%= team.id %>>
-            <td><span class=<%= 'dot-' + team.status(@week_range[:start_date], @week_range[:end_date]) %>></span></td>
-            <% priority = team.find_priority_weighted(@week_range[:start_date], @week_range[:end_date]) %>
+            <% if @unsubmitted[:current_week][team.id].size == 0%>
+              <td><span class=<%= 'dot-' + team.status(@week_range[:start_date], @week_range[:end_date]) %>></span></td>
+            <% else %>
+              <td><span class=<%= 'dot-beige'%>></span></td>
+            <%end%>
+
+
+
             <td><%= link_to team.team_name, team %></td>
+            <% if @unsubmitted[:current_week][team.id].size == 0%>
+              <% priority = team.find_priority_weighted(@week_range[:start_date], @week_range[:end_date]) %>
+            <% else %>
+            <%end%>
             <td><%= priority ? priority : "No feedback" %></td>
             
+            
             <% if @unsubmitted[:current_week][team.id].size == 0%>
-            <% average_rating = Team.feedback_average_rating(team.feedbacks.where(timestamp: @week_range[:start_date]..@week_range[:end_date]),team.users)%>
-            <td><%= average_rating ? average_rating.round(2) : "No feedback" %></td>
+              
+              <% average_rating = Team.feedback_average_rating(team.feedbacks.where(timestamp: @week_range[:start_date]..@week_range[:end_date]),team.users)%>
+              <td><%= average_rating ? average_rating.round(2) : "No feedback" %></td>
             
             <% else %>
-            <td></td>
+              <td></td>
             <%end%>
 
             <td><%= team.student_names.size == 0 ? 'No members' : team.student_names.join(", ") %></td>
@@ -135,14 +147,20 @@
         <tbody>
           <% @current_user.teams.each do |team| %>
             <tr id=<%= team.id %>>
-              <td id=<%= team.id %>-status>
-                <span class=<%= 'dot-' + team.status(@week_range[:start_date], @week_range[:end_date]) %>></span>
-              </td>
+            <% if @unsubmitted[:current_week][team.id].size == 0%>
+              <td><span class=<%= 'dot-' + team.status(@week_range[:start_date], @week_range[:end_date]) %>></span></td>
+            <% else %>
+              <td><span class=<%= 'dot-beige'%>></span></td>
+            <%end%>
+
+            <% if @unsubmitted[:current_week][team.id].size == 0%>
               <% priority = team.find_priority_weighted(@week_range[:start_date], @week_range[:end_date]) %>
-              <td><%= priority ? priority : "No feedback" %></td>
+            <%end%>
+
+            <td><%= priority ? priority : "No feedback" %></td>
               
               <% if @unsubmitted[:current_week][team.id].size == 0%>
-              <% average_rating = Team.feedback_average_rating(team.feedbacks.where(timestamp: @week_range[:start_date]..@week_range[:end_date]),team.users) %>
+                <% average_rating = Team.feedback_average_rating(team.feedbacks.where(timestamp: @week_range[:start_date]..@week_range[:end_date]),team.users) %>
               <td><%= average_rating ? average_rating.round(2) : "No feedback" %></td>
               
               <% else %>
