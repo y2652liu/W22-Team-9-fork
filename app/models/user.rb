@@ -80,12 +80,13 @@ class User < ApplicationRecord
 
   def reset_pass_with_generated (password=nil, length=8)
     
+
     if password != nil
       new_pass = password
     else
       new_pass = gen_new_pass(length)
     end
-    
+
     return reset_pass new_pass
   
   end
@@ -103,9 +104,11 @@ class User < ApplicationRecord
   private
     def reset_pass(new_pass)
       #password update taken from static reset password
+
       if self.update(password: new_pass, password_confirmation: new_pass)
         return true
       else 
+
         return false
       end 
     end
