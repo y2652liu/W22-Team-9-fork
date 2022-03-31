@@ -40,26 +40,26 @@ class Feedback < ApplicationRecord
     return all_rating.round(2)
   end
 
-  def self.order_by field
-    if field == 'priority'
-      return Feedback.order('feedbacks.priority asc')
-    elsif field == 'team'
-      return Feedback.find_by_sql("SELECT *
-        FROM teams as t, feedbacks as f, users as u
-        WHERE f.team_id = t.id AND u.id = f.user_id  
-        ORDER BY t.team_name asc")
-    elsif field == 'date'
-      return Feedback.order('feedbacks.timestamp desc')
-    elsif field == 'name'
-      return Feedback.find_by_sql("SELECT f.id, f.rating, f.comments, f.timestamp, f.created_at, f.updated_at, f.team_id, f.user_id, f.priority, f.goal_rating, f.communication_rating, f.positive_rating, f.reach_rating, f.bounce_rating, f.account_rating, f.decision_rating, f.respect_rating, f.progress_comments, f.motivation_rating
-      FROM teams as t, feedbacks as f, users as u
-      WHERE f.team_id = t.id AND u.id = f.user_id  
-      ORDER BY u.name asc")
-    elsif field == 'rating'
-      #Used the idea of sorting by calling the method within the model: https://stackoverflow.com/questions/4055799/how-do-you-order-by-a-custom-model-method-that-has-no-attribute-in-sql
-      Feedback.all.sort_by(&:overall_rating)
-    end
-  end
+  # def self.order_by field
+  #   if field == 'priority'
+  #     return Feedback.order('feedbacks.priority asc')
+  #   elsif field == 'team'
+  #     return Feedback.find_by_sql("SELECT *
+  #       FROM teams as t, feedbacks as f, users as u
+  #       WHERE f.team_id = t.id AND u.id = f.user_id  
+  #       ORDER BY t.team_name asc")
+  #   elsif field == 'date'
+  #     return Feedback.order('feedbacks.timestamp desc')
+  #   elsif field == 'name'
+  #     return Feedback.find_by_sql("SELECT f.id, f.rating, f.comments, f.timestamp, f.created_at, f.updated_at, f.team_id, f.user_id, f.priority, f.goal_rating, f.communication_rating, f.positive_rating, f.reach_rating, f.bounce_rating, f.account_rating, f.decision_rating, f.respect_rating, f.progress_comments, f.motivation_rating
+  #     FROM teams as t, feedbacks as f, users as u
+  #     WHERE f.team_id = t.id AND u.id = f.user_id  
+  #     ORDER BY u.name asc")
+  #   elsif field == 'rating'
+  #     #Used the idea of sorting by calling the method within the model: https://stackoverflow.com/questions/4055799/how-do-you-order-by-a-custom-model-method-that-has-no-attribute-in-sql
+  #     Feedback.all.sort_by(&:overall_rating)
+  #   end
+  # end
 
   def self.order_by_rev(field, rev)
     if field == 'priority'
