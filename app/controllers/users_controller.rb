@@ -94,7 +94,12 @@ class UsersController < ApplicationController
     new_pass = @user.gen_new_pass
 
     if @user.reset_pass_with_generated new_pass
-      redirect_to user_url, notice: 'Password was reset to ' +new_pass+'. Please send this to the student'
+      if @user.is_admin
+        redirect_to user_url, notice: 'Password was reset to ' +new_pass+'. Please send this to the instructor.'
+      else
+        redirect_to user_url, notice: 'Password was reset to ' +new_pass+'. Please send this to the student.'
+      end  
+      
     else
       flash[:error] = 'Password was not reset'
       redirect_to user_url
