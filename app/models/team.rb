@@ -45,7 +45,9 @@ class Team < ApplicationRecord
     
     priority_holder.each_with_index {|val, index| priority_holder[index] = feedbacks.where(priority: index).count}
 
-    if priority_holder[0] > 0  or rating <= 6.0 or submitted.count <= self.users.count/2
+    if self.users.count ==0
+      return "No feedback"
+    elsif priority_holder[0] > 0  or rating <= 6.0 or submitted.count <= self.users.count/2
       return "High" 
     elsif priority_holder[1] >= feedbacks.count/2.0
       return "Medium"
@@ -177,7 +179,9 @@ class Team < ApplicationRecord
   def status(start_date, end_date)
     priority = self.find_priority_weighted(start_date, end_date)
 
-    if priority == 'High'
+    if priority == 'No feedback'
+      return 'beige'
+    elsif priority == 'High'
       return 'red'
     elsif priority == 'Medium' 
       return 'yellow'

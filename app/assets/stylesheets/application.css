@@ -220,6 +220,14 @@ li.dropdown {
   background-color: rgb(153, 0, 0);
 }
 
+.dot-beige {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+  background-color: beige;
+}
+
 .dot-yellow {
   height: 25px;
   width: 25px;
