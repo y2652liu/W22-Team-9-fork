@@ -1,0 +1,11 @@
+T1: BUG: When there are 0 members, it is reported as "All Submitted"
+USER ACCEPTANCE CRITERIA: Should display a 0 under missing feedback for an empty team.
+
+T1
+1. Enter the following in each field: 
+    msmucker@gmail.com 
+    professor
+2. Move mouse to 'Manage Teams', and click on 'New Team'
+3. Create a Team
+4. Click on 'Home' and navigate to the dashboard
+5. Ensure under 'Missing Feedback' the empty team you created has '0'
