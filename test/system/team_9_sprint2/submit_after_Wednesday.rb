@@ -1,6 +1,6 @@
 #This feature is archeived at this point as it allows flexible submission demo on client meeting demo.
 # Acceptance Criteria: 
-# 1. As a student, I am able to see the submit button from Mon.-Sun.
+# 1. As a student, I am able to see the submit button from Thur.-Sun.
 
 require "application_system_test_case"
 
@@ -83,10 +83,10 @@ class SubmitAfterWednesdayTest < ApplicationSystemTestCase
       login 'cici@uwaterloo.ca', 'testpassword'
 
       # check if there is a valid link
-      assert_link 'Submit for: Test Team'
+      #assert_link 'Submit for: Test Team'
       
       # check if there is not a valid link
-      #assert_no_link 'Submit for: Test Team'
+      assert_no_link 'Submit for: Test Team'
 
     end
 
@@ -100,10 +100,10 @@ class SubmitAfterWednesdayTest < ApplicationSystemTestCase
       login 'cici@uwaterloo.ca', 'testpassword'
       
       # check if there is a valid link
-      assert_link 'Submit for: Test Team'
+      #assert_link 'Submit for: Test Team'
       
       # check if there is not a valid link
-      #assert_no_link 'Submit for: Test Team'
+      assert_no_link 'Submit for: Test Team'
     end
 
     # check Wednesday
@@ -116,10 +116,10 @@ class SubmitAfterWednesdayTest < ApplicationSystemTestCase
       login 'cici@uwaterloo.ca', 'testpassword'
       
       # check if there is a valid link
-      assert_link 'Submit for: Test Team'
+      #assert_link 'Submit for: Test Team'
       
       # check if there is not a valid link
-      #assert_no_link 'Submit for: Test Team'
+      assert_no_link 'Submit for: Test Team'
     end
 
 end
