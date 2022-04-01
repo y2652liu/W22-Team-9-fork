@@ -223,4 +223,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_not_nil(User.find_by(email: 'msmucker@uwaterloo.ca'))
   end
 
+  def test_generate_password
+    @bob = User.create(email: 'bob@uwaterloo.ca', name: 'Bob', lastname: 'Laughalot', is_admin: false, password: 'testpassword', password_confirmation: 'testpassword')
+    
+    post(login_path, params: { email: 'msmucker@uwaterloo.ca', password: 'professor'})
+
+    get(user_regenerate_password_path(@bob))
+    
+    assert_redirected_to user_url(@bob)
+  end
+
 end
