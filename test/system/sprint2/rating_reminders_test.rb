@@ -54,12 +54,13 @@ class RatingReminders < ApplicationSystemTestCase
   end
   #Over 2
   def test_rating_warning_over_2
-      travel_to Time.new(2021, 03, 03, 06, 04, 44)
+      travel_to Time.new(2022, 03, 31, 06, 04, 44)
       team = Team.new(team_name: 'Hello World', team_code: 'Code', user: @user)
       team.save!
       @user.teams << [team]
       @user.save!
       visit root_url
-      assert_text "4 days left"
+      assert_text "days left to submit feedback:"
+
   end
 end
