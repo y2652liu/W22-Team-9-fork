@@ -100,4 +100,41 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to feedbacks_url
   end
+
+
+  test "reverse sort" do
+    # login professor
+    post('/login', params: { email: 'msmucker@uwaterloo.ca', password: 'professor'})
+    
+
+    get(feedbacks_url, params: { order_by:'name', reverse_name: '1'})
+    assert_response :success
+
+    get(feedbacks_url, params: { order_by:'name', reverse_name: '-1'})
+    assert_response :success
+
+    get(feedbacks_url, params: { order_by:'team', reverse_team: '1'})
+    assert_response :success
+
+    get(feedbacks_url, params: { order_by:'team', reverse_team: '-1'})
+    assert_response :success
+
+    get(feedbacks_url, params: { order_by:'rating', reverse_rating: '1'})
+    assert_response :success
+
+    get(feedbacks_url, params: { order_by:'rating', reverse_rating: '-1'})
+    assert_response :success
+
+    get(feedbacks_url, params: { order_by:'priority', reverse_priority: '1'})
+    assert_response :success
+
+    get(feedbacks_url, params: { order_by:'priority', reverse_priority: '-1'})
+    assert_response :success
+
+    get(feedbacks_url, params: { order_by:'date', reverse_timestamp: '1'})
+    assert_response :success
+
+    get(feedbacks_url, params: { order_by:'date', reverse_timestamp: '-1'})
+    assert_response :success
+  end
 end
